@@ -1,1 +1,1 @@
-CAT PROJECT
+CAT

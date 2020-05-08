@@ -5,87 +5,107 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
-using src.segment; 
+using src.segment;
+using src.TM;
 
 namespace src.Files
 {
-    class file
+    public abstract class file
     {
-        private string filePath;
-        private string extexsionFile = "txt files|*.txt|All files|*.*";
-        private string extexsion;
-        private char[] delimiters = { '.', '?', '\n',':' };
-        private string content;
-        private List<Segment> listSegments = new List<Segment>(); 
-        public void read(string path)
+        public string filePath;
+        public string fileName;
+        public string fileNameSave;
+        public string pathSaveFolder; 
+        public string extexsionFile = "txt files|*.txt|All files|*.*";
+        public string extexsion;
+        public char[] delimiters;
+        public string content;
+        public string convertFileName; 
+        public List<Segment> listSegments = new List<Segment>();
+        public List<Segment> listSegmentsFromSave = new List<Segment>();
+
+
+        public abstract void readContent(string path);
+        public abstract void loadFileSave(string path);
+        public abstract void convertToWord(string path,string tempFolder); 
+
+        public abstract void createFileTranslateDocument(string path); 
+
+        public void setFileName(string path)
         {
-            filePath = path;
-            extexsion = Path.GetExtension(path);
-            string FileText = ""; 
-            if(extexsion == ".txt")
-            {
-                FileText = readTxt();  
-            }
-            content = FileText;
-            setSegmentFromFile(); 
-        }
-        public string getContent()
-        {
-            return content; 
-        }
-        public string readTxt() {
-            string fileText = File.ReadAllText(filePath);
-            return fileText;
-        }
-        public void setSegmentFromFile()
-        {
-            List<string> sentences = splitIntoSentences(this.getContent());
-            foreach (string sentence in sentences)
-            {
-                Segment segment = new Segment();
-                segment.setValue(sentence);
-                listSegments.Add(segment);
-            }
+            this.filePath = path;
+            this.fileName = Path.GetFileName(path);
+            this.extexsion = Path.GetExtension(path);
+            this.fileNameSave = Path.GetFileNameWithoutExtension(path) + ".save";
         }
 
-        public List<Segment> getListSegment()
-        {
-            return listSegments;
-        }
+        
 
-        public List<string> splitIntoSentences(string s)
+        public void setTargetToListSegment(tm tm)
         {
-            var parts = new List<string>();
-            if (!string.IsNullOrEmpty(s))
+            if(tm != null)
             {
-                int iFirst = 0;
-                do
+                for(int i = 0; i < listSegments.Count; i++)
                 {
-                    int iLast = s.IndexOfAny(delimiters, iFirst);
-                    if (iLast >= 0)
+                    tm tmp = listSegments[i].getTM(); 
+                    if(tmp.Source == tm.Source)
                     {
-                        if (iLast > iFirst)
-                            if (s[iLast] == '\n')
-                            {
-                                if (s.Substring(iFirst, iLast - iFirst - 1).Trim() != "")
-                                {
-                                    parts.Add(s.Substring(iFirst, iLast - iFirst - 1).Trim());
-                                }
-                            }
-                            else
-                            {
-                                parts.Add(s.Substring(iFirst, iLast - iFirst + 1).Trim());
-                            }
-                        iFirst = iLast + 1;
-                        continue;
+                        listSegments[i].setTMTargetLang(tm.Target); 
                     }
-                    parts.Add(s.Substring(iFirst, s.Length - iFirst).Trim());
-                    break;
-
-                } while (iFirst < s.Length);
+                }
             }
-
-            return parts;
         }
+
+        public void setListSegmentsFormFileSave()
+        {
+            if (listSegmentsFromSave.Count > 0)
+            {
+                foreach (Segment tmp in listSegmentsFromSave)
+                {
+                    tm tm = tmp.getTM();
+                    setTargetToListSegment(tm);
+                }
+            }
+        }
+
+        public string getPath()
+        {
+            return filePath; 
+        }
+        public string getFileName()
+        {
+            return fileName; 
+        }
+
+        public string getFileNameSave()
+        {
+            return fileNameSave; 
+        }
+
+        public List<Segment> getListSegments()
+        {
+            return listSegments; 
+        }
+        public List<Segment> getListSaveSegment()
+        {
+            return listSegmentsFromSave; 
+        }
+        public void addSegmentToListSaveSegment(Segment tmp)
+        {
+            listSegmentsFromSave.Add(tmp); 
+        }
+        public void readSaveFile(string path)
+        {
+
+        }
+        public void setdelimiters(char[] Delemiters)
+        {
+            delimiters = Delemiters; 
+        }
+        public string getConvertFileName()
+        {
+            return convertFileName; 
+        }
+         
     }
 }

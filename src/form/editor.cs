@@ -10,70 +10,68 @@ using System.Windows.Forms;
 using src.project;
 using src.segment;
 using src.TM;
+using src.Text;
+using src.Files;
+using src.machinetranslator;
 
 namespace src.form
 {
     
     public partial class editor : Form
     {
-        Project Project; 
+        Project Project;
         List<Segment> listSegments = new List<Segment>();
         List<tm> lstTM = new List<tm>();
         fuzzymatches fuzzymatchesForm;
-        public editor(Project project, fuzzymatches fuzzyForm)
+        main mainForm; 
+        public editor(main MainForm)
         {
             InitializeComponent();
-            Project = project;
-            fuzzymatchesForm = new fuzzymatches();
-            fuzzymatchesForm = fuzzyForm; 
+            mainForm = MainForm;  
         }
 
         private void editor_Load(object sender, EventArgs e)
         {
             initSize();
-            //getThenSentences();
-            setListSegment();
-            setTM(); 
-            setSentencesToGridview();
             editorGrid.ClearSelection();
+            openIntroduction(); 
         }
 
         public void initSize()
         {
             //init Size Form
-            this.Left = 0;
-            this.Top = 0;
-            Rectangle recNew = new Rectangle();
-            recNew.Width = ParentForm.ClientRectangle.Width / 2;
-            recNew.Height = ParentForm.ClientRectangle.Height * 7/8; 
-            this.Size = recNew.Size;
+        
 
-            //init Size panel Top 
+            ////init Size panel Top 
 
-            panelTop.Width = ParentForm.ClientRectangle.Width / 2;
+            //panelTop.Width = ParentForm.ClientRectangle.Width / 2;
 
-            //init Size Grid view 
-            editorGrid.Left = 0;  
-            editorGrid.Width = recNew.Width;
-            editorGrid.Height = recNew.Height; 
+            ////init Size Grid view 
+            //editorGrid.Left = 0;  
+            //editorGrid.Width = recNew.Width;
+            //editorGrid.Height = recNew.Height;
+
+            //rtbTutorial.Left = 0;
+            //rtbTutorial.Width = recNew.Width;
+            //rtbTutorial.Height = recNew.Height; 
+            //editorGrid.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
         }
-        public void setListSegment()
-        {
-            listSegments = Project.setSegmentFromFile();
-        }
-
-        public void setTM()
-        {
-            lstTM = Project.getTM(); 
-        }
-
         public void setSentencesToGridview()
         {
-            editorGrid.Rows.Add();
-            editorGrid.RowCount = listSegments.Count;
-            for(int i = 0; i < listSegments.Count; i++)
+            editorGrid.Rows.Clear();
+            if(mainForm.project != null)
             {
-                editorGrid.Rows[i].Cells["sourceColumn"].Value = listSegments[i].getValue(); 
+                file a = mainForm.project.getCurrentFile();
+                List<Segment> listSegs = new List<Segment>();
+                listSegs = a.getListSegments();
+                editorGrid.Rows.Add();
+                editorGrid.RowCount = listSegs.Count;
+                for (int i = 0;i < listSegs.Count; i++)
+                {
+                    editorGrid.Rows[i].Cells["sourceColumn"].Value = listSegs[i].getTMSource();
+                    editorGrid.Rows[i].Cells["targetColumn"].Value = listSegs[i].getTMTarget(); 
+                }
             }
         }
 
@@ -84,26 +82,73 @@ namespace src.form
 
         private void editorGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
-            if (index >= 0)
+            int Index = e.RowIndex;
+            if (Index >= 0)
             {
-                List<tm> listResult = new List<tm>();
-                listResult = map(listSegments[index], lstTM);
-                fuzzymatchesForm.setText(listResult);
+                string source = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
+                mainForm.resetTextMachineTranslationForm(); 
+                mainForm.translationMachine(source); 
             }
         }
 
-        public List<tm> map(Segment a,List<tm> lst)
+        public void openTutorial()
         {
-            List<tm> listResult = new List<tm>();
-            foreach(tm t in lst)
+            editorGrid.Visible = false;
+            rtbTutorial.Visible = true; 
+            txt txt = new txt(); 
+            rtbTutorial.Text = txt.TUTORIAL_PROJECT;
+            lblEditor.Text = txt.EMPTY_PROJECT;
+        }
+
+        public void openIntroduction()
+        {
+            txt txt = new txt(); 
+            editorGrid.Visible = false;
+            lblEditor.Text = txt.CAT_INTRODUCTION_LABEL; 
+            rtbTutorial.Text = txt.CAT_INTRODUCTION; 
+        }
+
+        public void openEditor()
+        {
+            txt txt = new txt();
+            rtbTutorial.Visible = false;
+            editorGrid.Visible = true;
+            //UpdateFont(); 
+            if(mainForm != null)
             {
-                if (a.getValue() == t.Source.Trim())
+                file a = mainForm.project.getCurrentFile();
+                groupBox1.Text = mainForm.project.getCurrentFile().getFileName(); 
+            }
+            setSentencesToGridview(); 
+        }
+
+        private void editorGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            int Index = e.RowIndex;
+            string SourceText = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
+            string TargetText = null; 
+            tm tm = new tm();
+            Segment tmp = new Segment();
+            tm.Source = SourceText;
+            if (editorGrid.Rows[Index].Cells["targetColumn"].Value != null)
+            {
+                TargetText = editorGrid.Rows[Index].Cells["targetColumn"].Value.ToString();
+                if (mainForm.project != null)
                 {
-                    listResult.Add(t);
+                    tm.Target = TargetText;   
                 }
             }
-            return listResult;
+            tmp.setTM(tm);
+            mainForm.project.setTargetLangToCurrentFileListSegment(Index, TargetText);
+            mainForm.project.addSegmentToListSaveSegment(tmp);
+        }
+        private void UpdateFont()
+        {
+            //Change cell font
+            foreach (DataGridViewColumn c in editorGrid.Columns)
+            {
+                c.DefaultCellStyle.Font = new Font("Arial", 14F, GraphicsUnit.Pixel);
+            }
         }
     }
 

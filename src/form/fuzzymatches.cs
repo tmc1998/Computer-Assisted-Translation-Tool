@@ -13,9 +13,11 @@ namespace src.form
 {
     public partial class fuzzymatches : Form
     {
-        public fuzzymatches()
+        public main main;
+        public fuzzymatches(main Main)
         {
             InitializeComponent();
+            main = Main; 
         }
 
         private void fuzzymatches_Load(object sender, EventArgs e)
@@ -27,16 +29,18 @@ namespace src.form
         public void initSize()
         {
             //init Size Form
-            this.Left = ParentForm.ClientRectangle.Width / 2 + 2;
+
+            this.Left = main.editorForm.Width + 2;
             this.Top = 0;
-            Rectangle recNew = new Rectangle();
-            recNew.Width = ParentForm.ClientRectangle.Width / 2;
-            recNew.Height = ParentForm.ClientRectangle.Height / 2;
-            this.Size = recNew.Size;
 
-            //init Size panel Top 
+            //Rectangle recNew = new Rectangle();
+            //recNew.Width = ParentForm.ClientRectangle.Width / 2;
+            //recNew.Height = ParentForm.ClientRectangle.Height / 2;
+            //this.Size = recNew.Size;
 
-            panelTop.Width = ParentForm.ClientRectangle.Width / 2;
+            ////init Size panel Top 
+
+            //panelTop.Width = ParentForm.ClientRectangle.Width / 2;
         }
 
         public Form getHandle()
@@ -60,6 +64,16 @@ namespace src.form
         }
 
         private void panelTop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblfuzzymatches_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
