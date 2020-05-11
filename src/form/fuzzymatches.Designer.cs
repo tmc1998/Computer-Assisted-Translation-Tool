@@ -69,10 +69,10 @@
             this.rtbFuzzyMatches.BackColor = System.Drawing.SystemColors.Window;
             this.rtbFuzzyMatches.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbFuzzyMatches.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbFuzzyMatches.Location = new System.Drawing.Point(8, 22);
+            this.rtbFuzzyMatches.Location = new System.Drawing.Point(6, 12);
             this.rtbFuzzyMatches.Name = "rtbFuzzyMatches";
             this.rtbFuzzyMatches.ReadOnly = true;
-            this.rtbFuzzyMatches.Size = new System.Drawing.Size(373, 202);
+            this.rtbFuzzyMatches.Size = new System.Drawing.Size(390, 228);
             this.rtbFuzzyMatches.TabIndex = 1;
             this.rtbFuzzyMatches.Text = "";
             // 
@@ -83,9 +83,9 @@
             this.groupBox1.Controls.Add(this.rtbFuzzyMatches);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.groupBox1.Location = new System.Drawing.Point(3, 5);
+            this.groupBox1.Location = new System.Drawing.Point(-1, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(387, 230);
+            this.groupBox1.Size = new System.Drawing.Size(402, 246);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fuzzy matches";

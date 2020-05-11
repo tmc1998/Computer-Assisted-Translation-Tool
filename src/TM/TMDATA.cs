@@ -14,9 +14,10 @@ namespace src.TM
     {
         public List<tm> LoadTM()
         {
+            string query = "select * from TM"; 
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<tm>("select * from TM", new DynamicParameters());
+                var output = cnn.Query<tm>(query, new DynamicParameters());
                 return output.ToList();
             }
         }

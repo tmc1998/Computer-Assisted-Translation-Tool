@@ -84,13 +84,13 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.editorGrid.DefaultCellStyle = dataGridViewCellStyle1;
-            this.editorGrid.Location = new System.Drawing.Point(6, 21);
+            this.editorGrid.Location = new System.Drawing.Point(6, 12);
             this.editorGrid.MultiSelect = false;
             this.editorGrid.Name = "editorGrid";
             this.editorGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.editorGrid.RowHeadersVisible = false;
             this.editorGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.editorGrid.Size = new System.Drawing.Size(543, 455);
+            this.editorGrid.Size = new System.Drawing.Size(543, 469);
             this.editorGrid.TabIndex = 1;
             this.editorGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.editorGrid_CellClick);
             this.editorGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.editorGrid_CellContentClick);
@@ -120,10 +120,10 @@
             this.rtbTutorial.BackColor = System.Drawing.SystemColors.Window;
             this.rtbTutorial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbTutorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbTutorial.Location = new System.Drawing.Point(6, 21);
+            this.rtbTutorial.Location = new System.Drawing.Point(6, 12);
             this.rtbTutorial.Name = "rtbTutorial";
             this.rtbTutorial.ReadOnly = true;
-            this.rtbTutorial.Size = new System.Drawing.Size(543, 455);
+            this.rtbTutorial.Size = new System.Drawing.Size(543, 469);
             this.rtbTutorial.TabIndex = 2;
             this.rtbTutorial.Text = "";
             // 
@@ -137,9 +137,9 @@
             this.groupBox1.Controls.Add(this.editorGrid);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.groupBox1.Location = new System.Drawing.Point(0, 5);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(555, 484);
+            this.groupBox1.Size = new System.Drawing.Size(555, 489);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hướng dẫn";

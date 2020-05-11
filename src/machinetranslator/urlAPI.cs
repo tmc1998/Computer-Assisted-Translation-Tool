@@ -17,5 +17,9 @@ namespace src.machinetranslator
         {
             public string urlTranslatorOpenNMT = "http://127.0.0.1:5000/translator/";
         }
+        public class semanticSimilarity
+        {
+            public string urlSemanticSimilarity = "http://127.0.0.1:3000/";
+        }
     }
 }

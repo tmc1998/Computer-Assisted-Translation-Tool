@@ -14,6 +14,8 @@ using System.Xml;
 using src.messagebox;
 using src.Files;
 using src.segment;
+using src.TM;
+using src.semanticsimilarity;
 
 namespace src.form
 {
@@ -24,7 +26,9 @@ namespace src.form
         public editor editorForm;
         public createNewProject creatNewProjectForm;
         public projectfiles projectFilesForm;
-        public machineTranslation machineTranslationForm; 
+        public machineTranslation machineTranslationForm;
+        TMDATA tmDataAccess = new TMDATA();
+        List<tm> tmData = new List<tm>(); 
         public string filter = "cat|*.cat";
         public string catname = "CAT";
         public System.Windows.Forms.Form ParentForm { get; }
@@ -137,6 +141,7 @@ namespace src.form
                         }
                         openProjectFilesForm();
                         setSourceLangandTargetLangtoMachineTrans();
+                        loadTMDATA(); 
                         reloadControl();
                         reloadNameCAT(); 
                     }
@@ -394,6 +399,8 @@ namespace src.form
             openCreateProjectForm();
         }
 
+
+
         private void OpenProjectButton_Click(object sender, EventArgs e)
         {
             if (projectFilesForm == null)
@@ -450,6 +457,11 @@ namespace src.form
             }
         }
 
+        private void loadTMDATA()
+        {
+            semanticSimilarityAPI api = new semanticSimilarityAPI(); 
+            tmData = tmDataAccess.LoadTM();
+        }
 
 
         //-------------

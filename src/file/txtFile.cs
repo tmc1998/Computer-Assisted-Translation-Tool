@@ -33,16 +33,16 @@ namespace src.Files
 
         public override void createFileTranslateDocument(string path)
         {
-            replaceContent();
             if (File.Exists(path))
             {
                 File.Delete(path);
             }
-            File.WriteAllText(path, this.content);
+            File.WriteAllText(path, replaceContent());
         }
-        public void replaceContent()
+        public string replaceContent()
         {
             txtProc txtProc = new txtProc();
+            string contentReplace = this.content; 
             if (this.content.Length > 0)
             {
                 foreach (Segment a in listSegments)
@@ -52,11 +52,12 @@ namespace src.Files
                     {
                         if (tmp.Target.Trim() != "")
                         {
-                            this.content = txtProc.ReplaceFirst(this.content, tmp.Source, tmp.Target);
+                            contentReplace = txtProc.ReplaceFirst(contentReplace, tmp.Source, tmp.Target);
                         }
                     }
                 }
             }
+            return contentReplace; 
         }
         public override void convertToWord(string path,string tempFolder)
         {

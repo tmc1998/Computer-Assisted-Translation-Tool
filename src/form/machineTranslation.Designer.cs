@@ -41,9 +41,9 @@
             this.groupBoxMachineTranslation.Controls.Add(this.rtbTranslated);
             this.groupBoxMachineTranslation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.groupBoxMachineTranslation.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.groupBoxMachineTranslation.Location = new System.Drawing.Point(3, 7);
+            this.groupBoxMachineTranslation.Location = new System.Drawing.Point(-2, -1);
             this.groupBoxMachineTranslation.Name = "groupBoxMachineTranslation";
-            this.groupBoxMachineTranslation.Size = new System.Drawing.Size(389, 226);
+            this.groupBoxMachineTranslation.Size = new System.Drawing.Size(402, 243);
             this.groupBoxMachineTranslation.TabIndex = 0;
             this.groupBoxMachineTranslation.TabStop = false;
             this.groupBoxMachineTranslation.Text = "Machine Translation";
@@ -56,10 +56,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbTranslated.BackColor = System.Drawing.SystemColors.Window;
             this.rtbTranslated.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtbTranslated.Location = new System.Drawing.Point(6, 21);
+            this.rtbTranslated.Location = new System.Drawing.Point(6, 13);
             this.rtbTranslated.Name = "rtbTranslated";
             this.rtbTranslated.ReadOnly = true;
-            this.rtbTranslated.Size = new System.Drawing.Size(375, 198);
+            this.rtbTranslated.Size = new System.Drawing.Size(390, 223);
             this.rtbTranslated.TabIndex = 0;
             this.rtbTranslated.Text = "";
             // 
