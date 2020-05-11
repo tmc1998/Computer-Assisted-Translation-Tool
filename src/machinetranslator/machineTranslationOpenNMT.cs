@@ -11,7 +11,8 @@ namespace src.machinetranslator
 {
     public class machineTranslationOpenNMT : machineTranslationBase
     {
-        public string name = "<OpenNMT>"; 
+        public string name = "<OpenNMT>";
+        public string fail = "OpenNMT không hoạt động"; 
         public override string getTargetLang(string sourceText)
         {
             urlAPI.openNMT url = new urlAPI.openNMT();
@@ -27,15 +28,20 @@ namespace src.machinetranslator
             var result = JsonConvert.DeserializeObject<List<List<OpenNMT>>>(response.Content);
 
             string targetText = null;
-
-            foreach (var listResult in result)
+            if (result != null)
             {
-                foreach (var a in listResult)
+                foreach (var listResult in result)
                 {
-                    targetText = a.tgt; 
+                    foreach (var a in listResult)
+                    {
+                        targetText = a.tgt;
+                    }
                 }
             }
-
+            else
+            {
+                targetText = fail; 
+            }
             return targetText + "\n" + this.name;  
         }
     }
