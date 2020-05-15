@@ -32,6 +32,7 @@ namespace src.XML
                 xmlWriter.WriteElementString("Path_TempProject", a.getPathTempFolder()); 
                 xmlWriter.WriteElementString("Source_Lang", a.getSourceLang());
                 xmlWriter.WriteElementString("Target_Lang", a.getTargetLang());
+                xmlWriter.WriteElementString("TM_Name", a.getTMName()); 
                 xmlWriter.WriteElementString("Time_Creation", a.getCreationTime().ToString());
                 xmlWriter.WriteEndElement();
                 xmlWriter.WriteEndDocument();
@@ -131,6 +132,11 @@ namespace src.XML
                         {
                             string s6 = xtr.ReadElementString();
                             tmp.setTargetLang(s6);
+                        }
+                        if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "TM_Name")
+                        {
+                            string s10 = xtr.ReadElementString();
+                            tmp.setTMName(s10); 
                         }
                         if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "Time_Creation")
                         {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using src.semanticsimilarity;
 using src.TM;
 
 namespace src.form
@@ -14,6 +15,7 @@ namespace src.form
     public partial class fuzzymatches : Form
     {
         public main main;
+        public string text = "Hiển thị các phân đoạn phù hợp về ngữ nghĩa mà bạn đã lưu trong TM";
         public fuzzymatches(main Main)
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace src.form
 
             this.Left = main.editorForm.Width + 2;
             this.Top = 0;
+            rtbFuzzyMatches.Text = text; 
 
             //Rectangle recNew = new Rectangle();
             //recNew.Width = ParentForm.ClientRectangle.Width / 2;
@@ -61,6 +64,34 @@ namespace src.form
             {
                 rtbFuzzyMatches.Text = ""; 
             }
+        }
+
+        public void setResultPredictSemantic(List<tm> data,string srcText)
+        {
+            text = "";
+            if (data.Count != 0)
+            {
+                semanticSimilarityAPI api = new semanticSimilarityAPI();
+                List<semanticSimilarity> results = api.getResultPredict(data, srcText);
+                Console.WriteLine(results.Count);
+                if (results.Count == 0)
+                {
+                        text = "Không có kết quả";
+                }
+                else
+                {
+                    foreach (semanticSimilarity result in results)
+                    {
+                        text += result.src + "\n" + result.tag + "\n" + "Độ tương đồng : " + result.score.ToString() + "\n";
+                    }
+                }
+            }
+            else
+            {
+                text = "Không có kết quả";
+            }
+
+            rtbFuzzyMatches.Text = text; 
         }
 
         private void panelTop_Paint(object sender, PaintEventArgs e)

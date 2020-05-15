@@ -146,6 +146,8 @@
     <Compile Include="semanticsimilarity\semanticSimilarityAPI.cs" />
     <Compile Include="semanticsimilarity\semanticSimilarityPost.cs" />
     <Compile Include="Text\txt.cs" />
+    <Compile Include="TM\DAOTM.cs" />
+    <Compile Include="TM\tablename.cs" />
     <Compile Include="TM\TM.cs" />
     <Compile Include="TM\TMDATA.cs" />
     <Compile Include="XML\readwriteXML.cs" />

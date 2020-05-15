@@ -74,32 +74,28 @@ namespace src.form
         private void initControl()
         {
             if(project == null)
-            {
+            { 
                 reloadToolStripMenuItem.Enabled = false;  
-            }
-            if(project == null)
-            {
                 SaveToolStripMenuItem.Enabled = false; 
-            }
-            if(project == null)
-            {
-                createTranslatedDocumentToolStripMenuItem.Enabled = false; 
+                createTranslatedDocumentToolStripMenuItem.Enabled = false;
+                btnStripCreateTranslationFile.Enabled = false;
+                btnStripReloadFolder.Enabled = false;
+                btnStripSaveProject.Enabled = false;
+                btnStripSaveSegment.Enabled = false; 
             }
         }
 
         private void reloadControl()
         {
             if(project != null)
-            {
+            { 
                 reloadToolStripMenuItem.Enabled = true; 
-            }
-            if(project != null)
-            {
                 SaveToolStripMenuItem.Enabled = true; 
-            }
-            if(project != null)
-            {
-                createTranslatedDocumentToolStripMenuItem.Enabled = true; 
+                createTranslatedDocumentToolStripMenuItem.Enabled = true;
+                btnStripCreateTranslationFile.Enabled = true;
+                btnStripReloadFolder.Enabled = true;
+                btnStripSaveProject.Enabled = true;
+                btnStripSaveSegment.Enabled = true; 
             }
         }
 
@@ -459,11 +455,31 @@ namespace src.form
 
         private void loadTMDATA()
         {
-            semanticSimilarityAPI api = new semanticSimilarityAPI(); 
-            tmData = tmDataAccess.LoadTM();
+            //tmData = tmDataAccess.LoadTM();
+        }
+
+        private void btnStripSaveSegment_Click(object sender, EventArgs e)
+        {
+            if(project != null && editorForm != null)
+            {
+                editorForm.addSegmentToTM(); 
+            }
         }
 
 
         //-------------
+        //Predict
+        public void predictSemantic(string srcText)
+        {
+            if (project != null)
+            {
+                List<tm> TMData = tmDataAccess.LoadTM(project.getTMName());
+                if (TMData.Count >= 0)
+                {
+                    fuzzymatchesForm.setResultPredictSemantic(TMData, srcText);
+                }
+            }
+        }
+        //-----------
     }
 }

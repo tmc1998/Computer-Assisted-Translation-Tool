@@ -31,6 +31,7 @@ namespace src.project
         private string languageSource;
         private string languageTarget;
         private string projectName;
+        private string tmName; 
         private List<string> listfileextension = new List<string>() { ".txt", ".doc" , ".docx" , ".pdf" , ".xls",".xlsx" };
         private char[] delimiters = { '.', '?', '\n', ':', '\r', '\t', '\a', '\f' };
         private List<file> listFileOfSourceProject = new List<file>();
@@ -50,6 +51,11 @@ namespace src.project
         public void setNameProject(string name)
         {
             projectName = name; 
+        }
+
+        public void setTMName(string tmname)
+        {
+            tmName = tmname; 
         }
 
         public void setLanguage(string source, string target)
@@ -101,6 +107,11 @@ namespace src.project
         public void addSegmentToListSaveSegment(Segment segment)
         {
             currentFile.addSegmentToListSaveSegment(segment); 
+        }
+
+        public string getTMName()
+        {
+            return tmName; 
         }
 
         public DateTime getCreationTime()
@@ -205,6 +216,7 @@ namespace src.project
                 this.languageSource = tmp.languageSource;
                 this.languageTarget = tmp.languageTarget;
                 this.creationtime = tmp.creationtime;
+                this.tmName = tmp.tmName; 
                 this.pathSaveFolder = tmp.pathSaveFolder;
                 this.pathTempFolder = tmp.pathTempFolder; 
                 setListFile(); 

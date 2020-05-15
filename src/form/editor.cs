@@ -13,6 +13,7 @@ using src.TM;
 using src.Text;
 using src.Files;
 using src.machinetranslator;
+using src.messagebox; 
 
 namespace src.form
 {
@@ -23,7 +24,7 @@ namespace src.form
         List<Segment> listSegments = new List<Segment>();
         List<tm> lstTM = new List<tm>();
         fuzzymatches fuzzymatchesForm;
-        main mainForm; 
+        main mainForm;
         public editor(main MainForm)
         {
             InitializeComponent();
@@ -83,12 +84,12 @@ namespace src.form
         private void editorGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int Index = e.RowIndex;
-            if (Index >= 0)
-            {
-                string source = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
-                mainForm.resetTextMachineTranslationForm(); 
-                mainForm.translationMachine(source); 
-            }
+            //if (Index >= 0)
+            //{
+            //    string source = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
+            //    mainForm.resetTextMachineTranslationForm(); 
+            //    mainForm.translationMachine(source); 
+            //}
         }
 
         public void openTutorial()
@@ -104,6 +105,7 @@ namespace src.form
         {
             txt txt = new txt(); 
             editorGrid.Visible = false;
+            lblStatus.Visible = false; 
             lblEditor.Text = txt.CAT_INTRODUCTION_LABEL; 
             rtbTutorial.Text = txt.CAT_INTRODUCTION; 
         }
@@ -113,6 +115,7 @@ namespace src.form
             txt txt = new txt();
             rtbTutorial.Visible = false;
             editorGrid.Visible = true;
+            lblStatus.Visible = true; 
             //UpdateFont(); 
             if(mainForm != null)
             {
@@ -142,6 +145,54 @@ namespace src.form
             mainForm.project.setTargetLangToCurrentFileListSegment(Index, TargetText);
             mainForm.project.addSegmentToListSaveSegment(tmp);
         }
+        public void addSegmentToTM()
+        {
+            //Console.WriteLine(editorGrid.CurrentRow.Index);
+            editorGrid.EndEdit(); 
+            int Index = editorGrid.CurrentRow.Index;
+            if(editorGrid.Rows[Index].Cells["targetColumn"].Value != null && editorGrid.Rows[Index].Cells["sourceColumn"].Value != null) { 
+            string targetText = editorGrid.Rows[Index].Cells["targetColumn"].Value.ToString();
+            string sourceText = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
+            DAOTM daotm = new DAOTM();
+                if (mainForm.project != null)
+                {
+                    string tmname = mainForm.project.getTMName();
+                    tm tmp = new tm()
+                    {
+                        Source = sourceText,
+                        Target = targetText
+                    };
+                    Segment segment = new Segment();
+                    segment.setTM(tmp);
+                    if (tmp.Source != string.Empty && tmp.Target != string.Empty && tmname != string.Empty)
+                    {
+                        int result = daotm.addSegmentToTM(segment, tmname);
+                        if (result != 1)
+                        {
+                            TextOfMessageBox a = new TextOfMessageBox();
+                            MessageBox.Show(a.ADD_SEGMENT_FAILED, "Cảnh báo", MessageBoxButtons.YesNo);
+                        }
+                        else
+                        {
+                            if(result == 1)
+                            {
+                                lblStatus.Text = "Đã lưu thành công"; 
+                            }
+                        }
+                    }
+                    else
+                    {
+                        TextOfMessageBox a = new TextOfMessageBox();
+                        MessageBox.Show(a.EMPTY_TARGET, "Cảnh báo", MessageBoxButtons.YesNo);
+                    }
+                }
+            }
+            else
+            {
+                TextOfMessageBox a = new TextOfMessageBox();
+                MessageBox.Show(a.EMPTY_TARGET, "Cảnh báo", MessageBoxButtons.YesNo);
+            }
+        }
         private void UpdateFont()
         {
             //Change cell font
@@ -149,6 +200,28 @@ namespace src.form
             {
                 c.DefaultCellStyle.Font = new Font("Arial", 14F, GraphicsUnit.Pixel);
             }
+        }
+
+        private void editorGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            int Index = editorGrid.CurrentRow.Index;
+            if (Index >= 0)
+            {
+                if(editorGrid.Rows[Index].Cells["sourceColumn"].Value != null)
+                {
+                    lblStatus.Text = "Trạng thái phân đoạn"; 
+                    string source = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
+                    mainForm.predictSemantic(source);
+                    mainForm.resetTextMachineTranslationForm();
+                    mainForm.translationMachine(source);
+                }
+            }
+
+        }
+
+        private void lblStatus_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

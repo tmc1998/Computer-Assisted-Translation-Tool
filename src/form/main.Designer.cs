@@ -42,13 +42,13 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateProjectButton = new System.Windows.Forms.ToolStripButton();
             this.OpenProjectButton = new System.Windows.Forms.ToolStripButton();
-            this.SaveProjectButton = new System.Windows.Forms.ToolStripButton();
+            this.btnStripSaveProject = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ReloadFolder = new System.Windows.Forms.ToolStripButton();
+            this.btnStripReloadFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.CreateTranslationFile = new System.Windows.Forms.ToolStripButton();
+            this.btnStripCreateTranslationFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnStripSaveSegment = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -56,14 +56,14 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Window;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.projectToolStripMenuItem,
             this.machineTranslationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(12, 4, 0, 4);
-            this.menuStrip1.Size = new System.Drawing.Size(1034, 32);
+            this.menuStrip1.Size = new System.Drawing.Size(1034, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -75,16 +75,16 @@
             this.SaveToolStripMenuItem,
             this.reloadToolStripMenuItem,
             this.createTranslatedDocumentToolStripMenuItem});
-            this.projectToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.projectToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
-            this.projectToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.projectToolStripMenuItem.Size = new System.Drawing.Size(48, 17);
             this.projectToolStripMenuItem.Text = "Dự án";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.newToolStripMenuItem.Text = "Tạo dự án";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -92,7 +92,7 @@
             // 
             this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.openToolStripMenuItem.Text = "Mở dự án";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -100,7 +100,7 @@
             // 
             this.SaveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveToolStripMenuItem.Image")));
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.SaveToolStripMenuItem.Text = "Lưu";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.lưuToolStripMenuItem_Click);
             // 
@@ -108,7 +108,7 @@
             // 
             this.reloadToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reloadToolStripMenuItem.Image")));
             this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
+            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.reloadToolStripMenuItem.Text = "Tải lại";
             this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
             // 
@@ -116,7 +116,7 @@
             // 
             this.createTranslatedDocumentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("createTranslatedDocumentToolStripMenuItem.Image")));
             this.createTranslatedDocumentToolStripMenuItem.Name = "createTranslatedDocumentToolStripMenuItem";
-            this.createTranslatedDocumentToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
+            this.createTranslatedDocumentToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.createTranslatedDocumentToolStripMenuItem.Text = "Tạo tập tin dịch";
             this.createTranslatedDocumentToolStripMenuItem.Click += new System.EventHandler(this.createTranslatedDocumentToolStripMenuItem_Click);
             // 
@@ -125,54 +125,56 @@
             this.machineTranslationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.myMemoryToolStripMenuItem,
             this.openNMTToolStripMenuItem});
-            this.machineTranslationToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.machineTranslationToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.machineTranslationToolStripMenuItem.Name = "machineTranslationToolStripMenuItem";
-            this.machineTranslationToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.machineTranslationToolStripMenuItem.Size = new System.Drawing.Size(115, 17);
             this.machineTranslationToolStripMenuItem.Text = "Machine Translation";
             // 
             // myMemoryToolStripMenuItem
             // 
+            this.myMemoryToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("myMemoryToolStripMenuItem.Image")));
             this.myMemoryToolStripMenuItem.Name = "myMemoryToolStripMenuItem";
-            this.myMemoryToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
+            this.myMemoryToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.myMemoryToolStripMenuItem.Text = "MyMemory";
             this.myMemoryToolStripMenuItem.Click += new System.EventHandler(this.myMemoryToolStripMenuItem_Click);
             // 
             // openNMTToolStripMenuItem
             // 
+            this.openNMTToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openNMTToolStripMenuItem.Image")));
             this.openNMTToolStripMenuItem.Name = "openNMTToolStripMenuItem";
-            this.openNMTToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
+            this.openNMTToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.openNMTToolStripMenuItem.Text = "OpenNMT";
             this.openNMTToolStripMenuItem.Click += new System.EventHandler(this.openNMTToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
-            this.toolStrip1.BackColor = System.Drawing.SystemColors.Menu;
-            this.toolStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.toolStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CreateProjectButton,
             this.OpenProjectButton,
-            this.SaveProjectButton,
+            this.btnStripSaveProject,
             this.toolStripSeparator1,
-            this.ReloadFolder,
+            this.btnStripReloadFolder,
             this.toolStripSeparator2,
-            this.CreateTranslationFile,
+            this.btnStripCreateTranslationFile,
             this.toolStripSeparator3,
-            this.toolStripButton1,
+            this.btnStripSaveSegment,
             this.toolStripSeparator4});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 32);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1034, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1034, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // CreateProjectButton
             // 
             this.CreateProjectButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.CreateProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateProjectButton.Image = ((System.Drawing.Image)(resources.GetObject("CreateProjectButton.Image")));
             this.CreateProjectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CreateProjectButton.Name = "CreateProjectButton";
-            this.CreateProjectButton.Size = new System.Drawing.Size(100, 24);
+            this.CreateProjectButton.Size = new System.Drawing.Size(82, 22);
             this.CreateProjectButton.Text = "Tạo dự án";
             this.CreateProjectButton.ToolTipText = "Tạo dự án để bắt đầu công việc dịch thuật của bạn";
             this.CreateProjectButton.Click += new System.EventHandler(this.CreateProjectButton_Click);
@@ -180,83 +182,84 @@
             // OpenProjectButton
             // 
             this.OpenProjectButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.OpenProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.OpenProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OpenProjectButton.Image = ((System.Drawing.Image)(resources.GetObject("OpenProjectButton.Image")));
             this.OpenProjectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.OpenProjectButton.Name = "OpenProjectButton";
-            this.OpenProjectButton.Size = new System.Drawing.Size(95, 24);
+            this.OpenProjectButton.Size = new System.Drawing.Size(79, 22);
             this.OpenProjectButton.Text = "Mở dự án";
             this.OpenProjectButton.ToolTipText = "Mở dự án bạn đã có sẵn để tiếp tục công việc dịch thuật";
             this.OpenProjectButton.Click += new System.EventHandler(this.OpenProjectButton_Click);
             // 
-            // SaveProjectButton
+            // btnStripSaveProject
             // 
-            this.SaveProjectButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.SaveProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.SaveProjectButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveProjectButton.Image")));
-            this.SaveProjectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SaveProjectButton.Name = "SaveProjectButton";
-            this.SaveProjectButton.Size = new System.Drawing.Size(100, 24);
-            this.SaveProjectButton.Text = "Lưu dự án";
-            this.SaveProjectButton.ToolTipText = "Lưu dự án của bạn để tiếp tục sử dụng trong lần tới";
-            this.SaveProjectButton.Click += new System.EventHandler(this.SaveProjectButton_Click);
+            this.btnStripSaveProject.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnStripSaveProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStripSaveProject.Image = ((System.Drawing.Image)(resources.GetObject("btnStripSaveProject.Image")));
+            this.btnStripSaveProject.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStripSaveProject.Name = "btnStripSaveProject";
+            this.btnStripSaveProject.Size = new System.Drawing.Size(82, 22);
+            this.btnStripSaveProject.Text = "Lưu dự án";
+            this.btnStripSaveProject.ToolTipText = "Lưu dự án của bạn để tiếp tục sử dụng trong lần tới";
+            this.btnStripSaveProject.Click += new System.EventHandler(this.SaveProjectButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // ReloadFolder
+            // btnStripReloadFolder
             // 
-            this.ReloadFolder.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ReloadFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.ReloadFolder.Image = ((System.Drawing.Image)(resources.GetObject("ReloadFolder.Image")));
-            this.ReloadFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ReloadFolder.Name = "ReloadFolder";
-            this.ReloadFolder.Size = new System.Drawing.Size(130, 24);
-            this.ReloadFolder.Text = "Tải lại thư mục";
-            this.ReloadFolder.ToolTipText = "Tải lại thư mục chứa tệp cần dịch";
-            this.ReloadFolder.Click += new System.EventHandler(this.ReloadFolder_Click);
+            this.btnStripReloadFolder.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnStripReloadFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStripReloadFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnStripReloadFolder.Image")));
+            this.btnStripReloadFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStripReloadFolder.Name = "btnStripReloadFolder";
+            this.btnStripReloadFolder.Size = new System.Drawing.Size(107, 22);
+            this.btnStripReloadFolder.Text = "Tải lại thư mục";
+            this.btnStripReloadFolder.ToolTipText = "Tải lại thư mục chứa tệp cần dịch";
+            this.btnStripReloadFolder.Click += new System.EventHandler(this.ReloadFolder_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // CreateTranslationFile
+            // btnStripCreateTranslationFile
             // 
-            this.CreateTranslationFile.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.CreateTranslationFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.CreateTranslationFile.Image = ((System.Drawing.Image)(resources.GetObject("CreateTranslationFile.Image")));
-            this.CreateTranslationFile.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CreateTranslationFile.Name = "CreateTranslationFile";
-            this.CreateTranslationFile.Size = new System.Drawing.Size(137, 24);
-            this.CreateTranslationFile.Text = "Tạo tập tin dịch";
-            this.CreateTranslationFile.ToolTipText = "Tạo tập tin dịch sau quá trình dịch thuật";
-            this.CreateTranslationFile.Click += new System.EventHandler(this.CreateTranslationFile_Click);
+            this.btnStripCreateTranslationFile.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnStripCreateTranslationFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStripCreateTranslationFile.Image = ((System.Drawing.Image)(resources.GetObject("btnStripCreateTranslationFile.Image")));
+            this.btnStripCreateTranslationFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStripCreateTranslationFile.Name = "btnStripCreateTranslationFile";
+            this.btnStripCreateTranslationFile.Size = new System.Drawing.Size(110, 22);
+            this.btnStripCreateTranslationFile.Text = "Tạo tập tin dịch";
+            this.btnStripCreateTranslationFile.ToolTipText = "Tạo tập tin dịch sau quá trình dịch thuật";
+            this.btnStripCreateTranslationFile.Click += new System.EventHandler(this.CreateTranslationFile_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton1
+            // btnStripSaveSegment
             // 
-            this.toolStripButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(136, 24);
-            this.toolStripButton1.Text = "Lưu phân đoạn";
-            this.toolStripButton1.ToolTipText = "Lưu phân đoạn vào Translation Memory";
+            this.btnStripSaveSegment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStripSaveSegment.Image = ((System.Drawing.Image)(resources.GetObject("btnStripSaveSegment.Image")));
+            this.btnStripSaveSegment.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStripSaveSegment.Name = "btnStripSaveSegment";
+            this.btnStripSaveSegment.Size = new System.Drawing.Size(110, 22);
+            this.btnStripSaveSegment.Text = "Lưu phân đoạn";
+            this.btnStripSaveSegment.ToolTipText = "Lưu phân đoạn vào Translation Memory";
+            this.btnStripSaveSegment.Click += new System.EventHandler(this.btnStripSaveSegment_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // main
             // 
@@ -300,13 +303,13 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton CreateProjectButton;
         private System.Windows.Forms.ToolStripButton OpenProjectButton;
-        private System.Windows.Forms.ToolStripButton SaveProjectButton;
+        private System.Windows.Forms.ToolStripButton btnStripSaveProject;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton ReloadFolder;
+        private System.Windows.Forms.ToolStripButton btnStripReloadFolder;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton CreateTranslationFile;
+        private System.Windows.Forms.ToolStripButton btnStripCreateTranslationFile;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btnStripSaveSegment;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }

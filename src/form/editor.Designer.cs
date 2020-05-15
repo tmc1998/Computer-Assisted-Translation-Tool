@@ -37,6 +37,7 @@
             this.targetColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rtbTutorial = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editorGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -78,23 +79,24 @@
             this.targetColumn});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.editorGrid.DefaultCellStyle = dataGridViewCellStyle1;
-            this.editorGrid.Location = new System.Drawing.Point(6, 12);
+            this.editorGrid.Location = new System.Drawing.Point(6, 19);
             this.editorGrid.MultiSelect = false;
             this.editorGrid.Name = "editorGrid";
             this.editorGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.editorGrid.RowHeadersVisible = false;
             this.editorGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.editorGrid.Size = new System.Drawing.Size(543, 469);
+            this.editorGrid.Size = new System.Drawing.Size(537, 457);
             this.editorGrid.TabIndex = 1;
             this.editorGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.editorGrid_CellClick);
             this.editorGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.editorGrid_CellContentClick);
             this.editorGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.editorGrid_CellEndEdit);
+            this.editorGrid.SelectionChanged += new System.EventHandler(this.editorGrid_SelectionChanged);
             // 
             // sourceColumn
             // 
@@ -120,10 +122,10 @@
             this.rtbTutorial.BackColor = System.Drawing.SystemColors.Window;
             this.rtbTutorial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbTutorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbTutorial.Location = new System.Drawing.Point(6, 12);
+            this.rtbTutorial.Location = new System.Drawing.Point(6, 9);
             this.rtbTutorial.Name = "rtbTutorial";
             this.rtbTutorial.ReadOnly = true;
-            this.rtbTutorial.Size = new System.Drawing.Size(543, 469);
+            this.rtbTutorial.Size = new System.Drawing.Size(537, 467);
             this.rtbTutorial.TabIndex = 2;
             this.rtbTutorial.Text = "";
             // 
@@ -132,23 +134,34 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.lblStatus);
             this.groupBox1.Controls.Add(this.rtbTutorial);
             this.groupBox1.Controls.Add(this.editorGrid);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(555, 489);
+            this.groupBox1.Size = new System.Drawing.Size(549, 484);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hướng dẫn";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(6, 9);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(110, 13);
+            this.lblStatus.TabIndex = 3;
+            this.lblStatus.Text = "Trạng thái phân đoạn";
+            this.lblStatus.Click += new System.EventHandler(this.lblStatus_Click);
             // 
             // editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(555, 490);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panelTop);
@@ -162,6 +175,7 @@
             this.panelTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editorGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -175,5 +189,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn targetColumn;
         private System.Windows.Forms.RichTextBox rtbTutorial;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblStatus;
     }
 }

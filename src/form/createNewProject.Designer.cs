@@ -44,8 +44,17 @@
             this.lblSourceFilesLanguage = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lblTM = new System.Windows.Forms.Label();
+            this.cboTMName = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ckbCreateNewTM = new System.Windows.Forms.CheckBox();
+            this.ckbUseTMCreated = new System.Windows.Forms.CheckBox();
+            this.txtTMName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblcreatedTM = new System.Windows.Forms.Label();
             this.panelProject.SuspendLayout();
             this.panelLanguage.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblProjectName
@@ -60,10 +69,11 @@
             // 
             // txtProjectName
             // 
+            this.txtProjectName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtProjectName.Location = new System.Drawing.Point(4, 38);
             this.txtProjectName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(656, 26);
+            this.txtProjectName.Size = new System.Drawing.Size(656, 19);
             this.txtProjectName.TabIndex = 1;
             // 
             // lblLocation
@@ -78,10 +88,11 @@
             // 
             // txtLocation
             // 
+            this.txtLocation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLocation.Location = new System.Drawing.Point(4, 98);
             this.txtLocation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(542, 26);
+            this.txtLocation.Size = new System.Drawing.Size(542, 19);
             this.txtLocation.TabIndex = 3;
             // 
             // btnBrowse
@@ -142,7 +153,7 @@
             this.panelLanguage.Location = new System.Drawing.Point(6, 222);
             this.panelLanguage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelLanguage.Name = "panelLanguage";
-            this.panelLanguage.Size = new System.Drawing.Size(670, 172);
+            this.panelLanguage.Size = new System.Drawing.Size(670, 147);
             this.panelLanguage.TabIndex = 8;
             // 
             // cboTranslatedFilesLanguage
@@ -186,7 +197,7 @@
             // btnOk
             // 
             this.btnOk.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnOk.Location = new System.Drawing.Point(428, 417);
+            this.btnOk.Location = new System.Drawing.Point(444, 602);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(112, 35);
@@ -198,7 +209,7 @@
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Location = new System.Drawing.Point(558, 417);
+            this.btnCancel.Location = new System.Drawing.Point(564, 602);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(112, 35);
@@ -207,12 +218,97 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // lblTM
+            // 
+            this.lblTM.AutoSize = true;
+            this.lblTM.Location = new System.Drawing.Point(7, 384);
+            this.lblTM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTM.Name = "lblTM";
+            this.lblTM.Size = new System.Drawing.Size(147, 20);
+            this.lblTM.TabIndex = 4;
+            this.lblTM.Text = "Translation Memory";
+            // 
+            // cboTMName
+            // 
+            this.cboTMName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboTMName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboTMName.FormattingEnabled = true;
+            this.cboTMName.Location = new System.Drawing.Point(3, 57);
+            this.cboTMName.Name = "cboTMName";
+            this.cboTMName.Size = new System.Drawing.Size(657, 28);
+            this.cboTMName.TabIndex = 5;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ckbCreateNewTM);
+            this.panel1.Controls.Add(this.ckbUseTMCreated);
+            this.panel1.Controls.Add(this.txtTMName);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lblcreatedTM);
+            this.panel1.Controls.Add(this.cboTMName);
+            this.panel1.Location = new System.Drawing.Point(6, 407);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(670, 187);
+            this.panel1.TabIndex = 11;
+            // 
+            // ckbCreateNewTM
+            // 
+            this.ckbCreateNewTM.AutoSize = true;
+            this.ckbCreateNewTM.Location = new System.Drawing.Point(5, 106);
+            this.ckbCreateNewTM.Name = "ckbCreateNewTM";
+            this.ckbCreateNewTM.Size = new System.Drawing.Size(114, 24);
+            this.ckbCreateNewTM.TabIndex = 10;
+            this.ckbCreateNewTM.Text = "Tạo TM mới ";
+            this.ckbCreateNewTM.UseVisualStyleBackColor = true;
+            this.ckbCreateNewTM.CheckedChanged += new System.EventHandler(this.ckbCreateNewTM_CheckedChanged);
+            // 
+            // ckbUseTMCreated
+            // 
+            this.ckbUseTMCreated.AutoSize = true;
+            this.ckbUseTMCreated.Location = new System.Drawing.Point(5, 7);
+            this.ckbUseTMCreated.Name = "ckbUseTMCreated";
+            this.ckbUseTMCreated.Size = new System.Drawing.Size(167, 24);
+            this.ckbUseTMCreated.TabIndex = 9;
+            this.ckbUseTMCreated.Text = "Sử dụng TM đã tạo ";
+            this.ckbUseTMCreated.UseVisualStyleBackColor = true;
+            this.ckbUseTMCreated.CheckedChanged += new System.EventHandler(this.ckbUseTMCreated_CheckedChanged);
+            // 
+            // txtTMName
+            // 
+            this.txtTMName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTMName.Location = new System.Drawing.Point(3, 156);
+            this.txtTMName.Name = "txtTMName";
+            this.txtTMName.Size = new System.Drawing.Size(659, 19);
+            this.txtTMName.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(0, 133);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Tên TM :";
+            // 
+            // lblcreatedTM
+            // 
+            this.lblcreatedTM.AutoSize = true;
+            this.lblcreatedTM.Location = new System.Drawing.Point(0, 34);
+            this.lblcreatedTM.Name = "lblcreatedTM";
+            this.lblcreatedTM.Size = new System.Drawing.Size(88, 20);
+            this.lblcreatedTM.TabIndex = 6;
+            this.lblcreatedTM.Text = "TM đã tạo :";
+            // 
             // createNewProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(682, 470);
+            this.ClientSize = new System.Drawing.Size(682, 641);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lblTM);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.panelLanguage);
@@ -221,6 +317,7 @@
             this.Controls.Add(this.panelProject);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "createNewProject";
@@ -232,6 +329,8 @@
             this.panelProject.PerformLayout();
             this.panelLanguage.ResumeLayout(false);
             this.panelLanguage.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,5 +353,13 @@
         private System.Windows.Forms.Label lblSourceFilesLanguage;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ComboBox cboTMName;
+        private System.Windows.Forms.Label lblTM;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblcreatedTM;
+        private System.Windows.Forms.TextBox txtTMName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox ckbUseTMCreated;
+        private System.Windows.Forms.CheckBox ckbCreateNewTM;
     }
 }

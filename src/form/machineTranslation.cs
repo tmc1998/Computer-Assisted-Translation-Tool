@@ -15,7 +15,7 @@ namespace src.form
     {
         public main mainForm;
         public List<machineTranslationBase> listMachine = new List<machineTranslationBase>();
-        public string textTranslation; 
+        public string textTranslation = "Hiển thị bản dịch của các phân đoạn mà bạn đã chọn trong Machine Translation"; 
         public machineTranslation(main MainForm)
         {
             InitializeComponent();
@@ -28,6 +28,7 @@ namespace src.form
         }
         public void initSize()
         {
+            rtbTranslated.Text = textTranslation; 
             this.Left = mainForm.editorForm.Width + 2;
             this.Top = ParentForm.ClientRectangle.Height / 2 - 50;
         }
