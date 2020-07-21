@@ -16,6 +16,10 @@ using src.Files;
 using src.segment;
 using src.TM;
 using src.semanticsimilarity;
+using src.machinetranslator;
+using src.processing;
+using src.TB;
+using System.Diagnostics;
 
 namespace src.form
 {
@@ -27,6 +31,7 @@ namespace src.form
         public createNewProject creatNewProjectForm;
         public projectfiles projectFilesForm;
         public machineTranslation machineTranslationForm;
+        public dictionary dictionaryForm;
         TMDATA tmDataAccess = new TMDATA();
         List<tm> tmData = new List<tm>(); 
         public string filter = "cat|*.cat";
@@ -81,7 +86,8 @@ namespace src.form
                 btnStripCreateTranslationFile.Enabled = false;
                 btnStripReloadFolder.Enabled = false;
                 btnStripSaveProject.Enabled = false;
-                btnStripSaveSegment.Enabled = false; 
+                btnStripSaveSegment.Enabled = false;
+                toolStripButton1.Enabled = false; 
             }
         }
 
@@ -95,7 +101,8 @@ namespace src.form
                 btnStripCreateTranslationFile.Enabled = true;
                 btnStripReloadFolder.Enabled = true;
                 btnStripSaveProject.Enabled = true;
-                btnStripSaveSegment.Enabled = true; 
+                btnStripSaveSegment.Enabled = true;
+                toolStripButton1.Enabled = true; 
             }
         }
 
@@ -137,7 +144,8 @@ namespace src.form
                         }
                         openProjectFilesForm();
                         setSourceLangandTargetLangtoMachineTrans();
-                        loadTMDATA(); 
+                        loadTMDATA();
+                        loadTB();
                         reloadControl();
                         reloadNameCAT(); 
                     }
@@ -175,6 +183,10 @@ namespace src.form
             fuzzymatchesForm.MdiParent = this;
             fuzzymatchesForm.Show();
 
+            dictionaryForm = new dictionary(this);
+            dictionaryForm.MdiParent = this;
+            dictionaryForm.Show();
+
         }
 
         public void openIntroduction()
@@ -194,6 +206,14 @@ namespace src.form
                 editorForm.openEditor(); 
             }
         }
+
+        public void setTargetToGridFromFuzzyMatched(string target)
+        {
+            if(editorForm != null)
+            {
+                editorForm.setTargetToEditorGrid(target); 
+            }
+        }
         public void openMachineTranslationForm()
         {
             if(machineTranslationForm == null)
@@ -209,7 +229,7 @@ namespace src.form
             if (creatNewProjectForm == null)
             {
                 creatNewProjectForm = new createNewProject(this);
-                creatNewProjectForm.Show();
+                creatNewProjectForm.ShowDialog();
             }
         }
 
@@ -226,14 +246,14 @@ namespace src.form
             if (projectFilesForm == null)
             {
                 projectFilesForm = new projectfiles(this);
-                projectFilesForm.Show();
+                projectFilesForm.ShowDialog();
             }
             else
             {
                 projectFilesForm.Close();
 
                 projectFilesForm = new projectfiles(this);
-                projectFilesForm.Show();
+                projectFilesForm.ShowDialog();
             }
         }
 
@@ -306,7 +326,8 @@ namespace src.form
                 }
                 else
                 {
-                    project.saveProject(); 
+                    //project.saveProject(); 
+                    saveProject(); 
                 }
             }
         }
@@ -315,21 +336,38 @@ namespace src.form
         {
             if(project != null)
             {
-                using(frmWaitForm frm = new frmWaitForm(project.createTranslatedDocument))
-                {
-                    frm.ShowDialog(this); 
-                }
-                //project.createTranslatedDocument();
-                TextOfMessageBox a = new TextOfMessageBox();
-                MessageBox.Show(a.CREATE_TRASLATED_DOCUMENT_SUCCESSFULLY,"Thông báo", MessageBoxButtons.YesNo);
+                createTranslationDocument(); 
             }
+        }
+
+        public void createTranslationDocument()
+        {
+            List<Segment> segments = new List<Segment>();
+            segments = editorForm.getListSegment();
+            project.reWriteListSegment(segments);
+            using (frmWaitForm frm = new frmWaitForm(project.createTranslatedDocument))
+            {
+                frm.ShowDialog(this);
+            }
+            //project.createTranslatedDocument();
+            TextOfMessageBox a = new TextOfMessageBox();
+            DialogResult dialogResult =  MessageBox.Show(a.CREATE_TRASLATED_DOCUMENT_SUCCESSFULLY, "Thông báo", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+            {
+                string path = this.project.getPathTargetFolder();
+                Process.Start(path);
+            }
+
         }
 
         private void main_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(project != null)
             {
-                project.saveProject(); 
+                if (project.getCurrentFile() != null)
+                {
+                    saveProject();
+                }
             }
         }
 
@@ -347,6 +385,22 @@ namespace src.form
             if(machineTranslationForm != null)
             {
                 machineTranslationForm.setActiveOpenNMTMachine(openNMTToolStripMenuItem.Checked); 
+            }
+        }
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if(project != null)
+            {
+                string fileName = project.getTMName() + ".csv";
+                string pathcsv = Path.Combine(project.getPathTempFolder(), fileName);
+                List<tm> TMData = tmDataAccess.LoadTM(project.getTMName());
+                exportCSV exportCSV = new exportCSV();
+                if (File.Exists(pathcsv))
+                {
+                    File.Delete(pathcsv); 
+                }
+                exportCSV.exportTM(pathcsv, TMData, project.getSourceLang(), project.getTargetLang()); 
+                //exportCSV.exportTM
             }
         }
         private void setSourceLangandTargetLangtoMachineTrans()
@@ -377,6 +431,19 @@ namespace src.form
                 machineTranslationForm.resetText(); 
             }
         }
+
+        public List<machineTranslationResult> getResultsMachineTranslatorion()
+        {
+            if(machineTranslationForm != null)
+            {
+                return machineTranslationForm.getResultMachineTranslator();
+            }
+            return null;
+        }
+     
+
+   
+
 
         //Set from file 
 
@@ -425,9 +492,16 @@ namespace src.form
                 }
                 else
                 {
-                    project.saveProject();
+                    saveProject(); 
                 }
             }
+        }
+
+        public void saveProject()
+        {
+            List<Segment> listSegs = new List<Segment>();
+            listSegs = editorForm.getListSegment();
+            project.saveProject(listSegs);
         }
 
         private void ReloadFolder_Click(object sender, EventArgs e)
@@ -443,19 +517,21 @@ namespace src.form
         {
             if (project != null)
             {
-                using (frmWaitForm frm = new frmWaitForm(project.createTranslatedDocument))
-                {
-                    frm.ShowDialog(this);
-                }
-                //project.createTranslatedDocument();
-                TextOfMessageBox a = new TextOfMessageBox();
-                MessageBox.Show(a.CREATE_TRASLATED_DOCUMENT_SUCCESSFULLY, "Thông báo", MessageBoxButtons.YesNo);
+                createTranslationDocument();
             }
         }
 
         private void loadTMDATA()
         {
             //tmData = tmDataAccess.LoadTM();
+        }
+
+        private void loadTB()
+        {
+            if(project != null)
+            {
+                project.readTB();
+            }
         }
 
         private void btnStripSaveSegment_Click(object sender, EventArgs e)
@@ -473,13 +549,77 @@ namespace src.form
         {
             if (project != null)
             {
-                List<tm> TMData = tmDataAccess.LoadTM(project.getTMName());
-                if (TMData.Count >= 0)
+                List<tm> TMData = new List<tm>();
+                List<semanticSimilarity> resultSemantic = new List<semanticSimilarity>(); 
+                if (TMLocalToolStripMenuItem.Checked)
                 {
-                    fuzzymatchesForm.setResultPredictSemantic(TMData, srcText);
+                    TMData = tmDataAccess.LoadTM(project.getTMName());
+                    resultSemantic = fuzzymatchesForm.getResultSemantic(srcText, TMData); 
+                }
+                var resultMT = this.getResultsMachineTranslatorion();
+                fuzzymatchesForm.setResultPredictSemantic(resultSemantic,resultMT);
+            }
+        }
+        public void hideRTBFuzzymatched()
+        {
+            if(project != null)
+            {
+                if(fuzzymatchesForm != null)
+                {
+                    fuzzymatchesForm.hideRTBFuzzymatched(); 
                 }
             }
         }
+
         //-----------
+
+        //Dic
+        public void getSourceToDictForm(string source)
+        {
+            if(dictionaryForm != null)
+            {
+                dictionaryForm.getgetSourceToDictForm(source);
+            }
+        }
+
+        private void TMLocalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TMLocalToolStripMenuItem.Checked = !(TMLocalToolStripMenuItem.Checked);
+        }
+
+        private void TMGlobalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TMGlobalToolStripMenuItem.Checked = !(TMGlobalToolStripMenuItem.Checked); 
+        }
+
+        private void findTembarseOnlineToolStripMenu_Click(object sender, EventArgs e)
+        {
+            findTembarseOnlineToolStripMenu.Checked = !(findTembarseOnlineToolStripMenu.Checked);
+        }
+
+        public void findTermbaseOnline(string src,string target)
+        { 
+            if (findTembarseOnlineToolStripMenu.Checked)
+            {
+                DialogResult = MessageBox.Show("Lưu ý", "Bạn có muốn chuyển trang", MessageBoxButtons.YesNo);
+                if (DialogResult == DialogResult.Yes)
+                {
+                    wikimedia wiki = new wikimedia();
+                    wiki.lang = "en";
+                    string url = wiki.getResult(src);
+                    if (url != null)
+                    {
+                        Process.Start("explorer", url);
+                    }
+                    wiki.lang = "vi";
+                    url = wiki.getResult(target);
+                    if (url != null)
+                    {
+                        Process.Start("explorer", url);
+                    }
+                }
+            }
+        }
+        //
     }
 }

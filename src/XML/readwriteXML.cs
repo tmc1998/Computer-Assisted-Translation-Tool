@@ -62,7 +62,8 @@ namespace src.XML
                     foreach(Segment seg in listSegs)
                     {
                         string sourceLang = seg.getTM().Source;
-                        string targetLang = seg.getTM().Target; 
+                        string targetLang = seg.getTM().Target;
+                        bool confirm = seg.confirm;
                         xmlWriter.WriteStartElement("seg");
                         xmlWriter.WriteStartElement("Source");
                         xmlWriter.WriteAttributeString("Lang", project.getSourceLang());
@@ -71,8 +72,11 @@ namespace src.XML
                         xmlWriter.WriteStartElement("Target");
                         xmlWriter.WriteAttributeString("Lang", project.getTargetLang()); 
                         xmlWriter.WriteElementString("Target_Text", targetLang);
+                        xmlWriter.WriteEndElement();
+                        xmlWriter.WriteStartElement("Confirm");
+                        xmlWriter.WriteElementString("Value", confirm.ToString());
                         xmlWriter.WriteEndElement(); 
-                        xmlWriter.WriteEndElement(); 
+                        xmlWriter.WriteEndElement();
                     }
                     xmlWriter.WriteEndElement();
                     xmlWriter.WriteEndDocument();
@@ -157,14 +161,15 @@ namespace src.XML
         }
         public List<Segment> readSegmentFromFileSave(string path)
         {
-            List<Segment> listSegs = new List<Segment>(); 
+            List<Segment> listSegs = new List<Segment>();
             XmlTextReader xtr = new XmlTextReader(path);
             string sourceText;
             string TargetText;
-            int index = 0; 
+            string confirmText;
+            int index = 0;
             try
             {
-                if(xtr.Read() != null)
+                if (xtr.Read() != null)
                 {
                     while (xtr.Read())
                     {
@@ -174,24 +179,30 @@ namespace src.XML
                             tm tm = new tm();
                             tm.Source = sourceText;
                             Segment tmp = new Segment();
-                            tmp.setTM(tm); 
-                            listSegs.Add(tmp); 
+                            tmp.setTM(tm);
+                            listSegs.Add(tmp);
                         }
-                        if(xtr.NodeType == XmlNodeType.Element && xtr.Name == "Target_Text")
+                        if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "Target_Text")
                         {
                             TargetText = xtr.ReadElementString();
                             listSegs[index].setTMTargetLang(TargetText);
-                            index++; 
+                            //index++;
+                        }
+                        if(xtr.NodeType == XmlNodeType.Element && xtr.Name == "Value")
+                        {
+                            confirmText = xtr.ReadElementString();
+                            listSegs[index].confirm = bool.Parse(confirmText);
+                            index++;
                         }
                     }
                 }
             }
             catch (Exception)
             {
-                
+
             }
-            xtr.Close(); 
-            return listSegs; 
+            xtr.Close();
+            return listSegs;
         }
     }
 }

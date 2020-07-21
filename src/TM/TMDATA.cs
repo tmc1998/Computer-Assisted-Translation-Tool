@@ -47,6 +47,42 @@ namespace src.TM
                 }
             }
         }
+        public int insertToTM(Segment segment, string tableTMName)
+        {
+            string Source = segment.getTMSource();
+            string Target = segment.getTMTarget();
+            using (var cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
+                using (IDbCommand cmd = new SQLiteCommand(cnn))
+                {
+                    cmd.CommandText = String.Format(@"INSERT INTO '{0}' (Source,Target) values (@source,@target)",tableTMName);
+                    cmd.Parameters.Add(new SQLiteParameter("@source", Source));
+                    cmd.Parameters.Add(new SQLiteParameter("@target", Target)); 
+                    int result = cmd.ExecuteNonQuery();
+                    cnn.Close();
+                    return result;
+                }
+            }
+        }
+        public int updateSegment(Segment segment, string tableTMName)
+        {
+            string Source = segment.getTMSource();
+            string Target = segment.getTMTarget();
+            using (var cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
+                using (IDbCommand cmd = new SQLiteCommand(cnn))
+                {
+                    cmd.CommandText = String.Format(@"UPDATE '{0}' SET Target = @target WHERE Source = @source", tableTMName);
+                    cmd.Parameters.Add(new SQLiteParameter("@source", Source));
+                    cmd.Parameters.Add(new SQLiteParameter("@target", Target));
+                    int result = cmd.ExecuteNonQuery();
+                    cnn.Close();
+                    return result;
+                }
+            }
+        }
         public static string LoadConnectionString(string id = "TMDB")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;

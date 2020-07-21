@@ -34,12 +34,15 @@ namespace src.semanticsimilarity
             posts.data = new List<semanticSimilarityPost.segment>(); 
             foreach(tm tm in tmdata)
             {
-                semanticSimilarityPost.segment segment = new semanticSimilarityPost.segment()
+                if (tm.Source.Trim() != srcText.Trim())
                 {
-                    src = tm.Source,
-                    tag = tm.Target
-                };
-                posts.data.Add(segment); 
+                    semanticSimilarityPost.segment segment = new semanticSimilarityPost.segment()
+                    {
+                        src = tm.Source,
+                        tag = tm.Target
+                    };
+                    posts.data.Add(segment);
+                }
             }
             return posts; 
         }

@@ -39,9 +39,7 @@ namespace src.Files
             this.fileNameSave = Path.GetFileNameWithoutExtension(path) + ".save";
         }
 
-        
-
-        public void setTargetToListSegment(tm tm)
+        public void setTargetToListSegment(tm tm,bool confirm)
         {
             if(tm != null)
             {
@@ -50,9 +48,27 @@ namespace src.Files
                     tm tmp = listSegments[i].getTM(); 
                     if(tmp.Source == tm.Source)
                     {
-                        listSegments[i].setTMTargetLang(tm.Target); 
+                        listSegments[i].setTMTargetLang(tm.Target);
+                        listSegments[i].confirm = confirm;
                     }
                 }
+            }
+        }
+
+        public void reWriteListSegmentSave(List<Segment> listSegs)
+        {
+            listSegmentsFromSave.Clear();
+            listSegmentsFromSave = listSegs; 
+        }
+
+        public void reWriteListSegment(List<Segment> listSegs)
+        {
+            //listSegments.Clear();
+            for(int i = 0; i < listSegments.Count; i++)
+            {
+                tm tmp = new tm();
+                tmp = listSegs[i].getTM();
+                listSegments[i].setTM(tmp); 
             }
         }
 
@@ -63,7 +79,7 @@ namespace src.Files
                 foreach (Segment tmp in listSegmentsFromSave)
                 {
                     tm tm = tmp.getTM();
-                    setTargetToListSegment(tm);
+                    setTargetToListSegment(tm,tmp.confirm);
                 }
             }
         }

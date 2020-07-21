@@ -19,6 +19,6 @@ namespace src.machinetranslator
         {
             key = Key;  
         }
-        public abstract string getTargetLang(string sourceText); 
+        public abstract machineTranslationResult getTargetLang(string sourceText); 
     }
 }

@@ -41,8 +41,10 @@ namespace src.TM
             string Target = segment.getTMTarget();
 
             TMDATA tmdata = new TMDATA();
-            string query = string.Format(@"INSERT INTO '{0}' (Source,Target) values ('{1}','{2}')", tableTMName, Source, Target);
-            return tmdata.excuteNonQuery(query);  
+            string query = string.Format(@"INSERT INTO '{0}' (Source,Target) values ({1},{2})", tableTMName, Source, Target);
+            //return tmdata.excuteNonQuery(query);
+            return tmdata.insertToTM(segment, tableTMName); 
+            //return tmdata.excuteNonQuery(segment, tableTMName); 
         }
         public int updateSegmentToTM(Segment segment, string tableTMName)
         {
@@ -51,7 +53,8 @@ namespace src.TM
 
             TMDATA tmdata = new TMDATA();
             string query = string.Format(@"UPDATE '{0}' SET Target = '{1}' WHERE Source = '{2}'", tableTMName, Target, Source);
-            return tmdata.excuteNonQuery(query); 
+            //return tmdata.excuteNonQuery(query); 
+            return tmdata.updateSegment(segment, tableTMName); 
         }
         public bool checkExistsSegment(Segment segment,List<tm> listTM)
         {

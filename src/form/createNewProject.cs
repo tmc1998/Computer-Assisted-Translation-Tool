@@ -124,24 +124,30 @@ namespace src.form
             {
                 tablename tbn = cboTMName.SelectedItem as tablename;
                 project.setTMName(tbn.name);
-            }
-            if (ckbCreateNewTM.Checked)
-            {
-                string tmname = txtTMName.Text;
-                project.setTMName(tmname);
-            }
-            int result = tmdao.createTable(project.getTMName());
-            if (result == 0)
-            {
+
                 mainForm.setProject(project);
                 mainForm.createNewProject();
                 //mainForm.creatNewProjectForm = null; 
                 closeForm();
             }
-            else
+            if (ckbCreateNewTM.Checked)
             {
-                MessageBox.Show(a.CREATE_TM_FAILED, "Cảnh báo", MessageBoxButtons.YesNo);
+                string tmname = txtTMName.Text;
+                project.setTMName(tmname);
+                int result = tmdao.createTable(project.getTMName());
+                if (result == 0)
+                {
+                    mainForm.setProject(project);
+                    mainForm.createNewProject();
+                    //mainForm.creatNewProjectForm = null; 
+                    closeForm();
+                }
+                else
+                {
+                    MessageBox.Show(a.CREATE_TM_FAILED, "Cảnh báo", MessageBoxButtons.YesNo);
+                }
             }
+          
         }
 
         private void ckbUseTMCreated_CheckedChanged(object sender, EventArgs e)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace src.semanticsimilarity
 {
-    class semanticSimilarity
+    public class semanticSimilarity
     {
         public float score { get; set; }
         public string src { get; set; }

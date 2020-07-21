@@ -83,6 +83,12 @@
     <Compile Include="form\createNewProject.Designer.cs">
       <DependentUpon>createNewProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\dictionary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\dictionary.Designer.cs">
+      <DependentUpon>dictionary.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\editor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,11 +136,13 @@
     <Compile Include="machinetranslator\machineTranslation.cs" />
     <Compile Include="machinetranslator\machineTranslationMyMemory.cs" />
     <Compile Include="machinetranslator\machineTranslationOpenNMT.cs" />
+    <Compile Include="machinetranslator\machineTranslationResult.cs" />
     <Compile Include="machinetranslator\Mymemory.cs" />
     <Compile Include="machinetranslator\OpenNMT.cs" />
     <Compile Include="machinetranslator\openNMTPost.cs" />
     <Compile Include="machinetranslator\urlAPI.cs" />
     <Compile Include="messagebox\TextOfMessageBox.cs" />
+    <Compile Include="processing\exportCSV.cs" />
     <Compile Include="processing\pdfProc.cs" />
     <Compile Include="processing\txtProc.cs" />
     <Compile Include="processing\wordProc.cs" />
@@ -145,6 +153,9 @@
     <Compile Include="semanticsimilarity\semanticSimilarity.cs" />
     <Compile Include="semanticsimilarity\semanticSimilarityAPI.cs" />
     <Compile Include="semanticsimilarity\semanticSimilarityPost.cs" />
+    <Compile Include="TB\tb.cs" />
+    <Compile Include="TB\wikimedia.cs" />
+    <Compile Include="TB\wikiUrl.cs" />
     <Compile Include="Text\txt.cs" />
     <Compile Include="TM\DAOTM.cs" />
     <Compile Include="TM\tablename.cs" />
@@ -153,6 +164,9 @@
     <Compile Include="XML\readwriteXML.cs" />
     <EmbeddedResource Include="form\createNewProject.resx">
       <DependentUpon>createNewProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\dictionary.resx">
+      <DependentUpon>dictionary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\editor.resx">
       <DependentUpon>editor.cs</DependentUpon>
@@ -197,6 +211,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="TBDB\tb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="TMDB\TM.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

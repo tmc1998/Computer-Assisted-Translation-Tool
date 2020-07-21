@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SautinSoft;
+using src.TM;
 
 namespace src.Files
 {
@@ -18,19 +19,35 @@ namespace src.Files
         private string extension = ".docx"; 
         public override void readContent(string path)
         {
-            List<string> listContentPage = new List<string>();
-            wordProc wordproc = new wordProc();
-            listContentPage = wordproc.readDocFile(pathWordFile);
+            pdfProc pdf = new pdfProc();
+            //List<string> listContentPage = new List<string>();
+            //wordProc wordproc = new wordProc();
+            //listContentPage = wordproc.readDocFile(pathWordFile);
 
-            int page = 1;
-            foreach (string contentPage in listContentPage)
+            //int page = 1;
+            //foreach (string contentPage in listContentPage)
+            //{
+            //    content = content + contentPage;
+            //    List<Segment> tmp = new List<Segment>();
+            //    tmp = wordproc.splitTxtContentToSegment(contentPage, delimiters, page);
+            //    listSegments.AddRange(tmp);
+            //    page++;
+            //}
+            List<string> listContentPage = new List<string>();
+            listContentPage = pdf.readPdfFile(path);
+            if (listContentPage != null)
             {
-                content = content + contentPage;
-                List<Segment> tmp = new List<Segment>();
-                tmp = wordproc.splitTxtContentToSegment(contentPage, delimiters, page);
-                listSegments.AddRange(tmp);
-                page++;
+                int page = 1;
+                foreach (string contentPage in listContentPage)
+                {
+                    content = content + contentPage;
+                    List<Segment> tmp = new List<Segment>();
+                    tmp = pdf.splitTxtContentToSegment(contentPage, delimiters, page);
+                    listSegments.AddRange(tmp);
+                    page++;
+                }
             }
+
         }
         public override void loadFileSave(string path)
         {
@@ -44,22 +61,31 @@ namespace src.Files
         }
         public override void createFileTranslateDocument(string path)
         {
-            //Copy file goc
-            string sourceFile = this.pathWordFile;
-            string desFile = path;
             if (File.Exists(path))
             {
                 File.Delete(path);
             }
-            File.Copy(sourceFile, desFile);
-            //string destinationFile = this.file
-            replaceContent(path);
+            File.WriteAllText(path, replaceContent());
         }
-
-        public void replaceContent(string path)
+        public string replaceContent()
         {
-            wordProc wordproc = new wordProc();
-            wordproc.replaceContent(listSegments, path);
+            txtProc txtProc = new txtProc();
+            string contentReplace = this.content;
+            if (this.content.Length > 0)
+            {
+                foreach (Segment a in listSegments)
+                {
+                    tm tmp = a.getTM();
+                    if (tmp.Target != null)
+                    {
+                        if (tmp.Target.Trim() != "")
+                        {
+                            contentReplace = txtProc.ReplaceFirst(contentReplace, tmp.Source, tmp.Target);
+                        }
+                    }
+                }
+            }
+            return contentReplace;
         }
         public override void convertToWord(string path,string tempFolder)
         {

@@ -11,9 +11,9 @@ namespace src.machinetranslator
 {
     public class machineTranslationOpenNMT : machineTranslationBase
     {
-        public string name = "<OpenNMT>";
-        public string fail = "OpenNMT không hoạt động"; 
-        public override string getTargetLang(string sourceText)
+        public string name = "OpenNMT";
+        public string fail = "OpenNMT không hoạt động hãy xem lại kết nối mạng"; 
+        public override machineTranslationResult getTargetLang(string sourceText)
         {
             urlAPI.openNMT url = new urlAPI.openNMT();
             var client = new RestClient(url.urlTranslatorOpenNMT);
@@ -26,23 +26,27 @@ namespace src.machinetranslator
             request.AddBody(jsonData);
             var response = client.Execute(request);
             var result = JsonConvert.DeserializeObject<List<List<OpenNMT>>>(response.Content);
-
-            string targetText = null;
+            machineTranslationResult Result = new machineTranslationResult();
             if (result != null)
             {
                 foreach (var listResult in result)
                 {
                     foreach (var a in listResult)
                     {
-                        targetText = a.tgt;
+                        Result.src = a.src;
+                        Result.tag = a.tgt;
+                        Result.fail = false;
+                        Result.score = float.Parse(a.pred_score);
+                        Result.type = name; 
                     }
                 }
             }
             else
             {
-                targetText = fail; 
+                Result.fail = true;
+                Result.failText = fail; 
             }
-            return targetText + "\n" + this.name;  
+            return Result;
         }
     }
 }

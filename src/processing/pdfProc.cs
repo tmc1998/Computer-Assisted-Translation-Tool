@@ -13,6 +13,7 @@ namespace src.processing
 {
     public class pdfProc
     {
+        private char[] delimitersPDF = { '.', '?', ':', '\r', '\t', '\a', '\f' };
         public List<string> readPdfFile(string path)
         {
             List<string> result = new List<string>(); 
@@ -42,28 +43,25 @@ namespace src.processing
                 int iFirst = 0;
                 do
                 {
-                    int iLast = content.IndexOfAny(delimiters, iFirst);
-                    if (content[iLast] != '\n' && content[iLast + 1] != '\n')
+                    int iLast = content.IndexOfAny(delimitersPDF, iFirst);
+                    if (iLast >= 0)
                     {
-                        if (iLast >= 0)
-                        {
-                            if (iLast > iFirst)
-                                if (iLast != iFirst)
+                        if (iLast > iFirst)
+                            if (iLast != iFirst)
+                            {
+                                string str1 = content.Substring(iFirst, iLast - iFirst + 1).Trim();
+                                if (str1 != "")
                                 {
-                                    string str1 = content.Substring(iFirst, iLast - iFirst + 1).Trim();
-                                    if (str1 != "")
-                                    {
-                                        tm tm1 = new tm();
-                                        tm1.Source = str1;
-                                        Segment tmp1 = new Segment();
-                                        tmp1.setTM(tm1);
-                                        tmp1.setPage(page);
-                                        parts.Add(tmp1);
-                                    }
+                                    tm tm1 = new tm();
+                                    tm1.Source = str1;
+                                    Segment tmp1 = new Segment();
+                                    tmp1.setTM(tm1);
+                                    tmp1.setPage(page);
+                                    parts.Add(tmp1);
                                 }
-                            iFirst = iLast + 1;
-                            continue;
-                        }
+                            }
+                        iFirst = iLast + 1;
+                        continue;
                     }
                     string str = content.Substring(iFirst, content.Length - iFirst).Trim();
                     if (str != "")
@@ -81,6 +79,15 @@ namespace src.processing
             }
 
             return parts;
+        }
+        public string ReplaceFirst(string text, string search, string replace)
+        {
+            int pos = text.IndexOf(search);
+            if (pos < 0)
+            {
+                return text;
+            }
+            return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
         }
     }
 }

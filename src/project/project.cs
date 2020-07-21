@@ -10,7 +10,8 @@ using src.segment;
 using src.TM;
 using System.Text.RegularExpressions;
 using System.Xml;
-using src.XML; 
+using src.XML;
+using src.TB;
 
 namespace src.project
 {
@@ -34,9 +35,12 @@ namespace src.project
         private string tmName; 
         private List<string> listfileextension = new List<string>() { ".txt", ".doc" , ".docx" , ".pdf" , ".xls",".xlsx" };
         private char[] delimiters = { '.', '?', '\n', ':', '\r', '\t', '\a', '\f' };
+        private char[] delimiterTB = { ':' };
         private List<file> listFileOfSourceProject = new List<file>();
+        private HashSet<tb> dictionary = new HashSet<tb>();
         private file currentFile; 
         private DateTime creationtime; 
+        private string pathTB = @"TBDB\tb.txt";
 
 
         public void setPathProject(string path)
@@ -175,6 +179,10 @@ namespace src.project
         {
             return listFileOfSourceProject;
         }
+        public HashSet<tb> GetTbs()
+        {
+            return dictionary;
+        }
         public void createXMLFileProject()
         {
             readwriteXML writeXML = new readwriteXML();
@@ -183,10 +191,6 @@ namespace src.project
 
         public bool isEmptySourceFolder()
         {
-            //var count = Directory.EnumerateFiles(
-            //            path, "*.txt", SearchOption.TopDirectoryOnly)
-            //            .Count();
-            //return count;
             if(this != null)
             {
                 int count = 0; 
@@ -202,6 +206,13 @@ namespace src.project
             return false; 
         }
 
+        public void reWriteListSegment(List<Segment> segments)
+        {
+            if(this.currentFile != null)
+            {
+                currentFile.reWriteListSegment(segments); 
+            }
+        }
         public bool readProject(string path)
         {
             Project tmp = new Project();
@@ -239,8 +250,9 @@ namespace src.project
             this.createXMLFileProject(); 
         }
 
-        public void saveProject()
+        public void saveProject(List<Segment> listSegs)
         {
+            this.currentFile.reWriteListSegmentSave(listSegs); 
             readwriteXML readXML = new readwriteXML();
             readXML.writeXMLFileSaveFile(this); 
         }
@@ -301,8 +313,7 @@ namespace src.project
                 currentFile.setdelimiters(delimiters); 
                 currentFile.readContent(path);
                 currentFile.setListSegmentsFormFileSave(); 
-            }
-            
+            }   
         }
 
         public void createTranslatedDocument()
@@ -310,7 +321,8 @@ namespace src.project
             if (currentFile != null) {
                 if (currentFile is pdfFile)
                 {
-                    string path = Path.Combine(pathTargetFolder, currentFile.getConvertFileName());
+                    string fileName = Path.GetFileNameWithoutExtension(currentFile.getFileName()) + ".txt";
+                    string path = Path.Combine(pathTargetFolder, fileName);
                     currentFile.createFileTranslateDocument(path); 
                 }
                 else
@@ -319,6 +331,37 @@ namespace src.project
                     currentFile.createFileTranslateDocument(path);
                 }
             }
+        }
+        
+        public void readTB()
+        {
+            string pathRoot = (System.IO.Path.GetDirectoryName(Application.ExecutablePath));
+            string path = Path.Combine(pathRoot,pathTB);
+            foreach (string line in File.ReadLines(path))
+            {
+                tb tb = new tb();
+                int iFirst = 0;
+                int iLast = line.IndexOfAny(delimiterTB, iFirst);
+                if (iLast >= 0)
+                {
+                    if (iLast > iFirst)
+                        if (iLast != iFirst)
+                        {
+                            string str1 = line.Substring(iFirst, iLast - iFirst).Trim();
+                            if (str1 != "")
+                            {
+                                tb.definition = str1;
+                            }
+                        }
+                }
+                string str = line.Substring(iLast + 1, line.Length - iLast - 1).Trim();
+                if (str != "")
+                {
+                    tb.word = str;
+                }
+                dictionary.Add(tb);
+            }
+            Console.WriteLine(dictionary.Count);
         }
     }
 

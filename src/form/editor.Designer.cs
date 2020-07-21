@@ -33,11 +33,12 @@
             this.panelTop = new System.Windows.Forms.Panel();
             this.lblEditor = new System.Windows.Forms.Label();
             this.editorGrid = new System.Windows.Forms.DataGridView();
-            this.sourceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.targetColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rtbTutorial = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.sourceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.targetColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.confirmColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editorGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -76,7 +77,8 @@
             this.editorGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.editorGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sourceColumn,
-            this.targetColumn});
+            this.targetColumn,
+            this.confirmColumn});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,22 +100,6 @@
             this.editorGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.editorGrid_CellEndEdit);
             this.editorGrid.SelectionChanged += new System.EventHandler(this.editorGrid_SelectionChanged);
             // 
-            // sourceColumn
-            // 
-            this.sourceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sourceColumn.HeaderText = "Source";
-            this.sourceColumn.Name = "sourceColumn";
-            this.sourceColumn.ReadOnly = true;
-            this.sourceColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // targetColumn
-            // 
-            this.targetColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.targetColumn.HeaderText = "Target";
-            this.targetColumn.MinimumWidth = 100;
-            this.targetColumn.Name = "targetColumn";
-            this.targetColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // rtbTutorial
             // 
             this.rtbTutorial.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -122,10 +108,10 @@
             this.rtbTutorial.BackColor = System.Drawing.SystemColors.Window;
             this.rtbTutorial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbTutorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbTutorial.Location = new System.Drawing.Point(6, 9);
+            this.rtbTutorial.Location = new System.Drawing.Point(6, 19);
             this.rtbTutorial.Name = "rtbTutorial";
             this.rtbTutorial.ReadOnly = true;
-            this.rtbTutorial.Size = new System.Drawing.Size(537, 467);
+            this.rtbTutorial.Size = new System.Drawing.Size(537, 457);
             this.rtbTutorial.TabIndex = 2;
             this.rtbTutorial.Text = "";
             // 
@@ -157,6 +143,28 @@
             this.lblStatus.Text = "Trạng thái phân đoạn";
             this.lblStatus.Click += new System.EventHandler(this.lblStatus_Click);
             // 
+            // sourceColumn
+            // 
+            this.sourceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sourceColumn.HeaderText = "Câu nguồn";
+            this.sourceColumn.Name = "sourceColumn";
+            this.sourceColumn.ReadOnly = true;
+            this.sourceColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // targetColumn
+            // 
+            this.targetColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.targetColumn.HeaderText = "Câu dịch";
+            this.targetColumn.MinimumWidth = 100;
+            this.targetColumn.Name = "targetColumn";
+            this.targetColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // confirmColumn
+            // 
+            this.confirmColumn.HeaderText = "Đã lưu";
+            this.confirmColumn.Name = "confirmColumn";
+            this.confirmColumn.ReadOnly = true;
+            // 
             // editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,10 +193,11 @@
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Label lblEditor;
         private System.Windows.Forms.DataGridView editorGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sourceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn targetColumn;
         private System.Windows.Forms.RichTextBox rtbTutorial;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sourceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn targetColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn confirmColumn;
     }
 }

@@ -10,7 +10,8 @@ namespace src.segment
     public class Segment
     {
         private tm TM;
-        private int page; 
+        private int page;
+        public Boolean confirm = false;
         public void setTM(tm tmp)
         {
             TM = tmp; 

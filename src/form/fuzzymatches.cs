@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using src.semanticsimilarity;
 using src.TM;
+using src.machinetranslator;
 
 namespace src.form
 {
@@ -16,6 +17,7 @@ namespace src.form
     {
         public main main;
         public string text = "Hiển thị các phân đoạn phù hợp về ngữ nghĩa mà bạn đã lưu trong TM";
+        public string type = "TM";
         public fuzzymatches(main Main)
         {
             InitializeComponent();
@@ -34,7 +36,8 @@ namespace src.form
 
             this.Left = main.editorForm.Width + 2;
             this.Top = 0;
-            rtbFuzzyMatches.Text = text; 
+            rtbFuzzyMatches.Text = text;
+            resultGrid.Visible = false; 
 
             //Rectangle recNew = new Rectangle();
             //recNew.Width = ParentForm.ClientRectangle.Width / 2;
@@ -66,32 +69,50 @@ namespace src.form
             }
         }
 
-        public void setResultPredictSemantic(List<tm> data,string srcText)
+        public void hideRTBFuzzymatched()
         {
-            text = "";
-            if (data.Count != 0)
-            {
-                semanticSimilarityAPI api = new semanticSimilarityAPI();
-                List<semanticSimilarity> results = api.getResultPredict(data, srcText);
-                Console.WriteLine(results.Count);
-                if (results.Count == 0)
-                {
-                        text = "Không có kết quả";
-                }
-                else
-                {
-                    foreach (semanticSimilarity result in results)
-                    {
-                        text += result.src + "\n" + result.tag + "\n" + "Độ tương đồng : " + result.score.ToString() + "\n";
-                    }
-                }
-            }
-            else
-            {
-                text = "Không có kết quả";
-            }
+            rtbFuzzyMatches.Visible = false;
+            resultGrid.Visible = true;
+            resultGrid.ClearSelection();
+        }
 
-            rtbFuzzyMatches.Text = text; 
+        public List<semanticSimilarity> getResultSemantic(string src,List<tm> data)
+        {
+            semanticSimilarityAPI api = new semanticSimilarityAPI();
+            List<semanticSimilarity> result = new List<semanticSimilarity>();
+            result = api.getResultPredict(data, src);
+            return result;
+        }
+
+        public void setResultPredictSemantic(List<semanticSimilarity> resultSemantic, List<machineTranslationResult> resultMT)
+        {
+            this.resultGrid.DataSource = null;
+            resultGrid.Rows.Add();
+            int rowcount = 0;
+            resultGrid.RowCount = rowcount;
+            if(resultSemantic != null)
+            {
+                rowcount = resultSemantic.Count;
+                resultGrid.RowCount = rowcount;
+                for (int i = 0; i < resultSemantic.Count; i++)
+                {
+                    resultGrid.Rows[i].Cells["sourceColumn"].Value = resultSemantic[i].src;
+                    resultGrid.Rows[i].Cells["targetColumn"].Value = resultSemantic[i].tag;
+                    resultGrid.Rows[i].Cells["scoreColumn"].Value = Math.Round(resultSemantic[i].score);
+                    resultGrid.Rows[i].Cells["typeColumn"].Value = type;
+                }
+            }
+            resultGrid.RowCount += resultMT.Count;
+            for (int i = 0; i < resultMT.Count; i++)
+            {
+                if (!resultMT[i].fail)
+                {
+                    resultGrid.Rows[i + rowcount].Cells["sourceColumn"].Value = resultMT[i].src;
+                    resultGrid.Rows[i + rowcount].Cells["targetColumn"].Value = resultMT[i].tag;
+                    resultGrid.Rows[i + rowcount].Cells["scoreColumn"].Value = resultMT[i].score;
+                    resultGrid.Rows[i + rowcount].Cells["typeColumn"].Value = resultMT[i].type;
+                }
+            }
         }
 
         private void panelTop_Paint(object sender, PaintEventArgs e)
@@ -107,6 +128,17 @@ namespace src.form
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void resultGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.resultGrid.Rows[e.RowIndex];
+                string src = row.Cells["sourceColumn"].Value.ToString();
+                string tar = row.Cells["targetColumn"].Value.ToString();
+                main.setTargetToGridFromFuzzyMatched(tar); 
+            }
         }
     }
 }

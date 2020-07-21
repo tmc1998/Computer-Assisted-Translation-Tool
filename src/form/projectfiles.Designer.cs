@@ -44,6 +44,7 @@
             this.listViewFiles = new System.Windows.Forms.ListView();
             this.groupBoxFileSelect = new System.Windows.Forms.GroupBox();
             this.groupBoxDetail = new System.Windows.Forms.GroupBox();
+            this.btnSelectFile = new System.Windows.Forms.Button();
             this.groupBoxFileSelect.SuspendLayout();
             this.groupBoxDetail.SuspendLayout();
             this.SuspendLayout();
@@ -199,12 +200,23 @@
             this.groupBoxDetail.TabStop = false;
             this.groupBoxDetail.Text = "Thông tin";
             // 
+            // btnSelectFile
+            // 
+            this.btnSelectFile.Location = new System.Drawing.Point(197, 641);
+            this.btnSelectFile.Name = "btnSelectFile";
+            this.btnSelectFile.Size = new System.Drawing.Size(143, 35);
+            this.btnSelectFile.TabIndex = 14;
+            this.btnSelectFile.Text = "Chọn tập tin";
+            this.btnSelectFile.UseVisualStyleBackColor = true;
+            this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
+            // 
             // projectfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(636, 680);
+            this.Controls.Add(this.btnSelectFile);
             this.Controls.Add(this.groupBoxDetail);
             this.Controls.Add(this.groupBoxFileSelect);
             this.Controls.Add(this.btnCancel);
@@ -238,5 +250,6 @@
         private System.Windows.Forms.ListView listViewFiles;
         private System.Windows.Forms.GroupBox groupBoxFileSelect;
         private System.Windows.Forms.GroupBox groupBoxDetail;
+        private System.Windows.Forms.Button btnSelectFile;
     }
 }

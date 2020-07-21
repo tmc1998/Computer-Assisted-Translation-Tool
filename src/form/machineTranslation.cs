@@ -15,7 +15,8 @@ namespace src.form
     {
         public main mainForm;
         public List<machineTranslationBase> listMachine = new List<machineTranslationBase>();
-        public string textTranslation = "Hiển thị bản dịch của các phân đoạn mà bạn đã chọn trong Machine Translation"; 
+        public string textTranslation = "Hiển thị bản dịch của các phân đoạn mà bạn đã chọn trong Dịch máy";
+        public List<machineTranslationResult> results = new List<machineTranslationResult>();
         public machineTranslation(main MainForm)
         {
             InitializeComponent();
@@ -24,11 +25,11 @@ namespace src.form
         private void machineTranslation_Load(object sender, EventArgs e)
         {
             initSize();
-            initMachineTranslation(); 
+            initMachineTranslation();
         }
         public void initSize()
         {
-            rtbTranslated.Text = textTranslation; 
+            rtbTranslated.Text = textTranslation;
             this.Left = mainForm.editorForm.Width + 2;
             this.Top = ParentForm.ClientRectangle.Height / 2 - 50;
         }
@@ -36,8 +37,9 @@ namespace src.form
         public void resetText()
         {
             rtbTranslated.Text = "";
-            textTranslation = null; 
+            textTranslation = null;
         }
+
         private void initMachineTranslation()
         {
             //MyMemmory
@@ -45,18 +47,18 @@ namespace src.form
             listMachine.Add(mymemory);
 
             machineTranslationBase openNMT = new machineTranslationOpenNMT();
-            listMachine.Add(openNMT); 
+            listMachine.Add(openNMT);
         }
         public void setActiveMymemoryMachine(bool active)
         {
-            if(listMachine.Count >= 0)
+            if (listMachine.Count >= 0)
             {
-                for(int i = 0; i < listMachine.Count; i++)
+                for (int i = 0; i < listMachine.Count; i++)
                 {
-                    if(listMachine[i] is machineTranslationMyMemory)
+                    if (listMachine[i] is machineTranslationMyMemory)
                     {
                         listMachine[i].isActive = active;
-                        break; 
+                        break;
                     }
                 }
             }
@@ -79,26 +81,46 @@ namespace src.form
 
         public void translate(string sourceText)
         {
-            foreach(machineTranslationBase machine in listMachine)
+            results.Clear();
+            foreach (machineTranslationBase machine in listMachine)
             {
                 if (machine.isActive)
                 {
-                    string text = machine.getTargetLang(sourceText);
-                    textTranslation += text + "\n"; 
-                    Console.WriteLine(text);
-                    Console.WriteLine(sourceText);
-                    Console.WriteLine(machine.source + "::" + machine.target);
+                    ////string text = machine.getTargetLang(sourceText);
+                    machineTranslationResult result = new machineTranslationResult();
+                    result = machine.getTargetLang(sourceText);
+                    if (result.fail)
+                    {
+                        textTranslation += result.failText + "\n";
+                    }
+                    else
+                    {
+                        textTranslation += result.tag + "\n" + result.type + "\n";
+                        results.Add(result);
+                    }
+                    //if (result.fail)
+                    //{
+
+                    //}
+                    //textTranslation += result.tag + "\n";
+                    //Console.WriteLine(sourceText);
+                    //Console.WriteLine(machine.source + "::" + machine.target);
                 }
             }
             rtbTranslated.Text = textTranslation;
         }
 
+        public List<machineTranslationResult> getResultMachineTranslator()
+        {
+            return results;
+        }
+
         public void setSourceLangandTargetLangmachine(string source, string target)
         {
-            for(int i = 0; i < listMachine.Count; i++)
+            for (int i = 0; i < listMachine.Count; i++)
             {
                 listMachine[i].source = source;
-                listMachine[i].target = target; 
+                listMachine[i].target = target;
             }
         }
 

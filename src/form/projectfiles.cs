@@ -17,7 +17,8 @@ namespace src.form
     {
         public main mainForm;
         public List<string> listFilesName = new List<string>();
-        public List<string> listExtensionFile = new List<string>(); 
+        public List<string> listExtensionFile = new List<string>();
+        public string filter = "File|*.doc;*.pdf;*.txt;*.docx";
         public projectfiles(main mainform)
         {
             InitializeComponent();
@@ -168,6 +169,28 @@ namespace src.form
             }
             closeForm(); 
             mainForm.openEditorForm(); 
+        }
+
+        private void btnSelectFile_Click(object sender, EventArgs e)
+        {
+            if (mainForm.project != null)
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    ofd.Filter = filter;
+                    ofd.Multiselect = false;
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        string path = ofd.FileName;
+                        Console.WriteLine(path);
+                        string fileName = Path.GetFileName(path);
+                        string desPath = Path.Combine(mainForm.project.getPathSourceFolder(),fileName);
+                        File.Copy(path, desPath, true);
+                        mainForm.project.setListFile(); 
+                        loadAllFile(); 
+                    }
+                }
+            }
         }
     }
 }

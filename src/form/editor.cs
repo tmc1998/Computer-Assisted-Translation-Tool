@@ -71,7 +71,8 @@ namespace src.form
                 for (int i = 0;i < listSegs.Count; i++)
                 {
                     editorGrid.Rows[i].Cells["sourceColumn"].Value = listSegs[i].getTMSource();
-                    editorGrid.Rows[i].Cells["targetColumn"].Value = listSegs[i].getTMTarget(); 
+                    editorGrid.Rows[i].Cells["targetColumn"].Value = listSegs[i].getTMTarget();
+                    editorGrid.Rows[i].Cells["confirmColumn"].Value = listSegs[i].confirm;
                 }
             }
         }
@@ -125,25 +126,56 @@ namespace src.form
             setSentencesToGridview(); 
         }
 
+        public List<Segment> getListSegment()
+        {
+            List<Segment> segments = new List<Segment>(); 
+            foreach(DataGridViewRow row in editorGrid.Rows)
+            {
+                string target = null;
+                string source = null; 
+                if (row.Cells["targetColumn"].Value != null)
+                {
+                   target = row.Cells["targetColumn"].Value.ToString();
+                }
+                if (row.Cells["sourceColumn"].Value != null)
+                {
+                    source = row.Cells["sourceColumn"].Value.ToString();
+                }
+
+                Segment segment = new Segment();
+                tm tm = new tm();
+                tm.Source = source;
+                tm.Target = target;
+                if (row.Cells["confirmColumn"].Value != null)
+                {
+                    segment.confirm = Convert.ToBoolean(row.Cells["confirmColumn"].Value); 
+                }
+                segment.setTM(tm);
+                segments.Add(segment); 
+            }
+
+            return segments; 
+        }
+
         private void editorGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            int Index = e.RowIndex;
-            string SourceText = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
-            string TargetText = null; 
-            tm tm = new tm();
-            Segment tmp = new Segment();
-            tm.Source = SourceText;
-            if (editorGrid.Rows[Index].Cells["targetColumn"].Value != null)
-            {
-                TargetText = editorGrid.Rows[Index].Cells["targetColumn"].Value.ToString();
-                if (mainForm.project != null)
-                {
-                    tm.Target = TargetText;   
-                }
-            }
-            tmp.setTM(tm);
-            mainForm.project.setTargetLangToCurrentFileListSegment(Index, TargetText);
-            mainForm.project.addSegmentToListSaveSegment(tmp);
+            //int Index = e.RowIndex;
+            //string SourceText = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
+            //string TargetText = null; 
+            //tm tm = new tm();
+            //Segment tmp = new Segment();
+            //tm.Source = SourceText;
+            //if (editorGrid.Rows[Index].Cells["targetColumn"].Value != null)
+            //{
+            //    TargetText = editorGrid.Rows[Index].Cells["targetColumn"].Value.ToString();
+            //    if (mainForm.project != null)
+            //    {
+            //        tm.Target = TargetText;   
+            //    }
+            //}
+            //tmp.setTM(tm);
+            //mainForm.project.setTargetLangToCurrentFileListSegment(Index, TargetText);
+            //mainForm.project.addSegmentToListSaveSegment(tmp);
         }
         public void addSegmentToTM()
         {
@@ -176,7 +208,8 @@ namespace src.form
                         {
                             if(result == 1)
                             {
-                                lblStatus.Text = "Đã lưu thành công"; 
+                                lblStatus.Text = "Đã lưu thành công";
+                                editorGrid.Rows[Index].Cells["confirmColumn"].Value = true;
                             }
                         }
                     }
@@ -207,16 +240,32 @@ namespace src.form
             int Index = editorGrid.CurrentRow.Index;
             if (Index >= 0)
             {
-                if(editorGrid.Rows[Index].Cells["sourceColumn"].Value != null)
+                if (editorGrid.Rows[Index].Cells["sourceColumn"].Value != null)
                 {
-                    lblStatus.Text = "Trạng thái phân đoạn"; 
+                    lblStatus.Text = "Trạng thái phân đoạn";
                     string source = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
-                    mainForm.predictSemantic(source);
-                    mainForm.resetTextMachineTranslationForm();
-                    mainForm.translationMachine(source);
+                    handling(source);
                 }
             }
 
+        }
+
+        private void handling(string source)
+        {
+            mainForm.getSourceToDictForm(source); 
+            mainForm.resetTextMachineTranslationForm();
+            mainForm.translationMachine(source);
+            mainForm.predictSemantic(source);
+            mainForm.hideRTBFuzzymatched();
+        }
+
+        public void setTargetToEditorGrid(string target)
+        {
+            int Index = editorGrid.CurrentRow.Index;
+            if(Index >= 0)
+            {
+                editorGrid.Rows[Index].Cells["targetColumn"].Value = target;
+            }
         }
 
         private void lblStatus_Click(object sender, EventArgs e)

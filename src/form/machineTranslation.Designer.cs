@@ -45,10 +45,10 @@
             this.groupBoxMachineTranslation.ForeColor = System.Drawing.SystemColors.Desktop;
             this.groupBoxMachineTranslation.Location = new System.Drawing.Point(3, 1);
             this.groupBoxMachineTranslation.Name = "groupBoxMachineTranslation";
-            this.groupBoxMachineTranslation.Size = new System.Drawing.Size(394, 244);
+            this.groupBoxMachineTranslation.Size = new System.Drawing.Size(128, 244);
             this.groupBoxMachineTranslation.TabIndex = 0;
             this.groupBoxMachineTranslation.TabStop = false;
-            this.groupBoxMachineTranslation.Text = "Machine Translation";
+            this.groupBoxMachineTranslation.Text = "Dịch máy";
             this.groupBoxMachineTranslation.Enter += new System.EventHandler(this.groupBoxMachineTranslation_Enter);
             // 
             // rtbTranslated
@@ -62,7 +62,7 @@
             this.rtbTranslated.Location = new System.Drawing.Point(6, 13);
             this.rtbTranslated.Name = "rtbTranslated";
             this.rtbTranslated.ReadOnly = true;
-            this.rtbTranslated.Size = new System.Drawing.Size(382, 225);
+            this.rtbTranslated.Size = new System.Drawing.Size(116, 225);
             this.rtbTranslated.TabIndex = 0;
             this.rtbTranslated.Text = "";
             // 
@@ -71,7 +71,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(400, 248);
+            this.ClientSize = new System.Drawing.Size(133, 248);
             this.Controls.Add(this.groupBoxMachineTranslation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
