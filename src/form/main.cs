@@ -643,6 +643,7 @@ namespace src.form
             {
                 frm.ShowDialog(this);
             }
+            tbOffline.readTBOff();
         }
         //
     }
