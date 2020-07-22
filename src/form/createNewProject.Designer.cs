@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(createNewProject));
-            this.lblProjectName = new System.Windows.Forms.Label();
-            this.txtProjectName = new System.Windows.Forms.TextBox();
-            this.lblLocation = new System.Windows.Forms.Label();
-            this.txtLocation = new System.Windows.Forms.TextBox();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.panelProject = new System.Windows.Forms.Panel();
-            this.lblProject = new System.Windows.Forms.Label();
             this.lblLanguage = new System.Windows.Forms.Label();
             this.panelLanguage = new System.Windows.Forms.Panel();
             this.cboTranslatedFilesLanguage = new System.Windows.Forms.ComboBox();
@@ -52,85 +45,19 @@
             this.txtTMName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblcreatedTM = new System.Windows.Forms.Label();
-            this.panelProject.SuspendLayout();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.lblProjectName = new System.Windows.Forms.Label();
+            this.txtProjectName = new System.Windows.Forms.TextBox();
+            this.lblLocation = new System.Windows.Forms.Label();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.txtLocation = new System.Windows.Forms.TextBox();
+            this.panelProject = new System.Windows.Forms.Panel();
+            this.lblProject = new System.Windows.Forms.Label();
             this.panelLanguage.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            this.panelProject.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblProjectName
-            // 
-            this.lblProjectName.AutoSize = true;
-            this.lblProjectName.Location = new System.Drawing.Point(0, 14);
-            this.lblProjectName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblProjectName.Name = "lblProjectName";
-            this.lblProjectName.Size = new System.Drawing.Size(88, 20);
-            this.lblProjectName.TabIndex = 0;
-            this.lblProjectName.Text = "Tên dự án :";
-            // 
-            // txtProjectName
-            // 
-            this.txtProjectName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtProjectName.Location = new System.Drawing.Point(4, 38);
-            this.txtProjectName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(656, 19);
-            this.txtProjectName.TabIndex = 1;
-            // 
-            // lblLocation
-            // 
-            this.lblLocation.AutoSize = true;
-            this.lblLocation.Location = new System.Drawing.Point(0, 74);
-            this.lblLocation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblLocation.Name = "lblLocation";
-            this.lblLocation.Size = new System.Drawing.Size(96, 20);
-            this.lblLocation.TabIndex = 2;
-            this.lblLocation.Text = "Đường dẫn :";
-            // 
-            // txtLocation
-            // 
-            this.txtLocation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtLocation.Location = new System.Drawing.Point(4, 98);
-            this.txtLocation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(542, 19);
-            this.txtLocation.TabIndex = 3;
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBrowse.Location = new System.Drawing.Point(550, 95);
-            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(112, 35);
-            this.btnBrowse.TabIndex = 4;
-            this.btnBrowse.Text = "...";
-            this.btnBrowse.UseVisualStyleBackColor = false;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
-            // 
-            // panelProject
-            // 
-            this.panelProject.BackColor = System.Drawing.SystemColors.Control;
-            this.panelProject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelProject.Controls.Add(this.txtLocation);
-            this.panelProject.Controls.Add(this.btnBrowse);
-            this.panelProject.Controls.Add(this.lblLocation);
-            this.panelProject.Controls.Add(this.txtProjectName);
-            this.panelProject.Controls.Add(this.lblProjectName);
-            this.panelProject.Location = new System.Drawing.Point(6, 35);
-            this.panelProject.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panelProject.Name = "panelProject";
-            this.panelProject.Size = new System.Drawing.Size(670, 148);
-            this.panelProject.TabIndex = 5;
-            // 
-            // lblProject
-            // 
-            this.lblProject.AutoSize = true;
-            this.lblProject.Location = new System.Drawing.Point(8, 10);
-            this.lblProject.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblProject.Name = "lblProject";
-            this.lblProject.Size = new System.Drawing.Size(52, 20);
-            this.lblProject.TabIndex = 6;
-            this.lblProject.Text = "Dự án";
             // 
             // lblLanguage
             // 
@@ -301,6 +228,86 @@
             this.lblcreatedTM.TabIndex = 6;
             this.lblcreatedTM.Text = "TM đã tạo :";
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
+            // lblProjectName
+            // 
+            this.lblProjectName.AutoSize = true;
+            this.lblProjectName.Location = new System.Drawing.Point(0, 14);
+            this.lblProjectName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProjectName.Name = "lblProjectName";
+            this.lblProjectName.Size = new System.Drawing.Size(88, 20);
+            this.lblProjectName.TabIndex = 0;
+            this.lblProjectName.Text = "Tên dự án :";
+            // 
+            // txtProjectName
+            // 
+            this.txtProjectName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtProjectName.Location = new System.Drawing.Point(4, 38);
+            this.txtProjectName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtProjectName.Name = "txtProjectName";
+            this.txtProjectName.Size = new System.Drawing.Size(656, 19);
+            this.txtProjectName.TabIndex = 1;
+            // 
+            // lblLocation
+            // 
+            this.lblLocation.AutoSize = true;
+            this.lblLocation.Location = new System.Drawing.Point(0, 74);
+            this.lblLocation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLocation.Name = "lblLocation";
+            this.lblLocation.Size = new System.Drawing.Size(96, 20);
+            this.lblLocation.TabIndex = 2;
+            this.lblLocation.Text = "Đường dẫn :";
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBrowse.Location = new System.Drawing.Point(550, 95);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(112, 35);
+            this.btnBrowse.TabIndex = 4;
+            this.btnBrowse.Text = "...";
+            this.btnBrowse.UseVisualStyleBackColor = false;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // txtLocation
+            // 
+            this.txtLocation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLocation.Location = new System.Drawing.Point(4, 98);
+            this.txtLocation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLocation.Name = "txtLocation";
+            this.txtLocation.Size = new System.Drawing.Size(542, 19);
+            this.txtLocation.TabIndex = 3;
+            // 
+            // panelProject
+            // 
+            this.panelProject.BackColor = System.Drawing.SystemColors.Control;
+            this.panelProject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelProject.Controls.Add(this.txtLocation);
+            this.panelProject.Controls.Add(this.btnBrowse);
+            this.panelProject.Controls.Add(this.lblLocation);
+            this.panelProject.Controls.Add(this.txtProjectName);
+            this.panelProject.Controls.Add(this.lblProjectName);
+            this.panelProject.Location = new System.Drawing.Point(6, 35);
+            this.panelProject.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelProject.Name = "panelProject";
+            this.panelProject.Size = new System.Drawing.Size(670, 148);
+            this.panelProject.TabIndex = 5;
+            // 
+            // lblProject
+            // 
+            this.lblProject.AutoSize = true;
+            this.lblProject.Location = new System.Drawing.Point(8, 10);
+            this.lblProject.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProject.Name = "lblProject";
+            this.lblProject.Size = new System.Drawing.Size(52, 20);
+            this.lblProject.TabIndex = 6;
+            this.lblProject.Text = "Dự án";
+            // 
             // createNewProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -325,26 +332,19 @@
             this.Text = "Tạo dự án mới";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.createNewProject_FormClosing);
             this.Load += new System.EventHandler(this.createNewProject_Load);
-            this.panelProject.ResumeLayout(false);
-            this.panelProject.PerformLayout();
             this.panelLanguage.ResumeLayout(false);
             this.panelLanguage.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            this.panelProject.ResumeLayout(false);
+            this.panelProject.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblProjectName;
-        private System.Windows.Forms.TextBox txtProjectName;
-        private System.Windows.Forms.Label lblLocation;
-        private System.Windows.Forms.TextBox txtLocation;
-        private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.Panel panelProject;
-        private System.Windows.Forms.Label lblProject;
         private System.Windows.Forms.Label lblLanguage;
         private System.Windows.Forms.Panel panelLanguage;
         private System.Windows.Forms.ComboBox cboTranslatedFilesLanguage;
@@ -361,5 +361,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox ckbUseTMCreated;
         private System.Windows.Forms.CheckBox ckbCreateNewTM;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.Panel panelProject;
+        private System.Windows.Forms.TextBox txtLocation;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Label lblLocation;
+        private System.Windows.Forms.TextBox txtProjectName;
+        private System.Windows.Forms.Label lblProjectName;
+        private System.Windows.Forms.Label lblProject;
     }
 }

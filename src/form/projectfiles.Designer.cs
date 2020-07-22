@@ -31,21 +31,27 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(projectfiles));
             this.imageListIcon = new System.Windows.Forms.ImageList(this.components);
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.lbl2 = new System.Windows.Forms.Label();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.lblNameProject = new System.Windows.Forms.Label();
-            this.lblCreationTime = new System.Windows.Forms.Label();
-            this.lbltimecreation = new System.Windows.Forms.Label();
-            this.lblLocationFile = new System.Windows.Forms.Label();
-            this.btnVertical = new System.Windows.Forms.Button();
-            this.btnHorizontal = new System.Windows.Forms.Button();
+            this.btnSelectFile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnOk = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.groupBoxFileSelect = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.btnHorizontal = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnVertical = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.listViewFiles = new System.Windows.Forms.ListView();
-            this.groupBoxFileSelect = new System.Windows.Forms.GroupBox();
-            this.groupBoxDetail = new System.Windows.Forms.GroupBox();
-            this.btnSelectFile = new System.Windows.Forms.Button();
+            this.groupBoxDetail = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.lblLocationFile = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lbltimecreation = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lblNameProject = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBoxFileSelect)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBoxFileSelect.Panel)).BeginInit();
+            this.groupBoxFileSelect.Panel.SuspendLayout();
             this.groupBoxFileSelect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBoxDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBoxDetail.Panel)).BeginInit();
+            this.groupBoxDetail.Panel.SuspendLayout();
             this.groupBoxDetail.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,160 +61,153 @@
             this.imageListIcon.ImageSize = new System.Drawing.Size(16, 16);
             this.imageListIcon.TransparentColor = System.Drawing.Color.White;
             // 
-            // lbl1
+            // btnSelectFile
             // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1.Location = new System.Drawing.Point(6, 27);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(65, 13);
-            this.lbl1.TabIndex = 1;
-            this.lbl1.Text = "Tên dự án : ";
-            // 
-            // lbl2
-            // 
-            this.lbl2.AutoSize = true;
-            this.lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl2.Location = new System.Drawing.Point(6, 86);
-            this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(81, 13);
-            this.lbl2.TabIndex = 2;
-            this.lbl2.Text = "Địa chỉ tập tin : ";
+            this.btnSelectFile.Location = new System.Drawing.Point(192, 641);
+            this.btnSelectFile.Name = "btnSelectFile";
+            this.btnSelectFile.Size = new System.Drawing.Size(140, 35);
+            this.btnSelectFile.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectFile.TabIndex = 15;
+            this.btnSelectFile.Values.Text = "Chọn tệp tin thêm";
+            this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(350, 641);
+            this.btnOk.Location = new System.Drawing.Point(338, 641);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(137, 35);
-            this.btnOk.TabIndex = 3;
-            this.btnOk.Text = "Mở tập tin";
-            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Size = new System.Drawing.Size(140, 35);
+            this.btnOk.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.TabIndex = 16;
+            this.btnOk.Values.Text = "Mở tập tin";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(493, 641);
+            this.btnCancel.Location = new System.Drawing.Point(484, 641);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(137, 35);
-            this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Hủy";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Size = new System.Drawing.Size(140, 35);
+            this.btnCancel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.TabIndex = 17;
+            this.btnCancel.Values.Text = "Hủy";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // lblNameProject
+            // groupBoxFileSelect
             // 
-            this.lblNameProject.AutoSize = true;
-            this.lblNameProject.Location = new System.Drawing.Point(124, 27);
-            this.lblNameProject.Name = "lblNameProject";
-            this.lblNameProject.Size = new System.Drawing.Size(35, 13);
-            this.lblNameProject.TabIndex = 7;
-            this.lblNameProject.Text = "label1";
+            this.groupBoxFileSelect.Location = new System.Drawing.Point(12, 0);
+            this.groupBoxFileSelect.Name = "groupBoxFileSelect";
             // 
-            // lblCreationTime
+            // groupBoxFileSelect.Panel
             // 
-            this.lblCreationTime.AutoSize = true;
-            this.lblCreationTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreationTime.Location = new System.Drawing.Point(6, 58);
-            this.lblCreationTime.Name = "lblCreationTime";
-            this.lblCreationTime.Size = new System.Drawing.Size(75, 13);
-            this.lblCreationTime.TabIndex = 8;
-            this.lblCreationTime.Text = "Thời gian tạo :";
-            // 
-            // lbltimecreation
-            // 
-            this.lbltimecreation.AutoSize = true;
-            this.lbltimecreation.Location = new System.Drawing.Point(124, 58);
-            this.lbltimecreation.Name = "lbltimecreation";
-            this.lbltimecreation.Size = new System.Drawing.Size(35, 13);
-            this.lbltimecreation.TabIndex = 9;
-            this.lbltimecreation.Text = "label1";
-            // 
-            // lblLocationFile
-            // 
-            this.lblLocationFile.AutoSize = true;
-            this.lblLocationFile.Location = new System.Drawing.Point(124, 86);
-            this.lblLocationFile.Name = "lblLocationFile";
-            this.lblLocationFile.Size = new System.Drawing.Size(35, 13);
-            this.lblLocationFile.TabIndex = 10;
-            this.lblLocationFile.Text = "label1";
-            // 
-            // btnVertical
-            // 
-            this.btnVertical.Image = ((System.Drawing.Image)(resources.GetObject("btnVertical.Image")));
-            this.btnVertical.Location = new System.Drawing.Point(529, 293);
-            this.btnVertical.Name = "btnVertical";
-            this.btnVertical.Size = new System.Drawing.Size(89, 90);
-            this.btnVertical.TabIndex = 6;
-            this.btnVertical.UseVisualStyleBackColor = true;
-            this.btnVertical.Click += new System.EventHandler(this.btnVertical_Click);
+            this.groupBoxFileSelect.Panel.Controls.Add(this.btnHorizontal);
+            this.groupBoxFileSelect.Panel.Controls.Add(this.btnVertical);
+            this.groupBoxFileSelect.Panel.Controls.Add(this.listViewFiles);
+            this.groupBoxFileSelect.Size = new System.Drawing.Size(612, 502);
+            this.groupBoxFileSelect.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxFileSelect.TabIndex = 18;
+            this.groupBoxFileSelect.Values.Heading = "Danh sách tệp tin";
             // 
             // btnHorizontal
             // 
-            this.btnHorizontal.Image = ((System.Drawing.Image)(resources.GetObject("btnHorizontal.Image")));
-            this.btnHorizontal.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnHorizontal.Location = new System.Drawing.Point(529, 145);
+            this.btnHorizontal.Location = new System.Drawing.Point(517, 160);
             this.btnHorizontal.Name = "btnHorizontal";
-            this.btnHorizontal.Size = new System.Drawing.Size(89, 87);
-            this.btnHorizontal.TabIndex = 5;
-            this.btnHorizontal.UseVisualStyleBackColor = true;
+            this.btnHorizontal.Size = new System.Drawing.Size(74, 75);
+            this.btnHorizontal.TabIndex = 2;
+            this.btnHorizontal.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnHorizontal.Values.Image")));
+            this.btnHorizontal.Values.Text = "";
             this.btnHorizontal.Click += new System.EventHandler(this.btnHorizontal_Click);
+            // 
+            // btnVertical
+            // 
+            this.btnVertical.Location = new System.Drawing.Point(517, 257);
+            this.btnVertical.Name = "btnVertical";
+            this.btnVertical.Size = new System.Drawing.Size(74, 75);
+            this.btnVertical.TabIndex = 1;
+            this.btnVertical.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnVertical.Values.Image")));
+            this.btnVertical.Values.Text = "";
+            this.btnVertical.Click += new System.EventHandler(this.btnVertical_Click);
             // 
             // listViewFiles
             // 
-            this.listViewFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewFiles.FullRowSelect = true;
             this.listViewFiles.GridLines = true;
-            this.listViewFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewFiles.HideSelection = false;
-            this.listViewFiles.LargeImageList = this.imageListIcon;
-            this.listViewFiles.Location = new System.Drawing.Point(6, 30);
+            this.listViewFiles.Location = new System.Drawing.Point(4, 3);
             this.listViewFiles.Name = "listViewFiles";
-            this.listViewFiles.Size = new System.Drawing.Size(517, 460);
-            this.listViewFiles.SmallImageList = this.imageListIcon;
+            this.listViewFiles.Size = new System.Drawing.Size(493, 465);
             this.listViewFiles.TabIndex = 0;
             this.listViewFiles.UseCompatibleStateImageBehavior = false;
             this.listViewFiles.SelectedIndexChanged += new System.EventHandler(this.listViewFiles_SelectedIndexChanged);
             // 
-            // groupBoxFileSelect
-            // 
-            this.groupBoxFileSelect.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBoxFileSelect.Controls.Add(this.listViewFiles);
-            this.groupBoxFileSelect.Controls.Add(this.btnVertical);
-            this.groupBoxFileSelect.Controls.Add(this.btnHorizontal);
-            this.groupBoxFileSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxFileSelect.Location = new System.Drawing.Point(6, 12);
-            this.groupBoxFileSelect.Name = "groupBoxFileSelect";
-            this.groupBoxFileSelect.Size = new System.Drawing.Size(624, 504);
-            this.groupBoxFileSelect.TabIndex = 12;
-            this.groupBoxFileSelect.TabStop = false;
-            this.groupBoxFileSelect.Text = "Chọn tệp";
-            // 
             // groupBoxDetail
             // 
-            this.groupBoxDetail.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBoxDetail.Controls.Add(this.lblLocationFile);
-            this.groupBoxDetail.Controls.Add(this.lbl1);
-            this.groupBoxDetail.Controls.Add(this.lbl2);
-            this.groupBoxDetail.Controls.Add(this.lblNameProject);
-            this.groupBoxDetail.Controls.Add(this.lbltimecreation);
-            this.groupBoxDetail.Controls.Add(this.lblCreationTime);
-            this.groupBoxDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxDetail.Location = new System.Drawing.Point(6, 522);
+            this.groupBoxDetail.Location = new System.Drawing.Point(12, 508);
             this.groupBoxDetail.Name = "groupBoxDetail";
-            this.groupBoxDetail.Size = new System.Drawing.Size(624, 113);
-            this.groupBoxDetail.TabIndex = 13;
-            this.groupBoxDetail.TabStop = false;
-            this.groupBoxDetail.Text = "Thông tin";
             // 
-            // btnSelectFile
+            // groupBoxDetail.Panel
             // 
-            this.btnSelectFile.Location = new System.Drawing.Point(197, 641);
-            this.btnSelectFile.Name = "btnSelectFile";
-            this.btnSelectFile.Size = new System.Drawing.Size(143, 35);
-            this.btnSelectFile.TabIndex = 14;
-            this.btnSelectFile.Text = "Chọn tập tin";
-            this.btnSelectFile.UseVisualStyleBackColor = true;
-            this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
+            this.groupBoxDetail.Panel.Controls.Add(this.lblLocationFile);
+            this.groupBoxDetail.Panel.Controls.Add(this.lbltimecreation);
+            this.groupBoxDetail.Panel.Controls.Add(this.lblNameProject);
+            this.groupBoxDetail.Panel.Controls.Add(this.kryptonLabel3);
+            this.groupBoxDetail.Panel.Controls.Add(this.kryptonLabel2);
+            this.groupBoxDetail.Panel.Controls.Add(this.kryptonLabel1);
+            this.groupBoxDetail.Size = new System.Drawing.Size(612, 127);
+            this.groupBoxDetail.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxDetail.TabIndex = 7;
+            this.groupBoxDetail.Values.Heading = "Thông tin";
+            // 
+            // lblLocationFile
+            // 
+            this.lblLocationFile.Location = new System.Drawing.Point(116, 68);
+            this.lblLocationFile.Name = "lblLocationFile";
+            this.lblLocationFile.Size = new System.Drawing.Size(50, 16);
+            this.lblLocationFile.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLocationFile.TabIndex = 5;
+            this.lblLocationFile.Values.Text = "address";
+            // 
+            // lbltimecreation
+            // 
+            this.lbltimecreation.Location = new System.Drawing.Point(116, 37);
+            this.lbltimecreation.Name = "lbltimecreation";
+            this.lbltimecreation.Size = new System.Drawing.Size(32, 16);
+            this.lbltimecreation.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltimecreation.TabIndex = 4;
+            this.lbltimecreation.Values.Text = "time";
+            // 
+            // lblNameProject
+            // 
+            this.lblNameProject.Location = new System.Drawing.Point(116, 6);
+            this.lblNameProject.Name = "lblNameProject";
+            this.lblNameProject.Size = new System.Drawing.Size(39, 16);
+            this.lblNameProject.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameProject.TabIndex = 3;
+            this.lblNameProject.Values.Text = "name";
+            // 
+            // kryptonLabel3
+            // 
+            this.kryptonLabel3.Location = new System.Drawing.Point(8, 72);
+            this.kryptonLabel3.Name = "kryptonLabel3";
+            this.kryptonLabel3.Size = new System.Drawing.Size(79, 16);
+            this.kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel3.TabIndex = 2;
+            this.kryptonLabel3.Values.Text = "Địa chỉ tệp tin";
+            // 
+            // kryptonLabel2
+            // 
+            this.kryptonLabel2.Location = new System.Drawing.Point(8, 41);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(79, 16);
+            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.TabIndex = 1;
+            this.kryptonLabel2.Values.Text = "Thời gian tạo:";
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.Location = new System.Drawing.Point(8, 10);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(64, 16);
+            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel1.TabIndex = 0;
+            this.kryptonLabel1.Values.Text = "Tên dự án:";
             // 
             // projectfiles
             // 
@@ -216,11 +215,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(636, 680);
-            this.Controls.Add(this.btnSelectFile);
             this.Controls.Add(this.groupBoxDetail);
             this.Controls.Add(this.groupBoxFileSelect);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.btnSelectFile);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "projectfiles";
@@ -228,28 +227,34 @@
             this.Text = "Project Files";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.projectfiles_FormClosing);
             this.Load += new System.EventHandler(this.projectfiles_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.groupBoxFileSelect.Panel)).EndInit();
+            this.groupBoxFileSelect.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupBoxFileSelect)).EndInit();
             this.groupBoxFileSelect.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupBoxDetail.Panel)).EndInit();
+            this.groupBoxDetail.Panel.ResumeLayout(false);
+            this.groupBoxDetail.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBoxDetail)).EndInit();
             this.groupBoxDetail.ResumeLayout(false);
-            this.groupBoxDetail.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lbl1;
-        private System.Windows.Forms.Label lbl2;
-        private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ImageList imageListIcon;
-        private System.Windows.Forms.Label lblNameProject;
-        private System.Windows.Forms.Label lblCreationTime;
-        private System.Windows.Forms.Label lbltimecreation;
-        private System.Windows.Forms.Label lblLocationFile;
-        private System.Windows.Forms.Button btnVertical;
-        private System.Windows.Forms.Button btnHorizontal;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnSelectFile;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnOk;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox groupBoxFileSelect;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox groupBoxDetail;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblLocationFile;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lbltimecreation;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblNameProject;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel3;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private System.Windows.Forms.ListView listViewFiles;
-        private System.Windows.Forms.GroupBox groupBoxFileSelect;
-        private System.Windows.Forms.GroupBox groupBoxDetail;
-        private System.Windows.Forms.Button btnSelectFile;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnVertical;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnHorizontal;
     }
 }

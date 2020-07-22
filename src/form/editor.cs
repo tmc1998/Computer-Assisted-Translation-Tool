@@ -99,7 +99,7 @@ namespace src.form
             rtbTutorial.Visible = true; 
             txt txt = new txt(); 
             rtbTutorial.Text = txt.TUTORIAL_PROJECT;
-            lblEditor.Text = txt.EMPTY_PROJECT;
+            //lblEditor.Text = txt.EMPTY_PROJECT;
         }
 
         public void openIntroduction()
@@ -107,7 +107,7 @@ namespace src.form
             txt txt = new txt(); 
             editorGrid.Visible = false;
             lblStatus.Visible = false; 
-            lblEditor.Text = txt.CAT_INTRODUCTION_LABEL; 
+            //lblEditor.Text = txt.CAT_INTRODUCTION_LABEL; 
             rtbTutorial.Text = txt.CAT_INTRODUCTION; 
         }
 
@@ -268,10 +268,6 @@ namespace src.form
             }
         }
 
-        private void lblStatus_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

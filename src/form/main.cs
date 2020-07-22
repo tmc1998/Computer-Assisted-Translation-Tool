@@ -228,7 +228,7 @@ namespace src.form
                 machineTranslationForm = new machineTranslation(this);
                 machineTranslationForm.MdiParent = this;
                 machineTranslationForm.Show();
-                machineTranslationForm.Hide(); 
+                machineTranslationForm.Hide();
             }
         }
 
