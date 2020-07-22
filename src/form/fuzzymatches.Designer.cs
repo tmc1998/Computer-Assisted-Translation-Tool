@@ -59,7 +59,7 @@
             // 
             this.groupBox1.Panel.Controls.Add(this.rtbFuzzyMatches);
             this.groupBox1.Panel.Controls.Add(this.resultGrid);
-            this.groupBox1.Size = new System.Drawing.Size(322, 236);
+            this.groupBox1.Size = new System.Drawing.Size(321, 236);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.Values.Heading = "Gợi ý";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -67,9 +67,9 @@
             // rtbFuzzyMatches
             // 
             this.rtbFuzzyMatches.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rtbFuzzyMatches.Location = new System.Drawing.Point(8, -2);
+            this.rtbFuzzyMatches.Location = new System.Drawing.Point(3, -2);
             this.rtbFuzzyMatches.Name = "rtbFuzzyMatches";
-            this.rtbFuzzyMatches.Size = new System.Drawing.Size(302, 211);
+            this.rtbFuzzyMatches.Size = new System.Drawing.Size(311, 211);
             this.rtbFuzzyMatches.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.rtbFuzzyMatches.TabIndex = 1;
             this.rtbFuzzyMatches.Text = "";
@@ -90,7 +90,7 @@
             this.resultGrid.Name = "resultGrid";
             this.resultGrid.RowHeadersVisible = false;
             this.resultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.resultGrid.Size = new System.Drawing.Size(298, 195);
+            this.resultGrid.Size = new System.Drawing.Size(300, 195);
             this.resultGrid.TabIndex = 0;
             this.resultGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultGrid_CellContentClick);
             // 

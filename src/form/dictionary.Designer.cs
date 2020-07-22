@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.rtbTermbase = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
             this.tbOffGrid = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.sentenceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.rtbD = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
             this.tbGrid = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.wordColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.definitionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rtbDictionary = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
-            this.rtbD = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
@@ -61,15 +61,15 @@
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.rtbTermbase);
             this.kryptonGroupBox1.Panel.Controls.Add(this.tbOffGrid);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(166, 253);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(164, 250);
             this.kryptonGroupBox1.TabIndex = 1;
             this.kryptonGroupBox1.Values.Heading = "Cơ sở thuật ngữ";
             // 
             // rtbTermbase
             // 
-            this.rtbTermbase.Location = new System.Drawing.Point(-2, 4);
+            this.rtbTermbase.Location = new System.Drawing.Point(3, 4);
             this.rtbTermbase.Name = "rtbTermbase";
-            this.rtbTermbase.Size = new System.Drawing.Size(166, 227);
+            this.rtbTermbase.Size = new System.Drawing.Size(154, 232);
             this.rtbTermbase.TabIndex = 3;
             this.rtbTermbase.Text = "";
             // 
@@ -83,11 +83,11 @@
             this.tbOffGrid.Location = new System.Drawing.Point(4, 4);
             this.tbOffGrid.Name = "tbOffGrid";
             this.tbOffGrid.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tbOffGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tbOffGrid.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tbOffGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.tbOffGrid.Size = new System.Drawing.Size(155, 222);
+            this.tbOffGrid.Size = new System.Drawing.Size(153, 222);
             this.tbOffGrid.TabIndex = 0;
             // 
             // sentenceColumn
@@ -114,9 +114,17 @@
             this.GroupBox1.Panel.Controls.Add(this.rtbD);
             this.GroupBox1.Panel.Controls.Add(this.tbGrid);
             this.GroupBox1.Panel.Controls.Add(this.rtbDictionary);
-            this.GroupBox1.Size = new System.Drawing.Size(150, 253);
+            this.GroupBox1.Size = new System.Drawing.Size(150, 250);
             this.GroupBox1.TabIndex = 2;
             this.GroupBox1.Values.Heading = "Từ điển";
+            // 
+            // rtbD
+            // 
+            this.rtbD.Location = new System.Drawing.Point(3, 4);
+            this.rtbD.Name = "rtbD";
+            this.rtbD.Size = new System.Drawing.Size(140, 232);
+            this.rtbD.TabIndex = 2;
+            this.rtbD.Text = "";
             // 
             // tbGrid
             // 
@@ -155,20 +163,12 @@
             this.rtbDictionary.TabIndex = 0;
             this.rtbDictionary.Text = "";
             // 
-            // rtbD
-            // 
-            this.rtbD.Location = new System.Drawing.Point(-2, 4);
-            this.rtbD.Name = "rtbD";
-            this.rtbD.Size = new System.Drawing.Size(150, 227);
-            this.rtbD.TabIndex = 2;
-            this.rtbD.Text = "";
-            // 
             // dictionary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(325, 260);
+            this.ClientSize = new System.Drawing.Size(325, 252);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.kryptonGroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

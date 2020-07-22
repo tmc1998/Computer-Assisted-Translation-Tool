@@ -60,7 +60,7 @@
             this.groupBox1.Panel.Controls.Add(this.rtbTutorial);
             this.groupBox1.Panel.Controls.Add(this.editorGrid);
             this.groupBox1.Panel.Controls.Add(this.lblStatus);
-            this.groupBox1.Size = new System.Drawing.Size(549, 491);
+            this.groupBox1.Size = new System.Drawing.Size(549, 487);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.Values.Heading = "Hướng dẫn";
             // 
@@ -71,7 +71,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbTutorial.Location = new System.Drawing.Point(2, 4);
             this.rtbTutorial.Name = "rtbTutorial";
-            this.rtbTutorial.Size = new System.Drawing.Size(540, 460);
+            this.rtbTutorial.Size = new System.Drawing.Size(540, 456);
             this.rtbTutorial.TabIndex = 3;
             this.rtbTutorial.Text = "";
             // 
@@ -142,7 +142,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(555, 505);
+            this.ClientSize = new System.Drawing.Size(555, 501);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

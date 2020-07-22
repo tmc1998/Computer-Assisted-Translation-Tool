@@ -64,7 +64,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.Window;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.projectToolStripMenuItem,
@@ -80,6 +80,7 @@
             // 
             // projectToolStripMenuItem
             // 
+            this.projectToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.projectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.openToolStripMenuItem,
@@ -93,56 +94,62 @@
             // 
             // newToolStripMenuItem
             // 
+            this.newToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.newToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "Tạo dự án";
             this.newToolStripMenuItem.ToolTipText = "Tạo dự án mới của bạn";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
+            this.openToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.openToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Mở dự án";
             this.openToolStripMenuItem.ToolTipText = "Mở dự án đã có của bạn";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // SaveToolStripMenuItem
             // 
+            this.SaveToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.SaveToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveToolStripMenuItem.Image")));
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveToolStripMenuItem.Text = "Lưu";
             this.SaveToolStripMenuItem.ToolTipText = "Lưu dự án bạn đang làm";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.lưuToolStripMenuItem_Click);
             // 
             // reloadToolStripMenuItem
             // 
+            this.reloadToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.reloadToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reloadToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reloadToolStripMenuItem.Image")));
             this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reloadToolStripMenuItem.Text = "Tải lại thư mục";
             this.reloadToolStripMenuItem.ToolTipText = "Tải lại thư mục chứa tệp tin cần dịch trong dự án đang mở";
             this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
             // 
             // createTranslatedDocumentToolStripMenuItem
             // 
+            this.createTranslatedDocumentToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.createTranslatedDocumentToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createTranslatedDocumentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("createTranslatedDocumentToolStripMenuItem.Image")));
             this.createTranslatedDocumentToolStripMenuItem.Name = "createTranslatedDocumentToolStripMenuItem";
-            this.createTranslatedDocumentToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.createTranslatedDocumentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createTranslatedDocumentToolStripMenuItem.Text = "Tạo tập tin dịch";
             this.createTranslatedDocumentToolStripMenuItem.ToolTipText = "Tạo tệp tin dịch khi đã dịch xong";
             this.createTranslatedDocumentToolStripMenuItem.Click += new System.EventHandler(this.createTranslatedDocumentToolStripMenuItem_Click);
             // 
             // machineTranslationToolStripMenuItem
             // 
+            this.machineTranslationToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.machineTranslationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.myMemoryToolStripMenuItem,
             this.openNMTToolStripMenuItem});
@@ -153,19 +160,21 @@
             // 
             // myMemoryToolStripMenuItem
             // 
+            this.myMemoryToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.myMemoryToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.myMemoryToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("myMemoryToolStripMenuItem.Image")));
             this.myMemoryToolStripMenuItem.Name = "myMemoryToolStripMenuItem";
-            this.myMemoryToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.myMemoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.myMemoryToolStripMenuItem.Text = "MyMemory";
             this.myMemoryToolStripMenuItem.Click += new System.EventHandler(this.myMemoryToolStripMenuItem_Click);
             // 
             // openNMTToolStripMenuItem
             // 
+            this.openNMTToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.openNMTToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openNMTToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openNMTToolStripMenuItem.Image")));
             this.openNMTToolStripMenuItem.Name = "openNMTToolStripMenuItem";
-            this.openNMTToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.openNMTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openNMTToolStripMenuItem.Text = "OpenNMT";
             this.openNMTToolStripMenuItem.Click += new System.EventHandler(this.openNMTToolStripMenuItem_Click);
             // 
