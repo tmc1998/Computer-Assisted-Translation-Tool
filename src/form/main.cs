@@ -627,6 +627,17 @@ namespace src.form
             importTBForm = new importTB(this);
             importTBForm.ShowDialog(); 
         }
+
+        public void createTBOffline(string path)
+        {
+            tbOffline tbOffline = new tbOffline();
+            tbOffline.path = path;
+            //tbOffline.pathFolder = tbOfflinePath; 
+            using (frmWaitForm frm = new frmWaitForm(tbOffline.createTBOfflines))
+            {
+                frm.ShowDialog(this);
+            }
+        }
         //
     }
 }
