@@ -16,6 +16,8 @@ namespace src.form
     public partial class dictionary : Form
     {
         public main mainForm;
+        public string dictText = "Hiển thị câu đã chọn với thuật ngữ được tô đậm và danh sách định nghĩa của chúng";
+        public string termText = "Hiển thị các câu văn chứa thuật ngữ trong các tài liệu thuộc thư mục đã chọn";
         public dictionary(main main)
         {
             InitializeComponent();
@@ -32,11 +34,15 @@ namespace src.form
             tbGrid.ClearSelection();
             this.Left = mainForm.editorForm.Width + 5;
             this.Top = ParentForm.ClientRectangle.Height / 2 - 50;
+            rtbD.Text = dictText;
+            rtbTermbase.Text = termText;
+
         }
 
         public void getgetSourceToDictForm(string source)
         {
             rtbDictionary.Text = source;
+            rtbD.Visible = false;
             HashSet<tb> dict = mainForm.project.GetTbs();
             string word = source.ToLower();
             int count = 0;
@@ -60,6 +66,23 @@ namespace src.form
             }
         }
 
+        public void setTBOffToGrid(HashSet<tbOff> tbOffs)
+        {
+            tbOffGrid.DataSource = null;
+            int count = 0;
+            if(tbOffs.Count > 0)
+            {
+                tbOffGrid.Rows.Add();
+                tbOffGrid.RowCount = tbOffs.Count;
+                foreach (tbOff tb in tbOffs)
+                {
+                    tbOffGrid.Rows[count].Cells["sentenceColumn"].Value = tb.segment;
+                    tbOffGrid.Rows[count].Cells["FileColumn"].Value = tb.fileName;
+                    count++; 
+                }
+            }
+        }
+
         private void tbGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -67,7 +90,9 @@ namespace src.form
                 DataGridViewRow row = this.tbGrid.Rows[e.RowIndex];
                 string src = row.Cells["wordColumn"].Value.ToString();
                 string tar = row.Cells["definitionColumn"].Value.ToString();
-                mainForm.findTermbaseOnline(src,tar); 
+                mainForm.findTermbaseOnline(src,tar);
+                mainForm.findTermbaseOffline(src);
+                rtbTermbase.Visible = false;
             }
         }
     }
@@ -78,8 +103,8 @@ namespace src.form
             box.SelectionStart = index;
             box.SelectionLength = length;
 
-            box.SelectionBackColor = Color.Black;
-            box.SelectionColor = Color.White;
+            box.SelectionBackColor = Color.LightBlue;
+            box.SelectionColor = Color.Black;
         }
     }
 }

@@ -59,7 +59,7 @@
             // 
             this.groupBox1.Panel.Controls.Add(this.rtbFuzzyMatches);
             this.groupBox1.Panel.Controls.Add(this.resultGrid);
-            this.groupBox1.Size = new System.Drawing.Size(312, 236);
+            this.groupBox1.Size = new System.Drawing.Size(322, 236);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.Values.Heading = "Gợi ý";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -67,7 +67,7 @@
             // rtbFuzzyMatches
             // 
             this.rtbFuzzyMatches.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rtbFuzzyMatches.Location = new System.Drawing.Point(3, -2);
+            this.rtbFuzzyMatches.Location = new System.Drawing.Point(8, -2);
             this.rtbFuzzyMatches.Name = "rtbFuzzyMatches";
             this.rtbFuzzyMatches.Size = new System.Drawing.Size(302, 211);
             this.rtbFuzzyMatches.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -138,7 +138,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(321, 240);
+            this.ClientSize = new System.Drawing.Size(331, 240);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

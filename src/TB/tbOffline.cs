@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using src.segment;
 using src.Files;
 using src.XML;
+using System.Text.RegularExpressions;
 
 namespace src.TB
 {
@@ -107,6 +108,24 @@ namespace src.TB
         {
             readwriteXML xml = new readwriteXML();
             listSeg =  xml.readTBOff(this.fullName); 
+        }
+
+        public HashSet<tbOff> findTermbaseOffline(string termbase)
+        {
+            HashSet<tbOff> results = new HashSet<tbOff>();
+
+            foreach(tbOff tb in this.listSeg)
+            {
+                string Termbase = termbase.ToLower();
+                string word = tb.segment.ToLower();
+                string match = String.Format(@"\b{0}\b", Regex.Escape(Termbase));
+                if(Regex.IsMatch(word,match, RegexOptions.IgnoreCase))
+                {
+                    results.Add(tb); 
+                }
+            }
+
+            return results;
         }
     }
 }
