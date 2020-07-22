@@ -90,3 +90,4 @@ D:\Nam4\Doan\CATProject\src\obj\Debug\src.pdb
 D:\Nam4\Doan\CATProject\src\bin\Debug\TMDB\TM.db
 D:\Nam4\Doan\CATProject\src\obj\Debug\src.form.dictionary.resources
 D:\Nam4\Doan\CATProject\src\bin\Debug\TBDB\tb.txt
+D:\Nam4\Doan\CATProject\src\obj\Debug\src.form.importTB.resources

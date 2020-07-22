@@ -113,6 +113,12 @@
     <Compile Include="form\fuzzymatches.Designer.cs">
       <DependentUpon>fuzzymatches.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\importTB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\importTB.Designer.cs">
+      <DependentUpon>importTB.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\machineTranslation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\fuzzymatches.resx">
       <DependentUpon>fuzzymatches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\importTB.resx">
+      <DependentUpon>importTB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\machineTranslation.resx">
       <DependentUpon>machineTranslation.cs</DependentUpon>

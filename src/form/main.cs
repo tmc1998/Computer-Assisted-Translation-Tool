@@ -32,6 +32,7 @@ namespace src.form
         public projectfiles projectFilesForm;
         public machineTranslation machineTranslationForm;
         public dictionary dictionaryForm;
+        public importTB importTBForm;
         TMDATA tmDataAccess = new TMDATA();
         List<tm> tmData = new List<tm>(); 
         public string filter = "cat|*.cat";
@@ -619,6 +620,12 @@ namespace src.form
                     }
                 }
             }
+        }
+
+        private void thêmCơSởThuậtNgữToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            importTBForm = new importTB(this);
+            importTBForm.ShowDialog(); 
         }
         //
     }

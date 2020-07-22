@@ -44,6 +44,7 @@
             this.TMGlobalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cơSởThuậtNgữToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findTembarseOnlineToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.thêmCơSởThuậtNgữToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateProjectButton = new System.Windows.Forms.ToolStripButton();
             this.OpenProjectButton = new System.Windows.Forms.ToolStripButton();
@@ -58,7 +59,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.thêmCơSởThuậtNgữToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -197,6 +197,13 @@
             this.findTembarseOnlineToolStripMenu.Size = new System.Drawing.Size(197, 22);
             this.findTembarseOnlineToolStripMenu.Text = "Tìm thuật ngữ trên wiki";
             this.findTembarseOnlineToolStripMenu.Click += new System.EventHandler(this.findTembarseOnlineToolStripMenu_Click);
+            // 
+            // thêmCơSởThuậtNgữToolStripMenuItem
+            // 
+            this.thêmCơSởThuậtNgữToolStripMenuItem.Name = "thêmCơSởThuậtNgữToolStripMenuItem";
+            this.thêmCơSởThuậtNgữToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.thêmCơSởThuậtNgữToolStripMenuItem.Text = "Thêm cơ sở thuật ngữ";
+            this.thêmCơSởThuậtNgữToolStripMenuItem.Click += new System.EventHandler(this.thêmCơSởThuậtNgữToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -338,12 +345,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1029, 26);
             this.panel1.TabIndex = 4;
-            // 
-            // thêmCơSởThuậtNgữToolStripMenuItem
-            // 
-            this.thêmCơSởThuậtNgữToolStripMenuItem.Name = "thêmCơSởThuậtNgữToolStripMenuItem";
-            this.thêmCơSởThuậtNgữToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.thêmCơSởThuậtNgữToolStripMenuItem.Text = "Thêm cơ sở thuật ngữ";
             // 
             // main
             // 
