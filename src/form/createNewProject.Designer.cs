@@ -105,6 +105,7 @@
             this.x.Location = new System.Drawing.Point(549, 102);
             this.x.Name = "x";
             this.x.Size = new System.Drawing.Size(110, 29);
+            this.x.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.x.TabIndex = 17;
             this.x.Values.Text = "...";
             this.x.Click += new System.EventHandler(this.btnBrowse_Click);
@@ -265,7 +266,8 @@
             this.cboTMName.DropDownWidth = 534;
             this.cboTMName.Location = new System.Drawing.Point(125, 47);
             this.cboTMName.Name = "cboTMName";
-            this.cboTMName.Size = new System.Drawing.Size(534, 24);
+            this.cboTMName.Size = new System.Drawing.Size(534, 18);
+            this.cboTMName.StateActive.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTMName.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTMName.TabIndex = 20;
             // 
