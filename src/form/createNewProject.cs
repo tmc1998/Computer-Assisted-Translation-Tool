@@ -191,5 +191,10 @@ namespace src.form
                 cboTMName.Enabled = true;
             }
         }
+
+        private void kryptonLabel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
