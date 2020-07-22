@@ -23,7 +23,7 @@ namespace src.project
         private string sourceFolderName = "source";
         private string targetFolderName = "target";
         private string saveFolderName = "save";
-        private string tempFolderName = "temp"; 
+        private string tempFolderName = "tm"; 
         private string pathProject;
         private string pathSourceFolder;
         private string pathTargetFolder;

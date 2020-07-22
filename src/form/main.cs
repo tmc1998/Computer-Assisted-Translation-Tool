@@ -629,6 +629,17 @@ namespace src.form
             }
         }
 
+        public void findTermbaseOffline(string src)
+        {
+            if (tbOffline.listSeg.Count > 0)
+            {
+                if (dictionaryForm != null)
+                {
+                    dictionaryForm.setTBOffToGrid(tbOffline.findTermbaseOffline(src));
+                }
+            }
+        }
+
         private void thêmCơSởThuậtNgữToolStripMenuItem_Click(object sender, EventArgs e)
         {
             importTBForm = new importTB(this);

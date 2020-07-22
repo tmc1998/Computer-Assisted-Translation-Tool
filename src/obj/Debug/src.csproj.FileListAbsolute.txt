@@ -126,3 +126,4 @@ D:\Work\FinalProject\CATProject\src\obj\Debug\src.exe
 D:\Work\FinalProject\CATProject\src\obj\Debug\src.pdb
 D:\Work\FinalProject\CATProject\src\bin\Debug\ComponentFactory.Krypton.Toolkit.dll
 D:\Work\FinalProject\CATProject\src\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
+D:\Nam4\Doan\CATProject\src\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
