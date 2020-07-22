@@ -34,7 +34,7 @@ namespace src.form
         {
             //init Size Form
 
-            this.Left = main.editorForm.Width + 2;
+            this.Left = main.editorForm.Width - 5;
             this.Top = 0;
             rtbFuzzyMatches.Text = text;
             resultGrid.Visible = false; 
