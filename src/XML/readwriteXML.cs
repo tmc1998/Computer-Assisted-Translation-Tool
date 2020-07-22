@@ -8,6 +8,7 @@ using System.Xml;
 using src.Files;
 using src.project;
 using src.segment;
+using src.TB;
 using src.TM;
 
 namespace src.XML
@@ -84,6 +85,34 @@ namespace src.XML
                     xmlWriter.Close(); 
                 }
             }
+        }
+
+        public void writeXMLTBOffline(List<Segment> segments, string path)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            XmlTextWriter xmlWriter = new XmlTextWriter(path, System.Text.Encoding.UTF8);
+            xmlWriter.Formatting = Formatting.Indented;
+            xmlWriter.WriteStartDocument();
+            xmlWriter.WriteComment("Creating save file");
+            xmlWriter.WriteStartElement("Segments");
+
+            foreach(Segment seg in segments)
+            {
+                string sourceLang = seg.getTM().Source;
+                string fileName = seg.file;
+                xmlWriter.WriteStartElement("tbOffline");
+                xmlWriter.WriteElementString("Source_Text", sourceLang);
+                xmlWriter.WriteElementString("File_Name", fileName); 
+                xmlWriter.WriteEndElement(); 
+            }
+
+            xmlWriter.WriteEndElement();
+            xmlWriter.WriteEndDocument();
+            xmlWriter.Flush();
+            xmlWriter.Close();
         }
 
         public Project readXMLFileProject(string path)
@@ -203,6 +232,43 @@ namespace src.XML
             }
             xtr.Close();
             return listSegs;
+        }
+        public HashSet<tbOff> readTBOff(string path)
+        {
+            HashSet<tbOff> results = new HashSet<tbOff>();
+            XmlTextReader xtr = new XmlTextReader(path);
+            string sourceText = null;
+            string fileName = null; 
+            try
+            {
+                if (xtr.Read() != null)
+                {
+                    while (xtr.Read())
+                    {
+                        tbOff tb = new tbOff();
+                        if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "Source_Text")
+                        {
+                            sourceText = xtr.ReadElementString();
+                        }
+                        if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "File_Name")
+                        {
+                            fileName = xtr.ReadElementString();
+                            tb.fileName = fileName;
+                            tb.segment = sourceText;
+                        }
+                        if(!String.IsNullOrEmpty(tb.fileName) && !String.IsNullOrEmpty(tb.segment))
+                        {
+                            results.Add(tb); 
+                        }
+                    }
+                }
+            }
+            catch(Exception)
+            {
+
+            }
+            xtr.Close();
+            return results;
         }
     }
 }

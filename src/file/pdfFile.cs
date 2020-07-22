@@ -42,7 +42,7 @@ namespace src.Files
                 {
                     content = content + contentPage;
                     List<Segment> tmp = new List<Segment>();
-                    tmp = pdf.splitTxtContentToSegment(contentPage, delimiters, page);
+                    tmp = pdf.splitTxtContentToSegment(contentPage, delimiters, page,this.fileName);
                     listSegments.AddRange(tmp);
                     page++;
                 }

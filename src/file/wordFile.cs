@@ -25,7 +25,7 @@ namespace src.Files
                 {
                     content = content + contentPage;
                     List<Segment> tmp = new List<Segment>();
-                    tmp = wordproc.splitTxtContentToSegment(contentPage, delimiters, page);
+                    tmp = wordproc.splitTxtContentToSegment(contentPage, delimiters, page,this.fileName);
                     listSegments.AddRange(tmp);
                     page++;
                 }
