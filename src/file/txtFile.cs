@@ -18,7 +18,7 @@ namespace src.Files
         {            
             txtProc txtProc = new txtProc();
             this.content = txtProc.readTxtFile(path);
-            this.listSegments = txtProc.splitTxtContentToSegment(this.content,delimiters);
+            this.listSegments = txtProc.splitTxtContentToSegment(this.content,delimiters,this.fileName);
         }
         public override void loadFileSave(string path)
         {

@@ -37,6 +37,7 @@ namespace src.form
         List<tm> tmData = new List<tm>(); 
         public string filter = "cat|*.cat";
         public string catname = "CAT";
+        tbOffline tbOffline = new tbOffline();
         public System.Windows.Forms.Form ParentForm { get; }
 
         public main()
@@ -62,6 +63,7 @@ namespace src.form
 
             //Machine Translation Form
             openMachineTranslationForm();
+            readTbOff();
             //------------------------
             //initProject(); 
             //openProjectFilesForm();
@@ -76,6 +78,10 @@ namespace src.form
         {
             
         }
+        public void readTbOff()
+        {
+            tbOffline.readTBOff(); 
+        } 
 
         private void initControl()
         {
@@ -221,7 +227,8 @@ namespace src.form
             {
                 machineTranslationForm = new machineTranslation(this);
                 machineTranslationForm.MdiParent = this;
-                machineTranslationForm.Show(); 
+                machineTranslationForm.Show();
+                machineTranslationForm.Hide(); 
             }
         }
 
@@ -630,8 +637,7 @@ namespace src.form
 
         public void createTBOffline(string path)
         {
-            tbOffline tbOffline = new tbOffline();
-            tbOffline.path = path;
+           tbOffline.path = path;
             //tbOffline.pathFolder = tbOfflinePath; 
             using (frmWaitForm frm = new frmWaitForm(tbOffline.createTBOfflines))
             {

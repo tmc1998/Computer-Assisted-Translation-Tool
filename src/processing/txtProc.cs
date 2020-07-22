@@ -25,7 +25,7 @@ namespace src.processing
                 return null; 
             }
         }
-        public List<Segment> splitTxtContentToSegment(string content, char[] delimiters)
+        public List<Segment> splitTxtContentToSegment(string content, char[] delimiters,string filename)
         {
             var parts = new List<Segment>();
             if (!string.IsNullOrEmpty(content))
@@ -46,6 +46,7 @@ namespace src.processing
                                     tm1.Source = str1;
                                     Segment tmp1 = new Segment();
                                     tmp1.setTM(tm1);
+                                    tmp1.file = filename;
                                     parts.Add(tmp1);
                                 }
                             }
@@ -59,6 +60,7 @@ namespace src.processing
                         tm.Source = str;
                         Segment tmp = new Segment();
                         tmp.setTM(tm);
+                        tmp.file = filename;
                         parts.Add(tmp);
                         break;
                     }

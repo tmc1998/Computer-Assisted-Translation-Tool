@@ -29,7 +29,7 @@ namespace src.form
         public void initSize()
         {
             tbGrid.ClearSelection();
-            this.Left = mainForm.editorForm.Width + 268;
+            this.Left = mainForm.editorForm.Width + 2;
             this.Top = ParentForm.ClientRectangle.Height / 2 - 50;
         }
 

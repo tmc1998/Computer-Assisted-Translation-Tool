@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using src.segment;
 using src.Files;
-
+using src.XML;
 
 namespace src.TB
 {
@@ -16,8 +16,9 @@ namespace src.TB
         public string pathFolder { get; set; }
         private List<string> listfileextension = new List<string>() { ".txt", ".doc", ".docx", ".pdf", ".xls", ".xlsx" };
         private char[] delimiters = { '.', '?', '\n', ':', '\r', '\t', '\a', '\f' };
+        public HashSet<tbOff> listSeg = new HashSet<tbOff>(); 
         private string tbOfflineFolder = "tbCat";
-        private string tbOfflineName = "tbCat.txt";
+        private string tbOfflineName = "tbCat.tb";
         private string tbOfflinePath;
         private string fullName; 
 
@@ -82,34 +83,30 @@ namespace src.TB
 
         public void writeToTxt(List<Segment> segments)
         {
-            //StringBuilder txt = new StringBuilder(); 
-            //foreach(Segment seg in segments)
+            readwriteXML xml = new readwriteXML();
+            xml.writeXMLTBOffline(segments,this.fullName); 
+            //try
             //{
-            //    var line = seg.getTMSource();
-            //    txt.AppendLine(line); 
-            //}
-            //if (File.Exists(this.fullName))
-            //{
-            //    File.Delete(this.fullName); 
-            //}
-            //File.AppendAllText(this.fullName, txt.ToString(), Encoding.UTF8);
-            try
-            {
-                if (File.Exists(this.fullName))
-                {
-                    File.Delete(this.fullName);
-                }
+            //    if (File.Exists(this.fullName))
+            //    {
+            //        File.Delete(this.fullName);
+            //    }
 
-                using (var sw = new StreamWriter(this.fullName))
-                {
-                    foreach (Segment seg in segments)
-                    {
-                        string text = seg.getTMSource().Replace("\n", ""); 
-                        sw.WriteLine(text);
-                    }
-                }
-            }
-            catch {}
+            //    using (var sw = new StreamWriter(this.fullName))
+            //    {
+            //        foreach (Segment seg in segments)
+            //        {
+            //            string text = seg.getTMSource().Replace("\n", ""); 
+            //            sw.WriteLine(text);
+            //        }
+            //    }
+            //}
+            //catch {}
+        }
+        public void readTBOff()
+        {
+            readwriteXML xml = new readwriteXML();
+            listSeg =  xml.readTBOff(this.fullName); 
         }
     }
 }
