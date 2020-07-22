@@ -268,10 +268,6 @@ namespace src.form
             }
         }
 
-        private void lblStatus_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

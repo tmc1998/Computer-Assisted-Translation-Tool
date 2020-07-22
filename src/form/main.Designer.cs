@@ -58,7 +58,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +96,7 @@
             this.newToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.newToolStripMenuItem.Text = "Tạo dự án";
             this.newToolStripMenuItem.ToolTipText = "Tạo dự án mới của bạn";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
@@ -107,7 +106,7 @@
             this.openToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.openToolStripMenuItem.Text = "Mở dự án";
             this.openToolStripMenuItem.ToolTipText = "Mở dự án đã có của bạn";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
@@ -117,7 +116,7 @@
             this.SaveToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("SaveToolStripMenuItem.Image")));
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.SaveToolStripMenuItem.Text = "Lưu";
             this.SaveToolStripMenuItem.ToolTipText = "Lưu dự án bạn đang làm";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.lưuToolStripMenuItem_Click);
@@ -127,7 +126,7 @@
             this.reloadToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reloadToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reloadToolStripMenuItem.Image")));
             this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.reloadToolStripMenuItem.Text = "Tải lại thư mục";
             this.reloadToolStripMenuItem.ToolTipText = "Tải lại thư mục chứa tệp tin cần dịch trong dự án đang mở";
             this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
@@ -137,7 +136,7 @@
             this.createTranslatedDocumentToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createTranslatedDocumentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("createTranslatedDocumentToolStripMenuItem.Image")));
             this.createTranslatedDocumentToolStripMenuItem.Name = "createTranslatedDocumentToolStripMenuItem";
-            this.createTranslatedDocumentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createTranslatedDocumentToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.createTranslatedDocumentToolStripMenuItem.Text = "Tạo tập tin dịch";
             this.createTranslatedDocumentToolStripMenuItem.ToolTipText = "Tạo tệp tin dịch khi đã dịch xong";
             this.createTranslatedDocumentToolStripMenuItem.Click += new System.EventHandler(this.createTranslatedDocumentToolStripMenuItem_Click);
@@ -157,7 +156,7 @@
             this.myMemoryToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.myMemoryToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("myMemoryToolStripMenuItem.Image")));
             this.myMemoryToolStripMenuItem.Name = "myMemoryToolStripMenuItem";
-            this.myMemoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.myMemoryToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.myMemoryToolStripMenuItem.Text = "MyMemory";
             this.myMemoryToolStripMenuItem.Click += new System.EventHandler(this.myMemoryToolStripMenuItem_Click);
             // 
@@ -166,7 +165,7 @@
             this.openNMTToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openNMTToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openNMTToolStripMenuItem.Image")));
             this.openNMTToolStripMenuItem.Name = "openNMTToolStripMenuItem";
-            this.openNMTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openNMTToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.openNMTToolStripMenuItem.Text = "OpenNMT";
             this.openNMTToolStripMenuItem.Click += new System.EventHandler(this.openNMTToolStripMenuItem_Click);
             // 
@@ -360,22 +359,12 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 470);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1115, 26);
-            this.panel1.TabIndex = 4;
-            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1115, 496);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -422,7 +411,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem tMToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TMLocalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TMGlobalToolStripMenuItem;

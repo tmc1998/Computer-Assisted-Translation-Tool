@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fuzzymatches));
             this.groupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.rtbFuzzyMatches = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
@@ -63,10 +67,10 @@
             // rtbFuzzyMatches
             // 
             this.rtbFuzzyMatches.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rtbFuzzyMatches.Location = new System.Drawing.Point(-2, -2);
+            this.rtbFuzzyMatches.Location = new System.Drawing.Point(3, -2);
             this.rtbFuzzyMatches.Name = "rtbFuzzyMatches";
-            this.rtbFuzzyMatches.Size = new System.Drawing.Size(317, 211);
-            this.rtbFuzzyMatches.StateCommon.Back.Color1 = System.Drawing.Color.LightSteelBlue;
+            this.rtbFuzzyMatches.Size = new System.Drawing.Size(302, 211);
+            this.rtbFuzzyMatches.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.rtbFuzzyMatches.TabIndex = 1;
             this.rtbFuzzyMatches.Text = "";
             // 
@@ -84,31 +88,47 @@
             this.typeColumn});
             this.resultGrid.Location = new System.Drawing.Point(4, 4);
             this.resultGrid.Name = "resultGrid";
+            this.resultGrid.RowHeadersVisible = false;
             this.resultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.resultGrid.Size = new System.Drawing.Size(281, 195);
+            this.resultGrid.Size = new System.Drawing.Size(298, 195);
             this.resultGrid.TabIndex = 0;
             this.resultGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultGrid_CellContentClick);
             // 
             // sourceColumn
             // 
+            this.sourceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.sourceColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.sourceColumn.HeaderText = "Câu nguồn";
             this.sourceColumn.Name = "sourceColumn";
             this.sourceColumn.ReadOnly = true;
             // 
             // targetColumn
             // 
+            this.targetColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.targetColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.targetColumn.HeaderText = "Câu dịch";
             this.targetColumn.Name = "targetColumn";
             this.targetColumn.ReadOnly = true;
             // 
             // scoreColumn
             // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.scoreColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.scoreColumn.HeaderText = "Điểm";
             this.scoreColumn.Name = "scoreColumn";
             this.scoreColumn.ReadOnly = true;
             // 
             // typeColumn
             // 
+            this.typeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.typeColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.typeColumn.HeaderText = "Loại";
             this.typeColumn.Name = "typeColumn";
             this.typeColumn.ReadOnly = true;

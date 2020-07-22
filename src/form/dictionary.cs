@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using src.TB;
 using System.Text.RegularExpressions;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace src.form
 {
@@ -29,7 +30,7 @@ namespace src.form
         public void initSize()
         {
             tbGrid.ClearSelection();
-            this.Left = mainForm.editorForm.Width + 268;
+            this.Left = mainForm.editorForm.Width + 5;
             this.Top = ParentForm.ClientRectangle.Height / 2 - 50;
         }
 
@@ -40,7 +41,7 @@ namespace src.form
             string word = source.ToLower();
             int count = 0;
             tbGrid.Rows.Add();
-            tbGrid.RowCount = 0;
+            tbGrid.RowCount = 1;
             foreach(tb tb in dict)
             {
                 string Word = tb.word.ToLower();
@@ -72,7 +73,7 @@ namespace src.form
     }
     public static class RichTextBoxExtensions
     {
-        public static void AppendText(this RichTextBox box, string text, int index, int length)
+        public static void AppendText(this KryptonRichTextBox box, string text, int index, int length)
         {
             box.SelectionStart = index;
             box.SelectionLength = length;
