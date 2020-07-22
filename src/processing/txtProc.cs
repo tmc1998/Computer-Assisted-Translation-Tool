@@ -40,22 +40,28 @@ namespace src.processing
                             if (iLast != iFirst)
                             {
                                 string str1 = content.Substring(iFirst, iLast - iFirst + 1).Trim();
-                                tm tm1 = new tm();
-                                tm1.Source = str1;
-                                Segment tmp1 = new Segment();
-                                tmp1.setTM(tm1); 
-                                parts.Add(tmp1);
+                                if (!String.IsNullOrEmpty(str1))
+                                {
+                                    tm tm1 = new tm();
+                                    tm1.Source = str1;
+                                    Segment tmp1 = new Segment();
+                                    tmp1.setTM(tm1);
+                                    parts.Add(tmp1);
+                                }
                             }
                         iFirst = iLast + 1;
                         continue;
                     }
                     string str = content.Substring(iFirst, content.Length - iFirst).Trim();
-                    tm tm = new tm();
-                    tm.Source = str; 
-                    Segment tmp = new Segment();
-                    tmp.setTM(tm); 
-                    parts.Add(tmp);
-                    break;
+                    if (!String.IsNullOrEmpty(str))
+                    {
+                        tm tm = new tm();
+                        tm.Source = str;
+                        Segment tmp = new Segment();
+                        tmp.setTM(tm);
+                        parts.Add(tmp);
+                        break;
+                    }
 
                 } while (iFirst < content.Length);
             }

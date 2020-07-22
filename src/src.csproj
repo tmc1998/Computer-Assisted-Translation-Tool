@@ -158,6 +158,7 @@
     <Compile Include="semanticsimilarity\semanticSimilarityAPI.cs" />
     <Compile Include="semanticsimilarity\semanticSimilarityPost.cs" />
     <Compile Include="TB\tb.cs" />
+    <Compile Include="TB\tbOffline.cs" />
     <Compile Include="TB\wikimedia.cs" />
     <Compile Include="TB\wikiUrl.cs" />
     <Compile Include="Text\txt.cs" />
