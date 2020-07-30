@@ -18,6 +18,7 @@ namespace src.form
         public main main;
         public string text = "Hiển thị các phân đoạn phù hợp về ngữ nghĩa mà bạn đã lưu trong TM";
         public string type = "TM";
+        public string typeOnline = "HTChinh_TM"; 
         public fuzzymatches(main Main)
         {
             InitializeComponent();
@@ -84,15 +85,22 @@ namespace src.form
             return result;
         }
 
-        public void setResultPredictSemantic(List<semanticSimilarity> resultSemantic, List<machineTranslationResult> resultMT)
+        public List<resultTMOnline> GetResultTMOnlines(string src)
+        {
+            tmonlinedata api = new tmonlinedata();
+            return api.getResults(src); 
+        } 
+
+        public void setResultPredictSemantic(List<semanticSimilarity> resultSemantic, List<machineTranslationResult> resultMT,List<resultTMOnline> resultTMOnlines)
         {
             this.resultGrid.DataSource = null;
             resultGrid.Rows.Add();
             int rowcount = 0;
+            int rowcount2 = 0;
             resultGrid.RowCount = rowcount;
             if(resultSemantic != null)
             {
-                rowcount = resultSemantic.Count;
+                rowcount += resultSemantic.Count;
                 resultGrid.RowCount = rowcount;
                 for (int i = 0; i < resultSemantic.Count; i++)
                 {
@@ -102,15 +110,27 @@ namespace src.form
                     resultGrid.Rows[i].Cells["typeColumn"].Value = type;
                 }
             }
+            if(resultTMOnlines != null)
+            {
+                rowcount2 = resultTMOnlines.Count;
+                resultGrid.RowCount += rowcount2; 
+                for(int i = 0; i < resultTMOnlines.Count; i++)
+                {
+                    resultGrid.Rows[i + rowcount].Cells["sourceColumn"].Value = resultTMOnlines[i].src_sentence;
+                    resultGrid.Rows[i + rowcount].Cells["targetColumn"].Value = resultTMOnlines[i].tar_sentence;
+                    resultGrid.Rows[i + rowcount].Cells["scoreColumn"].Value = resultTMOnlines[i].similarity*100;
+                    resultGrid.Rows[i + rowcount].Cells["typeColumn"].Value = typeOnline;
+                }
+            }
             resultGrid.RowCount += resultMT.Count;
             for (int i = 0; i < resultMT.Count; i++)
             {
                 if (!resultMT[i].fail)
                 {
-                    resultGrid.Rows[i + rowcount].Cells["sourceColumn"].Value = resultMT[i].src;
-                    resultGrid.Rows[i + rowcount].Cells["targetColumn"].Value = resultMT[i].tag;
-                    resultGrid.Rows[i + rowcount].Cells["scoreColumn"].Value = resultMT[i].score;
-                    resultGrid.Rows[i + rowcount].Cells["typeColumn"].Value = resultMT[i].type;
+                    resultGrid.Rows[i + rowcount + rowcount2].Cells["sourceColumn"].Value = resultMT[i].src;
+                    resultGrid.Rows[i + rowcount + rowcount2].Cells["targetColumn"].Value = resultMT[i].tag;
+                    resultGrid.Rows[i + rowcount + rowcount2].Cells["scoreColumn"].Value = resultMT[i].score;
+                    resultGrid.Rows[i + rowcount + rowcount2].Cells["typeColumn"].Value = resultMT[i].type;
                 }
             }
         }

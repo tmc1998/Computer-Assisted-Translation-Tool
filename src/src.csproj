@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Toolkit">
-      <HintPath>..\..\..\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+      <HintPath>C:\Users\Alienware\Downloads\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
@@ -167,6 +167,9 @@
     <Compile Include="TM\tablename.cs" />
     <Compile Include="TM\TM.cs" />
     <Compile Include="TM\TMDATA.cs" />
+    <Compile Include="TM\tmonline.cs" />
+    <Compile Include="TM\tmonlinedata.cs" />
+    <Compile Include="TM\tmonlineURL.cs" />
     <Compile Include="XML\readwriteXML.cs" />
     <EmbeddedResource Include="form\createNewProject.resx">
       <DependentUpon>createNewProject.cs</DependentUpon>

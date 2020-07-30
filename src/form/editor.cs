@@ -24,6 +24,7 @@ namespace src.form
         List<Segment> listSegments = new List<Segment>();
         List<tm> lstTM = new List<tm>();
         fuzzymatches fuzzymatchesForm;
+        string tutorialText = "Hướng dẫn"; 
         main mainForm;
         public editor(main MainForm)
         {
@@ -35,6 +36,7 @@ namespace src.form
         {
             initSize();
             editorGrid.ClearSelection();
+            UpdateFont();
             openIntroduction(); 
         }
 
@@ -84,13 +86,16 @@ namespace src.form
 
         private void editorGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int Index = e.RowIndex;
-            //if (Index >= 0)
-            //{
-            //    string source = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
-            //    mainForm.resetTextMachineTranslationForm(); 
-            //    mainForm.translationMachine(source); 
-            //}
+            int Index = editorGrid.CurrentRow.Index;
+            if (Index >= 0)
+            {
+                if (editorGrid.Rows[Index].Cells["sourceColumn"].Value != null)
+                {
+                    lblStatus.Text = "Trạng thái phân đoạn";
+                    string source = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
+                    handling(source);
+                }
+            }
         }
 
         public void openTutorial()
@@ -125,9 +130,17 @@ namespace src.form
             }
             setSentencesToGridview(); 
         }
+        public void openEditorTutorial()
+        {
+            rtbTutorial.Visible = true;
+            editorGrid.Visible = false;
+            lblStatus.Visible = false;
+            groupBox1.Text = tutorialText;
+        }
 
         public List<Segment> getListSegment()
         {
+            editorGrid.EndEdit(); 
             List<Segment> segments = new List<Segment>(); 
             foreach(DataGridViewRow row in editorGrid.Rows)
             {
@@ -231,22 +244,22 @@ namespace src.form
             //Change cell font
             foreach (DataGridViewColumn c in editorGrid.Columns)
             {
-                c.DefaultCellStyle.Font = new Font("Arial", 14F, GraphicsUnit.Pixel);
+                c.DefaultCellStyle.Font = new Font("Arial", 16F, GraphicsUnit.Pixel);
             }
         }
 
         private void editorGrid_SelectionChanged(object sender, EventArgs e)
         {
-            int Index = editorGrid.CurrentRow.Index;
-            if (Index >= 0)
-            {
-                if (editorGrid.Rows[Index].Cells["sourceColumn"].Value != null)
-                {
-                    lblStatus.Text = "Trạng thái phân đoạn";
-                    string source = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
-                    handling(source);
-                }
-            }
+            //int Index = editorGrid.CurrentRow.Index;
+            //if (Index >= 0)
+            //{
+            //    if (editorGrid.Rows[Index].Cells["sourceColumn"].Value != null)
+            //    {
+            //        lblStatus.Text = "Trạng thái phân đoạn";
+            //        string source = editorGrid.Rows[Index].Cells["sourceColumn"].Value.ToString();
+            //        handling(source);
+            //    }
+            //}
 
         }
 

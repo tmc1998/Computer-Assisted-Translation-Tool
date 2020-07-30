@@ -66,7 +66,8 @@ namespace src.form
         private void closeForm()
         {
             this.Close();
-            mainForm.closeCreateProjectForm(); 
+            this.Hide(); 
+            //mainForm.closeCreateProjectForm(); 
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -126,9 +127,10 @@ namespace src.form
                 project.setTMName(tbn.name);
 
                 mainForm.setProject(project);
+                closeForm();
                 mainForm.createNewProject();
                 //mainForm.creatNewProjectForm = null; 
-                closeForm();
+                //closeForm();
             }
             if (ckbCreateNewTM.Checked)
             {
@@ -138,6 +140,7 @@ namespace src.form
                 if (result == 0)
                 {
                     mainForm.setProject(project);
+                    closeForm();
                     mainForm.createNewProject();
                     //mainForm.creatNewProjectForm = null; 
                     closeForm();

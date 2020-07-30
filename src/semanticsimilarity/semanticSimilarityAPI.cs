@@ -17,15 +17,22 @@ namespace src.semanticsimilarity
         private string restRequest = "predict"; 
         public List<semanticSimilarity> getResultPredict(List<tm> tmdata,string srcText)
         {
-            semanticSimilarityPost posts = new semanticSimilarityPost();
-            posts = processData(tmdata, srcText); 
-            var client = new RestClient(url);
-            var request = new RestRequest(restRequest, Method.POST);
-            request.RequestFormat = DataFormat.Json;
-            request.AddBody(posts);
-            var response = client.Execute(request);
-            var result = JsonConvert.DeserializeObject<List<semanticSimilarity>>(response.Content);
-            return result; 
+            if (tmdata.Count > 0)
+            {
+                semanticSimilarityPost posts = new semanticSimilarityPost();
+                posts = processData(tmdata, srcText);
+                var client = new RestClient(url);
+                var request = new RestRequest(restRequest, Method.POST);
+                request.RequestFormat = DataFormat.Json;
+                request.AddBody(posts);
+                var response = client.Execute(request);
+                var result = JsonConvert.DeserializeObject<List<semanticSimilarity>>(response.Content);
+                return result;
+            }
+            else
+            {
+                return null;
+            }
         }
         public semanticSimilarityPost processData(List<tm> tmdata, string srcText)
         {

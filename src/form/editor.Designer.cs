@@ -29,18 +29,17 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editor));
             this.groupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.rtbTutorial = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
             this.editorGrid = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.lblStatus = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.sourceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.targetColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.confirmColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.lblStatus = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1.Panel)).BeginInit();
             this.groupBox1.Panel.SuspendLayout();
@@ -60,7 +59,7 @@
             this.groupBox1.Panel.Controls.Add(this.rtbTutorial);
             this.groupBox1.Panel.Controls.Add(this.editorGrid);
             this.groupBox1.Panel.Controls.Add(this.lblStatus);
-            this.groupBox1.Size = new System.Drawing.Size(549, 487);
+            this.groupBox1.Size = new System.Drawing.Size(549, 497);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.Values.Heading = "Hướng dẫn";
             // 
@@ -71,7 +70,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbTutorial.Location = new System.Drawing.Point(2, 4);
             this.rtbTutorial.Name = "rtbTutorial";
-            this.rtbTutorial.Size = new System.Drawing.Size(540, 456);
+            this.rtbTutorial.Size = new System.Drawing.Size(540, 466);
             this.rtbTutorial.TabIndex = 3;
             this.rtbTutorial.Text = "";
             // 
@@ -90,15 +89,23 @@
             this.editorGrid.Location = new System.Drawing.Point(2, 21);
             this.editorGrid.Name = "editorGrid";
             this.editorGrid.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.editorGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.editorGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.editorGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.editorGrid.Size = new System.Drawing.Size(534, 428);
+            this.editorGrid.Size = new System.Drawing.Size(534, 444);
             this.editorGrid.TabIndex = 2;
             this.editorGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.editorGrid_CellClick);
             this.editorGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.editorGrid_CellContentClick);
             this.editorGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.editorGrid_CellEndEdit);
             this.editorGrid.SelectionChanged += new System.EventHandler(this.editorGrid_SelectionChanged);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Location = new System.Drawing.Point(4, 4);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(128, 20);
+            this.lblStatus.TabIndex = 0;
+            this.lblStatus.Values.Text = "Trạng thái phân đoạn";
             // 
             // sourceColumn
             // 
@@ -122,20 +129,10 @@
             // 
             // confirmColumn
             // 
-            dataGridViewCellStyle4.NullValue = false;
-            this.confirmColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.confirmColumn.FillWeight = 152.2843F;
             this.confirmColumn.HeaderText = "Đã lưu";
             this.confirmColumn.Name = "confirmColumn";
             this.confirmColumn.ReadOnly = true;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Location = new System.Drawing.Point(4, 4);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(128, 20);
-            this.lblStatus.TabIndex = 0;
-            this.lblStatus.Values.Text = "Trạng thái phân đoạn";
             // 
             // editor
             // 

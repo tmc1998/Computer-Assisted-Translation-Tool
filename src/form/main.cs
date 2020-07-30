@@ -352,6 +352,8 @@ namespace src.form
         {
             List<Segment> segments = new List<Segment>();
             segments = editorForm.getListSegment();
+            //List<Segment> listSegs = new List<Segment>();
+            //listSegs = editorForm.getListSegment();
             project.reWriteListSegment(segments);
             using (frmWaitForm frm = new frmWaitForm(project.createTranslatedDocument))
             {
@@ -407,7 +409,10 @@ namespace src.form
                 {
                     File.Delete(pathcsv); 
                 }
-                exportCSV.exportTM(pathcsv, TMData, project.getSourceLang(), project.getTargetLang()); 
+                exportCSV.exportTM(pathcsv, TMData, project.getSourceLang(), project.getTargetLang());
+                MessageBox.Show("Đã xuất cơ sở dữ liệu dịch thành công hãy kiểm tra trong thư mục tm của dự án", "Đã xuất tập tin thành công!", MessageBoxButtons.OK);
+                string path = project.getPathTempFolder();
+                Process.Start(path); 
                 //exportCSV.exportTM
             }
         }
@@ -483,6 +488,7 @@ namespace src.form
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
                         string path = ofd.FileName;
+                        editorForm.openEditorTutorial();
                         loadProject(path);
                     }
                 }
@@ -525,7 +531,14 @@ namespace src.form
         {
             if (project != null)
             {
-                createTranslationDocument();
+                if (project.getCurrentFile() != null)
+                {
+                    createTranslationDocument();
+                }
+                else
+                {
+                    MessageBox.Show("Cảnh báo", "Không có tập tin không thể tạo tập tin dịch", MessageBoxButtons.YesNo); 
+                }
             }
         }
 
@@ -558,14 +571,19 @@ namespace src.form
             if (project != null)
             {
                 List<tm> TMData = new List<tm>();
-                List<semanticSimilarity> resultSemantic = new List<semanticSimilarity>(); 
+                List<semanticSimilarity> resultSemantic = new List<semanticSimilarity>();
+                List<resultTMOnline> resultTMOnline = new List<resultTMOnline>(); 
                 if (TMLocalToolStripMenuItem.Checked)
                 {
                     TMData = tmDataAccess.LoadTM(project.getTMName());
                     resultSemantic = fuzzymatchesForm.getResultSemantic(srcText, TMData); 
                 }
+                if (TMGlobalToolStripMenuItem.Checked)
+                {
+                    resultTMOnline = fuzzymatchesForm.GetResultTMOnlines(srcText); 
+                }
                 var resultMT = this.getResultsMachineTranslatorion();
-                fuzzymatchesForm.setResultPredictSemantic(resultSemantic,resultMT);
+                fuzzymatchesForm.setResultPredictSemantic(resultSemantic,resultMT,resultTMOnline);
             }
         }
         public void hideRTBFuzzymatched()

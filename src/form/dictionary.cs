@@ -98,7 +98,7 @@ namespace src.form
     }
     public static class RichTextBoxExtensions
     {
-        public static void AppendText(this KryptonRichTextBox box, string text, int index, int length)
+        public static void AppendText(this ComponentFactory.Krypton.Toolkit.KryptonRichTextBox box, string text, int index, int length)
         {
             box.SelectionStart = index;
             box.SelectionLength = length;
