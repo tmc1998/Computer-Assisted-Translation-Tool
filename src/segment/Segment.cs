@@ -12,6 +12,9 @@ namespace src.segment
         private tm TM;
         private int page;
         public Boolean confirm = false;
+        public int col;
+        public int row;
+        public int sheet;
         public string file { get; set; }
         public void setTM(tm tmp)
         {

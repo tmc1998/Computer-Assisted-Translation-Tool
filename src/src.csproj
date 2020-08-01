@@ -41,8 +41,18 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlRenderer, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.6\lib\net45\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
@@ -77,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="client\Client.cs" />
+    <Compile Include="DataGridViewColumns\DataGridViewHTMLColumn.cs" />
+    <Compile Include="DataGridViewColumns\DataGridViewHTMLColumnScrollbars.cs" />
+    <Compile Include="file\excelFile.cs" />
     <Compile Include="file\File.cs" />
     <Compile Include="file\pdfFile.cs" />
     <Compile Include="file\txtFile.cs" />
@@ -146,6 +159,7 @@
     <Compile Include="machinetranslator\openNMTPost.cs" />
     <Compile Include="machinetranslator\urlAPI.cs" />
     <Compile Include="messagebox\TextOfMessageBox.cs" />
+    <Compile Include="processing\excelProc.cs" />
     <Compile Include="processing\exportCSV.cs" />
     <Compile Include="processing\pdfProc.cs" />
     <Compile Include="processing\txtProc.cs" />
@@ -160,6 +174,7 @@
     <Compile Include="TB\tb.cs" />
     <Compile Include="TB\tbOff.cs" />
     <Compile Include="TB\tbOffline.cs" />
+    <Compile Include="TB\tbProc.cs" />
     <Compile Include="TB\wikimedia.cs" />
     <Compile Include="TB\wikiUrl.cs" />
     <Compile Include="Text\txt.cs" />
@@ -171,6 +186,9 @@
     <Compile Include="TM\tmonlinedata.cs" />
     <Compile Include="TM\tmonlineURL.cs" />
     <Compile Include="XML\readwriteXML.cs" />
+    <EmbeddedResource Include="DataGridViewColumns\DataGridViewHTMLColumn.resx">
+      <DependentUpon>DataGridViewHTMLColumn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\createNewProject.resx">
       <DependentUpon>createNewProject.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +224,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -223,6 +242,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resource\elipsis.png" />
+    <Content Include="Resource\red-triangle.png" />
     <Content Include="TBDB\tb.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

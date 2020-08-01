@@ -29,17 +29,21 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editor));
             this.groupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.rtbTutorial = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
             this.editorGrid = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.lblStatus = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.sourceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewHTMLColumn1 = new DataGridViewHTML.DataGridViewHTMLColumn();
+            this.htmlSourceColumn = new DataGridViewHTML.DataGridViewHTMLColumn();
             this.targetColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.confirmColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.confirmColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn();
+            this.sourceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1.Panel)).BeginInit();
             this.groupBox1.Panel.SuspendLayout();
@@ -83,14 +87,16 @@
             this.editorGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.editorGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.editorGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.sourceColumn,
+            this.htmlSourceColumn,
             this.targetColumn,
-            this.confirmColumn});
+            this.confirmColumn,
+            this.sourceColumn});
             this.editorGrid.Location = new System.Drawing.Point(2, 21);
+            this.editorGrid.MultiSelect = false;
             this.editorGrid.Name = "editorGrid";
             this.editorGrid.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.editorGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.editorGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.editorGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.editorGrid.Size = new System.Drawing.Size(534, 444);
             this.editorGrid.TabIndex = 2;
@@ -107,32 +113,56 @@
             this.lblStatus.TabIndex = 0;
             this.lblStatus.Values.Text = "Trạng thái phân đoạn";
             // 
-            // sourceColumn
+            // dataGridViewHTMLColumn1
             // 
-            this.sourceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewHTMLColumn1.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewHTMLColumn1.HeaderText = "Câu nguồn";
+            this.dataGridViewHTMLColumn1.Name = "dataGridViewHTMLColumn1";
+            this.dataGridViewHTMLColumn1.ReadOnly = true;
+            // 
+            // htmlSourceColumn
+            // 
+            this.htmlSourceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.sourceColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.sourceColumn.HeaderText = "Câu nguồn";
-            this.sourceColumn.Name = "sourceColumn";
-            this.sourceColumn.ReadOnly = true;
-            this.sourceColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.htmlSourceColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.htmlSourceColumn.FillWeight = 111.9289F;
+            this.htmlSourceColumn.HeaderText = "Câu nguồn";
+            this.htmlSourceColumn.Name = "htmlSourceColumn";
+            this.htmlSourceColumn.ReadOnly = true;
             // 
             // targetColumn
             // 
             this.targetColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.targetColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.targetColumn.FillWeight = 111.9289F;
             this.targetColumn.HeaderText = "Câu dịch";
-            this.targetColumn.MinimumWidth = 100;
             this.targetColumn.Name = "targetColumn";
             // 
             // confirmColumn
             // 
-            this.confirmColumn.FillWeight = 152.2843F;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.NullValue = false;
+            this.confirmColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.confirmColumn.FalseValue = null;
+            this.confirmColumn.FillWeight = 76.14214F;
             this.confirmColumn.HeaderText = "Đã lưu";
+            this.confirmColumn.IndeterminateValue = null;
             this.confirmColumn.Name = "confirmColumn";
             this.confirmColumn.ReadOnly = true;
+            this.confirmColumn.TrueValue = null;
+            this.confirmColumn.Width = 50;
+            // 
+            // sourceColumn
+            // 
+            this.sourceColumn.HeaderText = "Column1";
+            this.sourceColumn.Name = "sourceColumn";
+            this.sourceColumn.ReadOnly = true;
+            this.sourceColumn.Visible = false;
             // 
             // editor
             // 
@@ -162,8 +192,10 @@
         private ComponentFactory.Krypton.Toolkit.KryptonRichTextBox rtbTutorial;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView editorGrid;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox groupBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sourceColumn;
+        private DataGridViewHTML.DataGridViewHTMLColumn dataGridViewHTMLColumn1;
+        private DataGridViewHTML.DataGridViewHTMLColumn htmlSourceColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn targetColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn confirmColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn confirmColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sourceColumn;
     }
 }

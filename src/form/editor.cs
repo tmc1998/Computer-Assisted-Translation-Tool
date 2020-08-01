@@ -13,7 +13,8 @@ using src.TM;
 using src.Text;
 using src.Files;
 using src.machinetranslator;
-using src.messagebox; 
+using src.messagebox;
+using src.TB;
 
 namespace src.form
 {
@@ -36,7 +37,7 @@ namespace src.form
         {
             initSize();
             editorGrid.ClearSelection();
-            UpdateFont();
+            //UpdateFont();
             openIntroduction(); 
         }
 
@@ -62,8 +63,8 @@ namespace src.form
         }
         public void setSentencesToGridview()
         {
-            editorGrid.Rows.Clear();
-            if(mainForm.project != null)
+            editorGrid.Rows.Clear(); 
+            if (mainForm.project != null)
             {
                 file a = mainForm.project.getCurrentFile();
                 List<Segment> listSegs = new List<Segment>();
@@ -72,6 +73,7 @@ namespace src.form
                 editorGrid.RowCount = listSegs.Count;
                 for (int i = 0;i < listSegs.Count; i++)
                 {
+                    editorGrid.Rows[i].Cells["htmlSourceColumn"].Value = "<span>" + listSegs[i].getTMSource() + "</span>"; 
                     editorGrid.Rows[i].Cells["sourceColumn"].Value = listSegs[i].getTMSource();
                     editorGrid.Rows[i].Cells["targetColumn"].Value = listSegs[i].getTMTarget();
                     editorGrid.Rows[i].Cells["confirmColumn"].Value = listSegs[i].confirm;
@@ -265,11 +267,21 @@ namespace src.form
 
         private void handling(string source)
         {
-            mainForm.getSourceToDictForm(source); 
+            mainForm.getSourceToDictForm(source);
+            setHTMLSource(source); 
             mainForm.resetTextMachineTranslationForm();
             mainForm.translationMachine(source);
             mainForm.predictSemantic(source);
             mainForm.hideRTBFuzzymatched();
+        }
+
+        private void setHTMLSource(string source)
+        {
+            int Index = editorGrid.CurrentRow.Index;
+            HashSet<tb> dict = mainForm.dictionary;
+            tbProc tbproc = new tbProc();
+            string html = tbproc.checkTBInSegment(dict, source);
+            editorGrid.Rows[Index].Cells["htmlSourceColumn"].Value = html;
         }
 
         public void setTargetToEditorGrid(string target)

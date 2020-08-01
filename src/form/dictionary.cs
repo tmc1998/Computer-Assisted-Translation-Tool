@@ -32,6 +32,7 @@ namespace src.form
         public void initSize()
         {
             tbGrid.ClearSelection();
+            rtbDictionary.Visible = false;
             this.Left = mainForm.editorForm.Width + 5;
             this.Top = ParentForm.ClientRectangle.Height / 2 - 50;
             rtbD.Text = dictText;
@@ -43,7 +44,7 @@ namespace src.form
         {
             rtbDictionary.Text = source;
             rtbD.Visible = false;
-            HashSet<tb> dict = mainForm.project.GetTbs();
+            HashSet<tb> dict = mainForm.dictionary;
             string word = source.ToLower();
             int count = 0;
             tbGrid.Rows.Add();
@@ -61,7 +62,7 @@ namespace src.form
                     tbGrid.Rows[count].Cells["wordColumn"].Value = tb.word;
                     tbGrid.Rows[count].Cells["definitionColumn"].Value = tb.definition;
                     count++;
-                    rtbDictionary.AppendText(word,index,selectionlength);
+                    //rtbDictionary.AppendText(word,index,selectionlength);
                 }
             }
         }

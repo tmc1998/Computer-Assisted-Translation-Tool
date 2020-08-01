@@ -252,9 +252,12 @@ namespace src.project
 
         public void saveProject(List<Segment> listSegs)
         {
-            this.currentFile.reWriteListSegmentSave(listSegs); 
-            readwriteXML readXML = new readwriteXML();
-            readXML.writeXMLFileSaveFile(this); 
+            if (this.currentFile != null)
+            {
+                this.currentFile.reWriteListSegmentSave(listSegs);
+                readwriteXML readXML = new readwriteXML();
+                readXML.writeXMLFileSaveFile(this);
+            }
         }
 
         public void setListFile()
@@ -290,6 +293,17 @@ namespace src.project
                             if(extension == ".pdf")
                             {
                                 file a = new pdfFile();
+                                a.setFileName(fi.FullName);
+                                string pathFileSave = Path.Combine(pathSaveFolder, a.getFileNameSave());
+                                a.loadFileSave(pathFileSave);
+                                //a.copy(); 
+                                string pathFile = Path.Combine(pathSourceFolder, fi.FullName); 
+                                //a.convertToWord(pathFile,pathTempFolder); 
+                                listFileOfSourceProject.Add(a); 
+                            }
+                            if(extension == ".xlsx" || extension == ".xls")
+                            {
+                               file a = new excelFile();
                                 a.setFileName(fi.FullName);
                                 string pathFileSave = Path.Combine(pathSaveFolder, a.getFileNameSave());
                                 a.loadFileSave(pathFileSave);

@@ -33,3 +33,8 @@ D:\Nam4\Doan\CATProject\src\bin\Release\System.Data.SQLite.dll.config
 D:\Nam4\Doan\CATProject\src\obj\Release\src.csproj.CopyComplete
 D:\Nam4\Doan\CATProject\src\obj\Release\src.exe
 D:\Nam4\Doan\CATProject\src\obj\Release\src.pdb
+D:\Nam4\Doan\CATProject\src\bin\Release\HtmlRenderer.dll
+D:\Nam4\Doan\CATProject\src\bin\Release\HtmlRenderer.WinForms.dll
+D:\Nam4\Doan\CATProject\src\bin\Release\HtmlRenderer.pdb
+D:\Nam4\Doan\CATProject\src\bin\Release\HtmlRenderer.WinForms.pdb
+D:\Nam4\Doan\CATProject\src\obj\Release\DataGridViewHTML.DataGridViewHTMLColumn.resources

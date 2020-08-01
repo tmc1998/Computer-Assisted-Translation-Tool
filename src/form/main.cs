@@ -34,7 +34,8 @@ namespace src.form
         public dictionary dictionaryForm;
         public importTB importTBForm;
         TMDATA tmDataAccess = new TMDATA();
-        List<tm> tmData = new List<tm>(); 
+        List<tm> tmData = new List<tm>();
+        public HashSet<tb> dictionary = new HashSet<tb>(); 
         public string filter = "cat|*.cat";
         public string catname = "CAT";
         tbOffline tbOffline = new tbOffline();
@@ -48,6 +49,8 @@ namespace src.form
         private void main_Load(object sender, EventArgs e)
         {
             //openChildForm();
+            readTbOff();
+            loadTB(); 
             setBackColor();
             //Init Control
             initControl();
@@ -63,7 +66,6 @@ namespace src.form
 
             //Machine Translation Form
             openMachineTranslationForm();
-            readTbOff();
             //------------------------
             //initProject(); 
             //openProjectFilesForm();
@@ -152,7 +154,7 @@ namespace src.form
                         openProjectFilesForm();
                         setSourceLangandTargetLangtoMachineTrans();
                         loadTMDATA();
-                        loadTB();
+                        //loadTB();
                         reloadControl();
                         reloadNameCAT(); 
                     }
@@ -549,10 +551,8 @@ namespace src.form
 
         private void loadTB()
         {
-            if(project != null)
-            {
-                project.readTB();
-            }
+            tbProc tbProc = new tbProc();
+            dictionary = tbProc.readTB(); 
         }
 
         private void btnStripSaveSegment_Click(object sender, EventArgs e)

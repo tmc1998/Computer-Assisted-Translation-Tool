@@ -128,3 +128,8 @@ D:\Work\FinalProject\CATProject\src\bin\Debug\ComponentFactory.Krypton.Toolkit.d
 D:\Work\FinalProject\CATProject\src\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
 D:\Nam4\Doan\CATProject\src\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
 D:\Nam4\Doan\CATProject\src\bin\Debug\ComponentFactory.Krypton.Toolkit.dll
+D:\Nam4\Doan\CATProject\src\bin\Debug\HtmlRenderer.dll
+D:\Nam4\Doan\CATProject\src\bin\Debug\HtmlRenderer.WinForms.dll
+D:\Nam4\Doan\CATProject\src\bin\Debug\HtmlRenderer.pdb
+D:\Nam4\Doan\CATProject\src\bin\Debug\HtmlRenderer.WinForms.pdb
+D:\Nam4\Doan\CATProject\src\obj\Debug\DataGridViewHTML.DataGridViewHTMLColumn.resources

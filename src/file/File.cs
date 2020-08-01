@@ -57,8 +57,14 @@ namespace src.Files
 
         public void reWriteListSegmentSave(List<Segment> listSegs)
         {
-            listSegmentsFromSave.Clear();
-            listSegmentsFromSave = listSegs; 
+            //listSegmentsFromSave.Clear();
+            listSegmentsFromSave = listSegments; 
+            for(int i = 0; i < listSegs.Count; i++)
+            {
+                tm tmp = new tm();
+                tmp = listSegs[i].getTM();
+                listSegmentsFromSave[i].setTM(tmp); 
+            }
         }
 
         public void reWriteListSegment(List<Segment> listSegs)

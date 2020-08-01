@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.rtbTermbase = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
             this.tbOffGrid = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
@@ -83,9 +83,9 @@
             this.tbOffGrid.Location = new System.Drawing.Point(4, 4);
             this.tbOffGrid.Name = "tbOffGrid";
             this.tbOffGrid.RowHeadersVisible = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tbOffGrid.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tbOffGrid.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.tbOffGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.tbOffGrid.Size = new System.Drawing.Size(153, 222);
             this.tbOffGrid.TabIndex = 0;
@@ -133,11 +133,11 @@
             this.tbGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.wordColumn,
             this.definitionColumn});
-            this.tbGrid.Location = new System.Drawing.Point(3, 65);
+            this.tbGrid.Location = new System.Drawing.Point(3, 3);
             this.tbGrid.Name = "tbGrid";
             this.tbGrid.RowHeadersVisible = false;
             this.tbGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tbGrid.Size = new System.Drawing.Size(140, 174);
+            this.tbGrid.Size = new System.Drawing.Size(140, 236);
             this.tbGrid.TabIndex = 1;
             this.tbGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tbGrid_CellContentClick);
             // 
