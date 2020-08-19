@@ -15,6 +15,8 @@ namespace src.segment
         public int col;
         public int row;
         public int sheet;
+        public int shape;
+        public int slide; 
         public string file { get; set; }
         public void setTM(tm tmp)
         {

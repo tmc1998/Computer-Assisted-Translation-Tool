@@ -14,6 +14,7 @@ namespace src.processing
     {
         public List<Segment> readExcelFile(string path)
         {
+            string filename = Path.GetFileName(path); 
             List<Segment> results = new List<Segment>();
             try
             {
@@ -43,6 +44,7 @@ namespace src.processing
                             tmp.row = c.Row;
                             tmp.col = c.Column;
                             tmp.sheet = i;
+                            tmp.file = filename;
                             tmp.setTM(tm);
                             results.Add(tmp); 
                             //Console.WriteLine("row: " + c.Row + "Column " + c.Column + "value" + c.Value2 + "Sheet :" + i);

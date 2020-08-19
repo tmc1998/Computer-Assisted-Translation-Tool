@@ -33,6 +33,7 @@ namespace src.form
         public machineTranslation machineTranslationForm;
         public dictionary dictionaryForm;
         public importTB importTBForm;
+        public createTM createTMForm; 
         TMDATA tmDataAccess = new TMDATA();
         List<tm> tmData = new List<tm>();
         public HashSet<tb> dictionary = new HashSet<tb>(); 
@@ -401,21 +402,26 @@ namespace src.form
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if(project != null)
+            //if(project != null)
+            //{
+            //    string fileName = project.getTMName() + ".xlsx";
+            //    string pathcsv = Path.Combine(project.getPathTempFolder(), fileName);
+            //    List<tm> TMData = tmDataAccess.LoadTM(project.getTMName());
+            //    exportCSV exportCSV = new exportCSV();
+            //    if (File.Exists(pathcsv))
+            //    {
+            //        File.Delete(pathcsv); 
+            //    }
+            //    exportCSV.exportTM(pathcsv, TMData, project.getSourceLang(), project.getTargetLang());
+            //    MessageBox.Show("Đã xuất cơ sở dữ liệu dịch thành công hãy kiểm tra trong thư mục tm của dự án", "Đã xuất tập tin thành công!", MessageBoxButtons.OK);
+            //    string path = project.getPathTempFolder();
+            //    Process.Start(path); 
+            //    //exportCSV.exportTM
+            //}
+            if (createTMForm == null)
             {
-                string fileName = project.getTMName() + ".csv";
-                string pathcsv = Path.Combine(project.getPathTempFolder(), fileName);
-                List<tm> TMData = tmDataAccess.LoadTM(project.getTMName());
-                exportCSV exportCSV = new exportCSV();
-                if (File.Exists(pathcsv))
-                {
-                    File.Delete(pathcsv); 
-                }
-                exportCSV.exportTM(pathcsv, TMData, project.getSourceLang(), project.getTargetLang());
-                MessageBox.Show("Đã xuất cơ sở dữ liệu dịch thành công hãy kiểm tra trong thư mục tm của dự án", "Đã xuất tập tin thành công!", MessageBoxButtons.OK);
-                string path = project.getPathTempFolder();
-                Process.Start(path); 
-                //exportCSV.exportTM
+                createTMForm = new createTM(this);
+                createTMForm.ShowDialog();
             }
         }
         private void setSourceLangandTargetLangtoMachineTrans()
@@ -490,11 +496,18 @@ namespace src.form
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
                         string path = ofd.FileName;
-                        editorForm.openEditorTutorial();
+                        initForm();
                         loadProject(path);
                     }
                 }
             }
+        }
+
+        public void initForm()
+        {
+            editorForm.openEditorTutorial();
+            dictionaryForm.initDict();
+            fuzzymatchesForm.initFuzzzyMatch();
         }
 
         private void SaveProjectButton_Click(object sender, EventArgs e)
@@ -524,6 +537,16 @@ namespace src.form
         {
             if (project != null)
             {
+                initForm();
+                if (project.getCurrentFile() == null)
+                {
+                    TextOfMessageBox a = new TextOfMessageBox();
+                    MessageBox.Show(a.NO_FILE_TO_SAVE, "Cảnh báo", MessageBoxButtons.YesNo);
+                }
+                else
+                {
+                    saveProject();
+                }
                 string path = Path.Combine(this.project.getPathProject(), this.project.getNameFileProject());
                 loadProject(path);
             }
@@ -675,5 +698,31 @@ namespace src.form
             tbOffline.readTBOff();
         }
         //
+
+        //Creat tm
+        public void createTM(string password)
+        {
+            if (project != null)
+            {
+                string fileName = project.getTMName() + ".xlsx";
+                string pathcsv = Path.Combine(project.getPathTempFolder(), fileName);
+                List<tm> TMData = tmDataAccess.LoadTM(project.getTMName());
+                exportCSV exportCSV = new exportCSV();
+                if (File.Exists(pathcsv))
+                {
+                    File.Delete(pathcsv);
+                }
+                exportCSV.exportTM(pathcsv, TMData, project.getSourceLang(), project.getTargetLang(),password);
+                MessageBox.Show("Đã xuất cơ sở dữ liệu dịch thành công hãy kiểm tra trong thư mục tm của dự án", "Đã xuất tập tin thành công!", MessageBoxButtons.OK);
+                string path = project.getPathTempFolder();
+                Process.Start(path);
+                //exportCSV.exportTM
+            }
+        }
+
+        public void nullCreateTMForm()
+        {
+            createTMForm = null;
+        }
     }
 }

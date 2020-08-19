@@ -1,4 +1,5 @@
-﻿using src.segment;
+﻿using src.processing;
+using src.segment;
 using src.XML;
 using System;
 using System.Collections.Generic;
@@ -6,34 +7,19 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using src.processing; 
+
 namespace src.Files
 {
-    public class wordFile : file
+    class pptxFile : file
     {
-        public List<Segment> listSegmentHeaderAndFooter; 
         public override void readContent(string path)
         {
-            List<string> listContentPage = new List<string>(); 
-            wordProc wordproc = new wordProc();
-            listContentPage = wordproc.readDocFile(path);
-
-            if (listContentPage != null)
-            {
-                int page = 1;
-                foreach (string contentPage in listContentPage)
-                {
-                    content = content + contentPage;
-                    List<Segment> tmp = new List<Segment>();
-                    tmp = wordproc.splitTxtContentToSegment(contentPage, delimiters, page,this.fileName);
-                    listSegments.AddRange(tmp);
-                    page++;
-                }
-            }
+            pptxProc pptxProc = new pptxProc();
+            listSegments = pptxProc.redPPTXFile(path, delimiters); 
         }
         public override void loadFileSave(string path)
         {
-            pathSaveFolder = path; 
+            pathSaveFolder = path;
             if (File.Exists(path))
             {
                 readwriteXML txt = new readwriteXML();
@@ -57,9 +43,13 @@ namespace src.Files
                 progress = (double)count / listSegmentsFromSave.Count;
             }
         }
+        public override void convertToWord(string path, string tempFolder)
+        {
+            throw new NotImplementedException();
+        }
         public override void createFileTranslateDocument(string path)
         {
-            //Copy file goc
+
             string sourceFile = this.filePath;
             string desFile = path;
             if (File.Exists(path))
@@ -68,18 +58,12 @@ namespace src.Files
             }
             File.Copy(sourceFile, desFile);
             //string destinationFile = this.file
-            replaceContent(path); 
+            replaceContent(path);
         }
-
         public void replaceContent(string path)
         {
-            wordProc wordproc = new wordProc();
-            wordproc.replaceContent(listSegments, path);
+            pptxProc pptxProc = new pptxProc();
+            pptxProc.replaceContent(listSegments, path); 
         }
-        public override void convertToWord(string path,string tempFolder)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

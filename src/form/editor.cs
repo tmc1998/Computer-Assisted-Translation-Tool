@@ -73,7 +73,7 @@ namespace src.form
                 editorGrid.RowCount = listSegs.Count;
                 for (int i = 0;i < listSegs.Count; i++)
                 {
-                    editorGrid.Rows[i].Cells["htmlSourceColumn"].Value = "<span>" + listSegs[i].getTMSource() + "</span>"; 
+                    editorGrid.Rows[i].Cells["htmlSourceColumn"].Value = listSegs[i].getTMSource(); 
                     editorGrid.Rows[i].Cells["sourceColumn"].Value = listSegs[i].getTMSource();
                     editorGrid.Rows[i].Cells["targetColumn"].Value = listSegs[i].getTMTarget();
                     editorGrid.Rows[i].Cells["confirmColumn"].Value = listSegs[i].confirm;
@@ -113,7 +113,8 @@ namespace src.form
         {
             txt txt = new txt(); 
             editorGrid.Visible = false;
-            lblStatus.Visible = false; 
+            lblStatus.Visible = false;
+            rtbTutorial.Text = txt.TUTORIAL_PROJECT;
             //lblEditor.Text = txt.CAT_INTRODUCTION_LABEL; 
             rtbTutorial.Text = txt.CAT_INTRODUCTION; 
         }
@@ -134,10 +135,12 @@ namespace src.form
         }
         public void openEditorTutorial()
         {
+            txt txt = new txt();
             rtbTutorial.Visible = true;
             editorGrid.Visible = false;
             lblStatus.Visible = false;
             groupBox1.Text = tutorialText;
+            rtbTutorial.Text = txt.CAT_INTRODUCTION;
         }
 
         public List<Segment> getListSegment()

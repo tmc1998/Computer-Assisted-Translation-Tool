@@ -54,12 +54,20 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.PowerPoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.PowerPoint.15.0.4420.1017\lib\net20\Microsoft.Office.Interop.PowerPoint.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\MicrosoftOfficeCore.15.0.0\lib\net35\Office.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
@@ -92,6 +100,7 @@
     <Compile Include="file\excelFile.cs" />
     <Compile Include="file\File.cs" />
     <Compile Include="file\pdfFile.cs" />
+    <Compile Include="file\pptxFile.cs" />
     <Compile Include="file\txtFile.cs" />
     <Compile Include="file\wordFile.cs" />
     <Compile Include="form\createNewProject.cs">
@@ -99,6 +108,12 @@
     </Compile>
     <Compile Include="form\createNewProject.Designer.cs">
       <DependentUpon>createNewProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\createTM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\createTM.Designer.cs">
+      <DependentUpon>createTM.cs</DependentUpon>
     </Compile>
     <Compile Include="form\dictionary.cs">
       <SubType>Form</SubType>
@@ -162,6 +177,7 @@
     <Compile Include="processing\excelProc.cs" />
     <Compile Include="processing\exportCSV.cs" />
     <Compile Include="processing\pdfProc.cs" />
+    <Compile Include="processing\pptxProc.cs" />
     <Compile Include="processing\txtProc.cs" />
     <Compile Include="processing\wordProc.cs" />
     <Compile Include="Program.cs" />
@@ -191,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\createNewProject.resx">
       <DependentUpon>createNewProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\createTM.resx">
+      <DependentUpon>createTM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\dictionary.resx">
       <DependentUpon>dictionary.cs</DependentUpon>

@@ -18,7 +18,8 @@ namespace src.form
         public main mainForm;
         public List<string> listFilesName = new List<string>();
         public List<string> listExtensionFile = new List<string>();
-        public string filter = "File|*.doc;*.pdf;*.txt;*.docx";
+        public string filter = "File|*.doc;*.pdf;*.txt;*.docx;*.pptx;*.xlsx";
+        public List<file> listFileOfSourceProject = new List<file>();
         public projectfiles(main mainform)
         {
             InitializeComponent();
@@ -50,6 +51,12 @@ namespace src.form
             header2.Name = "colNameFilter";
             header2.Width = 100;
             listViewFiles.Columns.Add(header2);
+
+            ColumnHeader header3 = new ColumnHeader();
+            header3.Text = "Tiến trình";
+            header3.Name = "colNameProgress";
+            header3.Width = 100;
+            listViewFiles.Columns.Add(header3);
         }
 
         private void loadAllFile()
@@ -58,24 +65,31 @@ namespace src.form
             listViewFiles.Items.Clear(); 
             if(mainForm.project != null)
             {
-                try
+                //try
+                //{
+                //    string path = mainForm.project.getPathSourceFolder();
+                //    foreach (string item in Directory.GetFiles(path))
+                //    {
+                //        FileInfo fi = new FileInfo(item);
+                //        string extension = fi.Extension;
+                //        if (listExtensionFile.Contains(extension))
+                //        {
+                //            imageListIcon.Images.Add(System.Drawing.Icon.ExtractAssociatedIcon(fi.FullName));
+                //            listFilesName.Add(fi.FullName);
+                //            ListViewItem Item = new ListViewItem(new[] { fi.Name,fi.Extension });
+                //            Item.ImageIndex = imageListIcon.Images.Count - 1; 
+                //            listViewFiles.Items.Add(Item);
+                //        }
+                //    }
+                //}
+                //catch (Exception) { }
+                listFileOfSourceProject = mainForm.project.getListFileOfSourceProject(); 
+                foreach(file file in listFileOfSourceProject)
                 {
-                    string path = mainForm.project.getPathSourceFolder();
-                    foreach (string item in Directory.GetFiles(path))
-                    {
-                        FileInfo fi = new FileInfo(item);
-                        string extension = fi.Extension;
-                        if (listExtensionFile.Contains(extension))
-                        {
-                            imageListIcon.Images.Add(System.Drawing.Icon.ExtractAssociatedIcon(fi.FullName));
-                            listFilesName.Add(fi.FullName);
-                            ListViewItem Item = new ListViewItem(new[] { fi.Name,fi.Extension });
-                            Item.ImageIndex = imageListIcon.Images.Count - 1; 
-                            listViewFiles.Items.Add(Item);
-                        }
-                    }
+                    string txt = System.Math.Truncate(file.progress * 100).ToString() + "%";
+                    ListViewItem Item = new ListViewItem(new[] { file.fileName, file.extexsion,txt});
+                    listViewFiles.Items.Add(Item); 
                 }
-                catch (Exception) { }
             }
         }
 
@@ -185,9 +199,16 @@ namespace src.form
                         Console.WriteLine(path);
                         string fileName = Path.GetFileName(path);
                         string desPath = Path.Combine(mainForm.project.getPathSourceFolder(),fileName);
-                        File.Copy(path, desPath, true);
-                        mainForm.project.setListFile(); 
-                        loadAllFile(); 
+                        if (!File.Exists(desPath))
+                        {
+                            File.Copy(path, desPath, true);
+                            mainForm.project.setListFile();
+                            loadAllFile();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tập tin đã tồn tại", "Cảnh báo", MessageBoxButtons.OK); 
+                        }
                     }
                 }
             }

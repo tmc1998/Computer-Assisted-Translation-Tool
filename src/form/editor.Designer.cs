@@ -128,7 +128,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.htmlSourceColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.htmlSourceColumn.FillWeight = 111.9289F;
+            this.htmlSourceColumn.FillWeight = 200F;
             this.htmlSourceColumn.HeaderText = "Câu nguồn";
             this.htmlSourceColumn.Name = "htmlSourceColumn";
             this.htmlSourceColumn.ReadOnly = true;

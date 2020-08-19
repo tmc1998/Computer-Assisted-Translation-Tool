@@ -37,9 +37,7 @@ namespace src.form
 
             this.Left = main.editorForm.Width - 5;
             this.Top = 0;
-            rtbFuzzyMatches.Text = text;
-            resultGrid.Visible = false; 
-
+            initFuzzzyMatch(); 
             //Rectangle recNew = new Rectangle();
             //recNew.Width = ParentForm.ClientRectangle.Width / 2;
             //recNew.Height = ParentForm.ClientRectangle.Height / 2;
@@ -48,6 +46,13 @@ namespace src.form
             ////init Size panel Top 
 
             //panelTop.Width = ParentForm.ClientRectangle.Width / 2;
+        }
+
+        public void initFuzzzyMatch()
+        {
+            rtbFuzzyMatches.Text = text;
+            resultGrid.Visible = false;
+
         }
 
         public Form getHandle()
@@ -129,7 +134,14 @@ namespace src.form
                 {
                     resultGrid.Rows[i + rowcount + rowcount2].Cells["sourceColumn"].Value = resultMT[i].src;
                     resultGrid.Rows[i + rowcount + rowcount2].Cells["targetColumn"].Value = resultMT[i].tag;
-                    resultGrid.Rows[i + rowcount + rowcount2].Cells["scoreColumn"].Value = resultMT[i].score;
+                    if (resultMT[i].type == "OpenNMT")
+                    {
+                        resultGrid.Rows[i + rowcount + rowcount2].Cells["scoreColumn"].Value = Math.Round((20 - (float)resultMT[i].score * (-1.0f)) / 20 * 100);
+                    }
+                    else
+                    {
+                        resultGrid.Rows[i + rowcount + rowcount2].Cells["scoreColumn"].Value = Math.Round(resultMT[i].score); 
+                    }
                     resultGrid.Rows[i + rowcount + rowcount2].Cells["typeColumn"].Value = resultMT[i].type;
                 }
             }

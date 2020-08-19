@@ -62,8 +62,8 @@ namespace src.processing
                         tmp.setTM(tm);
                         tmp.file = filename;
                         parts.Add(tmp);
-                        break;
                     }
+                    break;
 
                 } while (iFirst < content.Length);
             }

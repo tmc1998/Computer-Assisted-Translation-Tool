@@ -15,7 +15,7 @@ namespace src.TB
     {
         public string path { get; set; }
         public string pathFolder { get; set; }
-        private List<string> listfileextension = new List<string>() { ".txt", ".doc", ".docx", ".pdf", ".xls", ".xlsx" };
+        private List<string> listfileextension = new List<string>() { ".txt", ".doc", ".docx", ".pdf", ".xls", ".xlsx",".pptx"};
         private char[] delimiters = { '.', '?', '\n', ':', '\r', '\t', '\a', '\f' };
         public HashSet<tbOff> listSeg = new HashSet<tbOff>(); 
         private string tbOfflineFolder = "tbCat";
@@ -65,6 +65,22 @@ namespace src.TB
                                 a.setdelimiters(delimiters);
                                 a.readContent(fi.FullName);
                                 segments.AddRange(a.getListSegments());
+                            }
+                           if(extension == ".pptx")
+                            {
+                                file a = new pptxFile();
+                                a.setFileName(fi.FullName);
+                                a.setdelimiters(delimiters);
+                                a.readContent(fi.FullName);
+                                segments.AddRange(a.getListSegments()); 
+                            }
+                           if(extension == ".xlsx")
+                            {
+                                file a = new excelFile();
+                                a.setFileName(fi.FullName);
+                                a.setdelimiters(delimiters);
+                                a.readContent(fi.FullName);
+                                segments.AddRange(a.getListSegments()); 
                             }
                         }
                     }

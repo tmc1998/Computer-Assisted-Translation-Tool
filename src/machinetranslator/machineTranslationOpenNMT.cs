@@ -20,7 +20,15 @@ namespace src.machinetranslator
             var request = new RestRequest("translate", Method.POST);
             request.RequestFormat = DataFormat.Json;
             List<openNMTPost> data = new List<openNMTPost>();
-            openNMTPost post = new openNMTPost { src = sourceText, id = 0 };
+            openNMTPost post = null;
+            if (source == "vi" && target == "en")
+            {
+                post = new openNMTPost { src = sourceText, id = 1 };
+            }
+            if (source == "en" && target == "vi")
+            {
+                post = new openNMTPost { src = sourceText, id = 0 };
+            }
             data.Add(post);
             string jsonData = JsonConvert.SerializeObject(data); 
             request.AddBody(jsonData);

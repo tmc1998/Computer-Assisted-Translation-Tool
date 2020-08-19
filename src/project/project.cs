@@ -33,7 +33,7 @@ namespace src.project
         private string languageTarget;
         private string projectName;
         private string tmName; 
-        private List<string> listfileextension = new List<string>() { ".txt", ".doc" , ".docx" , ".pdf" , ".xls",".xlsx" };
+        private List<string> listfileextension = new List<string>() { ".txt", ".doc" , ".docx" , ".pdf" , ".xls",".xlsx",".pptx" };
         private char[] delimiters = { '.', '?', '\n', ':', '\r', '\t', '\a', '\f' };
         private char[] delimiterTB = { ':' };
         private List<file> listFileOfSourceProject = new List<file>();
@@ -311,6 +311,14 @@ namespace src.project
                                 string pathFile = Path.Combine(pathSourceFolder, fi.FullName); 
                                 //a.convertToWord(pathFile,pathTempFolder); 
                                 listFileOfSourceProject.Add(a); 
+                            }
+                            if(extension == ".pptx")
+                            {
+                                file a = new pptxFile();
+                                a.setFileName(fi.FullName);
+                                string pathFileSave = Path.Combine(pathSaveFolder, a.getFileNameSave());
+                                a.loadFileSave(pathFileSave); 
+                                listFileOfSourceProject.Add(a);
                             }
                         }
                     }

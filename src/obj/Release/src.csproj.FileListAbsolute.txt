@@ -38,3 +38,4 @@ D:\Nam4\Doan\CATProject\src\bin\Release\HtmlRenderer.WinForms.dll
 D:\Nam4\Doan\CATProject\src\bin\Release\HtmlRenderer.pdb
 D:\Nam4\Doan\CATProject\src\bin\Release\HtmlRenderer.WinForms.pdb
 D:\Nam4\Doan\CATProject\src\obj\Release\DataGridViewHTML.DataGridViewHTMLColumn.resources
+D:\Nam4\Doan\CATProject\src\obj\Release\src.form.createTM.resources

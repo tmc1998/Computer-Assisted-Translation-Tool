@@ -23,7 +23,8 @@ namespace src.Files
         public string convertFileName; 
         public List<Segment> listSegments = new List<Segment>();
         public List<Segment> listSegmentsFromSave = new List<Segment>();
-
+        public bool isChange = false;
+        public double progress = 0; 
 
         public abstract void readContent(string path);
         public abstract void loadFileSave(string path);
@@ -55,6 +56,26 @@ namespace src.Files
             }
         }
 
+        //public float checkFileIsChanged()
+        //{
+        //    int count = 0; 
+        //    if(listSegmentsFromSave.Count == 0)
+        //    {
+        //        progress = 0;
+        //    }
+        //    else
+        //    {
+        //        foreach(Segment segment in listSegmentsFromSave)
+        //        {
+        //            if(segment.getTMTarget() != null)
+        //            {
+        //                count++; 
+        //            }
+        //        }
+        //        progress = count/listSegmentsFromSave.Count
+        //    }
+        //}
+
         public void reWriteListSegmentSave(List<Segment> listSegs)
         {
             //listSegmentsFromSave.Clear();
@@ -63,7 +84,8 @@ namespace src.Files
             {
                 tm tmp = new tm();
                 tmp = listSegs[i].getTM();
-                listSegmentsFromSave[i].setTM(tmp); 
+                listSegmentsFromSave[i].setTM(tmp);
+                listSegmentsFromSave[i].confirm = listSegs[i].confirm; 
             }
         }
 
@@ -80,12 +102,25 @@ namespace src.Files
 
         public void setListSegmentsFormFileSave()
         {
-            if (listSegmentsFromSave.Count > 0)
+            //if (listSegmentsFromSave.Count > 0)
+            //{
+            //    foreach (Segment tmp in listSegmentsFromSave)
+            //    {
+            //        tm tm = tmp.getTM();
+                    //setTargetToListSegment(tm,tmp.confirm);
+            //    }
+            //}
+            if(listSegmentsFromSave.Count == listSegments.Count)
             {
-                foreach (Segment tmp in listSegmentsFromSave)
+                for(int i = 0; i < listSegmentsFromSave.Count; i++)
                 {
-                    tm tm = tmp.getTM();
-                    setTargetToListSegment(tm,tmp.confirm);
+                    tm tmp1 = listSegmentsFromSave[i].getTM();
+                    tm tmp2 = listSegments[i].getTM();
+                    if (tmp1.Source == tmp2.Source)
+                    {
+                        listSegments[i].setTMTargetLang(tmp1.Target);
+                        listSegments[i].confirm = listSegmentsFromSave[i].confirm;
+                    }
                 }
             }
         }

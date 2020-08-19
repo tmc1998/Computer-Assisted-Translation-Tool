@@ -51,12 +51,30 @@ namespace src.Files
         }
         public override void loadFileSave(string path)
         {
+            pathSaveFolder = path;
             if (File.Exists(path))
             {
                 readwriteXML txt = new readwriteXML();
                 this.listSegmentsFromSave = txt.readSegmentFromFileSave(path);
 
                 //            //Set lai cac tm voi file save
+            }
+            if (listSegmentsFromSave.Count == 0)
+            {
+                progress = 0;
+            }
+            else
+            {
+                int count = 0;
+                foreach (Segment segment in listSegmentsFromSave)
+                {
+                    if (!string.IsNullOrEmpty(segment.getTMTarget()))
+                    {
+                        count++;
+                    }
+                }
+
+                progress = (double)count / listSegmentsFromSave.Count;
             }
         }
         public override void createFileTranslateDocument(string path)

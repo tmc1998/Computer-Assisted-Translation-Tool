@@ -31,15 +31,20 @@ namespace src.form
 
         public void initSize()
         {
-            tbGrid.ClearSelection();
-            rtbDictionary.Visible = false;
             this.Left = mainForm.editorForm.Width + 5;
             this.Top = ParentForm.ClientRectangle.Height / 2 - 50;
-            rtbD.Text = dictText;
-            rtbTermbase.Text = termText;
-
+            initDict(); 
         }
 
+        public void initDict()
+        {
+            tbGrid.ClearSelection();
+            rtbD.Text = dictText;
+            rtbTermbase.Text = termText;
+            rtbTermbase.Visible = true;
+            rtbD.Visible = true; 
+            rtbDictionary.Visible = false;
+        }
         public void getgetSourceToDictForm(string source)
         {
             rtbDictionary.Text = source;

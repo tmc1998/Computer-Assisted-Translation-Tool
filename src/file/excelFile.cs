@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using src.segment;
 
 namespace src.Files
 {
@@ -34,10 +35,28 @@ namespace src.Files
         }
         public override void loadFileSave(string path)
         {
+            pathSaveFolder = path; 
             if (File.Exists(path))
             {
                 readwriteXML txt = new readwriteXML();
                 this.listSegmentsFromSave = txt.readSegmentFromFileSave(path);
+            }
+            if(listSegmentsFromSave.Count == 0)
+            {
+                progress = 0;
+            }
+            else
+            {
+                int count = 0; 
+                foreach(Segment segment in listSegmentsFromSave)
+                {
+                    if (!string.IsNullOrEmpty(segment.getTMTarget()))
+                    {
+                        count++;
+                    }
+                }
+
+                progress = (double)count / listSegmentsFromSave.Count;
             }
         }
         public void replaceContent(string path)
